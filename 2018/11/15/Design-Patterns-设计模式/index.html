@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="代码整洁,">
+  <meta name="keywords" content="设计模式,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Clean Code 第十五章清单罗列">
-<meta name="keywords" content="代码整洁">
+<meta name="description" content="序 OO原则是我们的目标，而设计模式是我们的做法。  设计模式入门 在软件开发上，一直不变的真理是“change”。不管软件设计的多好，一段时间之后，总是要成长与改变，否则软件就会“死亡”。   策略模式(Strategy)：定义算法族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。 书中例子：鸭子与鸭子的行为，以组合的方式组织，鸭子的行为以接口表示，接口可能有多个">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Clean Code 代码检查清单">
-<meta property="og:url" content="https://weiwei.github.io/2018/11/12/Clean-Code-代码检查清单/index.html">
+<meta property="og:title" content="Head First Design Patterns HeadFirst 设计模式">
+<meta property="og:url" content="https://weiwei.github.io/2018/11/15/Design-Patterns-设计模式/index.html">
 <meta property="og:site_name" content="Type The World">
-<meta property="og:description" content="Clean Code 第十五章清单罗列">
+<meta property="og:description" content="序 OO原则是我们的目标，而设计模式是我们的做法。  设计模式入门 在软件开发上，一直不变的真理是“change”。不管软件设计的多好，一段时间之后，总是要成长与改变，否则软件就会“死亡”。   策略模式(Strategy)：定义算法族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。 书中例子：鸭子与鸭子的行为，以组合的方式组织，鸭子的行为以接口表示，接口可能有多个">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-15T11:37:20.891Z">
+<meta property="og:updated_time" content="2018-11-15T11:39:28.547Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Clean Code 代码检查清单">
-<meta name="twitter:description" content="Clean Code 第十五章清单罗列">
+<meta name="twitter:title" content="Head First Design Patterns HeadFirst 设计模式">
+<meta name="twitter:description" content="序 OO原则是我们的目标，而设计模式是我们的做法。  设计模式入门 在软件开发上，一直不变的真理是“change”。不管软件设计的多好，一段时间之后，总是要成长与改变，否则软件就会“死亡”。   策略模式(Strategy)：定义算法族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。 书中例子：鸭子与鸭子的行为，以组合的方式组织，鸭子的行为以接口表示，接口可能有多个">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://weiwei.github.io/2018/11/12/Clean-Code-代码检查清单/">
+  <link rel="canonical" href="https://weiwei.github.io/2018/11/15/Design-Patterns-设计模式/">
 
 
 
 
 
-  <title>Clean Code 代码检查清单 | Type The World</title>
+  <title>Head First Design Patterns HeadFirst 设计模式 | Type The World</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://weiwei.github.io/2018/11/12/Clean-Code-代码检查清单/">
+    <link itemprop="mainEntityOfPage" href="https://weiwei.github.io/2018/11/15/Design-Patterns-设计模式/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WeiweiQi">
@@ -280,7 +280,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Clean Code 代码检查清单</h2>
+          <h2 class="post-title" itemprop="name headline">Head First Design Patterns HeadFirst 设计模式</h2>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-12T14:33:18+08:00">
-                2018-11-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-15T19:32:55+08:00">
+                2018-11-15
               </time>
             
 
@@ -357,91 +357,46 @@
       
 
       
-        <p>Clean Code 第十五章清单罗列</p>
-<a id="more"></a>
+        <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><blockquote>
+<p>OO原则是我们的目标，而设计模式是我们的做法。</p>
+</blockquote>
+<h2 id="设计模式入门"><a href="#设计模式入门" class="headerlink" title="设计模式入门"></a>设计模式入门</h2><blockquote>
+<p>在软件开发上，一直不变的真理是“change”。不管软件设计的多好，一段时间之后，总是要成长与改变，否则软件就会“死亡”。</p>
+</blockquote>
 <ul>
-<li>注释：<ul>
-<li>不恰当的信息：注释只应该描述有关代码和设计的技术性信息。</li>
-<li>废弃的注释：过时、无关或不正确的注释就是废弃的注释。</li>
-<li>冗余注释：注释应该谈及代码自身没提到的东西</li>
-<li>糟糕的注释：值得编写的注释，也值得好好写。</li>
-<li>注释掉的代码</li>
+<li><strong><em>策略模式(Strategy)：定义算法族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。</em></strong></li>
+<li>书中例子：鸭子与鸭子的行为，以组合的方式组织，鸭子的行为以接口表示，接口可能有多个具体的实现形式。具体的鸭子类可以动态的设置行为的具体方式。</li>
+<li>封装变化：找出应用中可能需要变化之处，把它们独立出来，不要和那些不需要变化的代码混在一起。把会变化的部分取出并“封装”起来，好让其他部分不会受到影响。</li>
+<li>针对“接口”编程，而不是针对实现编程。</li>
+<li>多用组合，少用继承。</li>
+<li>建立可维护的OO系统，要诀就在于随时想到系统以后可能需要的变化以及应付变化的原则。</li>
+<li>良好的OO设计必须具备可复用、可扩充、可维护三个特性。</li>
+<li>大多数的模式和原则，都着眼于软件变化的主题。  </li>
+<li>大多数的模式都允许系统局部改变独立于其他部分。</li>
+<li>我们常把系统中会变化的部分抽出来封装。</li>
+</ul>
+<h2 id="观察者模式-Observer"><a href="#观察者模式-Observer" class="headerlink" title="观察者模式(Observer)"></a>观察者模式(Observer)</h2><ul>
+<li><strong><em>观察者模式定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，它的所有依赖者都会收到通知并自动更新。</em></strong></li>
+<li>观察者模式的关键点在于在主题数据类中加入了观察者类的一个注册list成员列表</li>
+<li><p>消息传递链条为：</p>
+<ul>
+<li>数据源变化 </li>
+<li>调用自身的setData方法</li>
+<li>调用数据改变方法somethingChange()</li>
+<li>调用notifyObserver()</li>
+<li>for each O in Observers , .o.update()<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherData</span> <span class="keyword">implements</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> List observers;<span class="comment">//关键点1</span></span><br><span class="line">    <span class="keyword">private</span> data;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">WeatherData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        observers = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerObserver</span><span class="params">(Observer o)</span> </span>&#123;<span class="comment">//注册</span></span><br><span class="line">        observers.add(o);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeObserver</span><span class="params">(Observer o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = observers.indexof(o);</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            observers.remove(o);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OneObserver</span> <span class="keyword">implements</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Subject weatherData;<span class="comment">//关键点2</span></span><br><span class="line">    <span class="keyword">private</span> String data;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">OneObserver</span><span class="params">(Subject s)</span> </span>&#123;<span class="comment">//构造器，注册</span></span><br><span class="line">        <span class="keyword">this</span>.weatherData = s;</span><br><span class="line">        weatherData.registerObserver(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(String data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.data = data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
-<li>环境：<ul>
-<li>需要多步才能实现的构建：构建系统应该是单步的小操作。</li>
-<li>需要多步才能做到的测试：应当能够发出单个指令就可以运行全部单元测试。能够运行全部测试是如此基础和重要，应该快速、轻易和直截了当地做到。</li>
-</ul>
+<li><p>1对多，松耦合</p>
 </li>
-<li>函数<ul>
-<li>过多的参数，没参最好</li>
-<li>输出参数：输出参数就违反直觉。如果函数非要修改什么东西的状态不可，就修改它所在对象的状态好了。</li>
-<li>标识参数：布尔值参数大声宣告函数做了不止一件事。</li>
-<li>死函数：永不被调用的方法应该丢弃。别害怕删除函数。</li>
-</ul>
-</li>
-<li>一般性问题：<ul>
-<li>一个源文件中存在多种语言：理想的源文件包括且只包括一种语言，应该尽力减少源文件中额外语言的数量和范围。</li>
-<li>明显的行为未被实现：最小惊异原则–函数或类应该实现其他程序员有理由期待的行为。</li>
-<li>不正确的边界行为：别依赖直觉。追索每种边界条件，并编写测试。</li>
-<li>忽视安全：关闭失败测试、告诉自己过后再处理，这和假装刷信用卡不用还钱一样坏。</li>
-<li><strong><em>重复</em></strong>：核心原则。每次看到重复代码，都代表遗漏了抽象。</li>
-<li>在错误的抽象层级上的代码：只与细节实现有关的常量、变量或工具函数不应该在基类中出现。</li>
-<li>基类依赖于派生类：例外情况是派生类数量严格固定。</li>
-<li>信息过多：设计良好的模块有着非常小的接口，让你能事半功倍。设计良好的接口并不提供许多需要依靠的函数，所以耦合度也较低。设计低劣的接口提供大量你必须调用的的函数，耦合度较高。隐藏你的数据。隐藏你的工具函数。隐藏你的常量和你的临时变量。不要创建拥有大量方法或大量实体变量的类。不要为子类创建大量受保护变量和函数。尽量保持接口紧凑。通过限制信息来控制耦合度。</li>
-<li>死代码：死代码就是不执行的代码。</li>
-<li>垂直分隔：变量和函数应该在靠近被使用的地方定义。</li>
-<li>前后不一致：从一而终，小心选择约定，一旦选中，就小心持续遵循。</li>
-<li>混淆视听：</li>
-<li>人为耦合：不互相依赖的东西不该耦合。</li>
-<li>特性依恋：类的方法只应对其所属类中的变量和函数感兴趣，不该垂青其他类中的变量和函数。</li>
-<li>“选择算子”参数：“选择算子”参数只是一种避免把大函数切分为多个小函数的偷懒做法。选择算子不一定是boolean类型，可能是枚举元素、整数或任何一种用于选择函数行为的参数。</li>
-<li>晦涩的意图：代码要尽可能具有表达力。</li>
-<li>位置错误的权责：软件开发者做出的最重要决定之一就是在哪里放代码。（最小惊异原则）代码应该放在读者自然而然期待它所在的地方。</li>
-<li>不恰当的静态方法：恰当的静态方法不应在单个实体上操作。</li>
-<li>应当使用解释性变量：让程序可读的最有力的方法之一就是将计算过程打散成在用有意义的单词命名的变量中放置的中间值。</li>
-<li>函数名称应该表达其行为：</li>
-<li>理解算法：“可以工作”是不行的，必须知道解决方案是正确的。</li>
-<li>应当把逻辑依赖改为物理依赖：依赖者模块不应对被依赖者模块有假定。</li>
-<li>应当用多态替代if/else或switch/case: 在使用if/else或switch/case前，先考虑使用多态。</li>
-<li>遵循标准约定：</li>
-<li>用命名常量替代魔术数：</li>
-<li>准确：</li>
-<li>结构甚于约定：坚守结构甚于约定的设计决策。命名约定很好，但却次于强制性的结构。</li>
-<li>封装条件：应该把解释了条件意图的函数抽离出来。</li>
-<li>避免否定性条件：</li>
-<li>函数只做一件事：</li>
-<li>不要掩蔽时序耦合：通过创建时序队列暴露时序耦合。</li>
-<li>应当封装边界条件：</li>
-<li>函数应当只在一个抽象层级上：（拆分不同抽象层级是重构的最重要的功能之一）</li>
-<li>应当在较高层级放置可配置数据</li>
-<li>避免传递浏览：确保模块只了解其直接协作者。</li>
-</ul>
-</li>
-<li>Java<ul>
-<li>通过使用通配符避免过长的导入清单：（这一项由IDE来实现）</li>
-<li>不要继承常量：</li>
-<li>常量 VS. 枚举 ：优先用枚举</li>
-<li>采用描述性名称：</li>
-<li>名称应与抽象层级相符</li>
-<li>尽可能使用标准命名法：</li>
-<li>无歧义的名称：</li>
-<li>避免编码：不应在名称中包括类型或作用范围信息。</li>
-<li>名称应该说明副作用：名称应该说明函数、变量或类的一切信息。</li>
-</ul>
-</li>
-<li>测试：<ul>
-<li>测试不足：</li>
-<li>使用覆盖率工具：覆盖率工具能汇报你测试策略中的缺口。</li>
-<li>别略过小测试</li>
-<li>被忽略的测试就是对不确定事物的疑问：需求不明确而不能确定某个行为细节，可以用注释掉的测试或者用@Ignore标记的测试来表达我们对于需求的疑问。</li>
-<li>测试边界条件</li>
-<li>全面测试相近的缺陷</li>
-<li>测试失败的模式有启发性</li>
-<li>测试覆盖率的模式有启发性</li>
-<li>测试应该快速</li>
-</ul>
-</li>
+<li>出版者 + 订阅者 = 观察者模式</li>
+<li>主题 Subject  +  观察者 Observer = 观察者模式</li>
+<li>主题对象管理某些数据，当主题内的数据改变，就会通知观察者，新的数据会以某种形式送到观察者手上；观察者已经订阅(注册)主题以便在主题数据改变时能够受到更新。</li>
+<li>主题是真正拥有数据的人，观察者是主题的依赖者，在数据变化时更新，这样比起让许多对象控制同一份数据来，可以得到更干净的OO设计。</li>
+<li>观察者模式提供了一种对象设计，让主题和观察者之间松耦合。</li>
+<li><strong><em>设计原则：为了交互对象之间的松耦合而努力</em></strong></li>
+<li></li>
 </ul>
 
       
@@ -460,7 +415,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/代码整洁/" rel="tag"># 代码整洁</a>
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
           
         </div>
       
@@ -473,8 +428,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/10/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/11/12/junit之BeforeClass-AfterClass-Before-After-Test/" rel="next" title="Eclipse/Maven使用JUNIT进行单元测试">
+                <i class="fa fa-chevron-left"></i> Eclipse/Maven使用JUNIT进行单元测试
               </a>
             
           </div>
@@ -482,10 +437,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/12/junit之BeforeClass-AfterClass-Before-After-Test/" rel="prev" title="Eclipse/Maven使用JUNIT进行单元测试">
-                Eclipse/Maven使用JUNIT进行单元测试 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -537,8 +488,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -610,6 +570,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#序"><span class="nav-number">1.</span> <span class="nav-text">序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计模式入门"><span class="nav-number">2.</span> <span class="nav-text">设计模式入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#观察者模式-Observer"><span class="nav-number">3.</span> <span class="nav-text">观察者模式(Observer)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
