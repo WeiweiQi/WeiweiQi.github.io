@@ -349,50 +349,16 @@
 
       
         
-          
-            <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><blockquote>
+          <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><blockquote>
 <p>OO原则是我们的目标，而设计模式是我们的做法。</p>
 </blockquote>
-<h2 id="设计模式入门"><a href="#设计模式入门" class="headerlink" title="设计模式入门"></a>设计模式入门</h2><blockquote>
-<p>在软件开发上，一直不变的真理是“change”。不管软件设计的多好，一段时间之后，总是要成长与改变，否则软件就会“死亡”。</p>
-</blockquote>
-<ul>
-<li><strong><em>策略模式(Strategy)：定义算法族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。</em></strong></li>
-<li>书中例子：鸭子与鸭子的行为，以组合的方式组织，鸭子的行为以接口表示，接口可能有多个具体的实现形式。具体的鸭子类可以动态的设置行为的具体方式。</li>
-<li>封装变化：找出应用中可能需要变化之处，把它们独立出来，不要和那些不需要变化的代码混在一起。把会变化的部分取出并“封装”起来，好让其他部分不会受到影响。</li>
-<li>针对“接口”编程，而不是针对实现编程。</li>
-<li>多用组合，少用继承。</li>
-<li>建立可维护的OO系统，要诀就在于随时想到系统以后可能需要的变化以及应付变化的原则。</li>
-<li>良好的OO设计必须具备可复用、可扩充、可维护三个特性。</li>
-<li>大多数的模式和原则，都着眼于软件变化的主题。  </li>
-<li>大多数的模式都允许系统局部改变独立于其他部分。</li>
-<li>我们常把系统中会变化的部分抽出来封装。</li>
-</ul>
-<h2 id="观察者模式-Observer"><a href="#观察者模式-Observer" class="headerlink" title="观察者模式(Observer)"></a>观察者模式(Observer)</h2><ul>
-<li><strong><em>观察者模式定义了对象之间的一对多依赖，这样一来，当一个对象改变状态时，它的所有依赖者都会收到通知并自动更新。</em></strong></li>
-<li>观察者模式的关键点在于在主题数据类中加入了观察者类的一个注册list成员列表</li>
-<li><p>消息传递链条为：</p>
-<ul>
-<li>数据源变化 </li>
-<li>调用自身的setData方法</li>
-<li>调用数据改变方法somethingChange()</li>
-<li>调用notifyObserver()</li>
-<li>for each O in Observers , .o.update()<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WeatherData</span> <span class="keyword">implements</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> List observers;<span class="comment">//关键点1</span></span><br><span class="line">    <span class="keyword">private</span> data;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">WeatherData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        observers = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerObserver</span><span class="params">(Observer o)</span> </span>&#123;<span class="comment">//注册</span></span><br><span class="line">        observers.add(o);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeObserver</span><span class="params">(Observer o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = observers.indexof(o);</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            observers.remove(o);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OneObserver</span> <span class="keyword">implements</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Subject weatherData;<span class="comment">//关键点2</span></span><br><span class="line">    <span class="keyword">private</span> String data;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">OneObserver</span><span class="params">(Subject s)</span> </span>&#123;<span class="comment">//构造器，注册</span></span><br><span class="line">        <span class="keyword">this</span>.weatherData = s;</span><br><span class="line">        weatherData.registerObserver(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(String data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.data = data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>1对多，松耦合</p>
-</li>
-<li>出版者 + 订阅者 = 观察者模式</li>
-<li>主题 Subject  +  观察者 Observer = 观察者模式</li>
-<li>主题对象管理某些数据，当主题内的数据改变，就会通知观察者，新的数据会以某种形式送到观察者手上；观察者已经订阅(注册)主题以便在主题数据改变时能够受到更新。</li>
-<li>主题是真正拥有数据的人，观察者是主题的依赖者，在数据变化时更新，这样比起让许多对象控制同一份数据来，可以得到更干净的OO设计。</li>
-<li>观察者模式提供了一种对象设计，让主题和观察者之间松耦合。</li>
-<li><strong><em>设计原则：为了交互对象之间的松耦合而努力</em></strong></li>
-<li></li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/15/Design-Patterns-设计模式/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1049,7 +1015,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1060,7 +1026,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
