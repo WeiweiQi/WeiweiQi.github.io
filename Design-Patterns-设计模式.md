@@ -1,9 +1,9 @@
 ---
 title: Head First Design Patterns HeadFirst 设计模式
 date: 2018-11-15 19:32:55
-tags: 
+tags:
 	- 设计模式
-categories: 
+categories:
 - 读书笔记
 ---
 
@@ -55,19 +55,19 @@ public class WeatherData implements Subject {
     private List observers;//关键点1
     private Object data;
     private boolean changed;
-    
+
     public WeatherData() {
         observers = new ArrayList();
     }
-    
+
     public void registerObserver(Observer o) {...}//注册
     public void removeObserver(Observer o) {...}//移除s
-    
+
     public void setData(Object data) {//更新数据
         this.data = data;
         dataChanged();
     }
-    
+
     public void dataChanged() {
         setChanged();
         if(是否达到推送更新数据条件) {
@@ -77,7 +77,7 @@ public class WeatherData implements Subject {
     public void setChanged() {//数据已改变
         changed = true;
     }
-    
+
     /**
     * arg即为所要传送的数据，如果为拉模式，arg=null, 数据在所传输的this被观察者对象中
     */
@@ -94,27 +94,99 @@ public class WeatherData implements Subject {
 public class OneObserver implements Observer {
     private Subject weatherData;//关键点2
     private Object data;
-    
+
     public OneObserver(Subject s) {//构造器，注册
         this.weatherData = s;
         weatherData.registerObserver(this);
     }
-    
+
     public void update(Object observerable, Object arg) {//更新数据接口
         this.data = arg;
     }
 }
 ```
 
------
+---
+## 装饰者模式
+> 给爱用继承的人一个全新的设计眼界
 
-未完待续...
+- ***开放-关闭原则***：类应该对扩展开放，对修改关闭。
+- 装饰者模式：动态地将责任附加到对象上。若要扩展功能，装饰者提供了比继承更有弹性的替代方案。
+```java
+package simple.pattern.decoration;
+
+/**
+ * 	被装饰者基类
+ */
+public abstract class BaseBeverage {
+	String description = "Unknown Beverage";
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public abstract double cost();
+}
 
 
+/**
+ * 	装饰者基类
+ */
+public abstract class BaseCondimentDecorator extends BaseBeverage {
+	public abstract String getDescription();
+}
 
 
+/**
+ * 	被装饰者实体类
+ */
+public class Espresso extends BaseBeverage {
+	public Espresso() {
+		description = "Espresso";
+	}
+	
+	@Override
+	public double cost() {
+		return 1.99;
+	}
 
+}
 
+/**
+ *	装饰者实体类
+ */
+public class Mocha extends BaseCondimentDecorator {
+	BaseBeverage beverage;
+	
+	public Mocha(BaseBeverage beverage) {
+		this.beverage = beverage;
+	}
+	@Override
+	public String getDescription() {
+		return beverage.getDescription() + ", Mocha";
+	}
 
+	@Override
+	public double cost() {
+		return 0.2 + beverage.cost();
+	}
+}
 
+/**
+*  装饰者使用方法
+*/
+public class StarBuzzCoffee {
 
+	public static void main(String[] args) {
+		BaseBeverage beverage = new Espresso();
+		System.out.println(beverage.getDescription() + "￥" + beverage.cost());
+		
+		BaseBeverage beverage2 = new Espresso();
+		beverage2 = new Mocha(beverage2);
+		beverage2 = new Mocha(beverage2);
+		System.out.println(beverage2.getDescription() + "￥" + beverage2.cost());
+	}
+
+}
+
+```
