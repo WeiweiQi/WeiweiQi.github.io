@@ -107,6 +107,87 @@ public class OneObserver implements Observer {
 }
 ```
 
------
+---
+## 装饰者模式
+> 给爱用继承的人一个全新的设计眼界
 
-未完待续...
+- ***开放-关闭原则***：类应该对扩展开放，对修改关闭。
+- 装饰者模式：动态地将责任附加到对象上。若要扩展功能，装饰者提供了比继承更有弹性的替代方案。
+```java
+package simple.pattern.decoration;
+
+/**
+ * 	被装饰者基类
+ */
+public abstract class BaseBeverage {
+	String description = "Unknown Beverage";
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public abstract double cost();
+}
+
+
+/**
+ * 	装饰者基类
+ */
+public abstract class BaseCondimentDecorator extends BaseBeverage {
+	public abstract String getDescription();
+}
+
+
+/**
+ * 	被装饰者实体类
+ */
+public class Espresso extends BaseBeverage {
+	public Espresso() {
+		description = "Espresso";
+	}
+	
+	@Override
+	public double cost() {
+		return 1.99;
+	}
+
+}
+
+/**
+ *	装饰者实体类
+ */
+public class Mocha extends BaseCondimentDecorator {
+	BaseBeverage beverage;
+	
+	public Mocha(BaseBeverage beverage) {
+		this.beverage = beverage;
+	}
+	@Override
+	public String getDescription() {
+		return beverage.getDescription() + ", Mocha";
+	}
+
+	@Override
+	public double cost() {
+		return 0.2 + beverage.cost();
+	}
+}
+
+/**
+*  装饰者使用方法
+*/
+public class StarBuzzCoffee {
+
+	public static void main(String[] args) {
+		BaseBeverage beverage = new Espresso();
+		System.out.println(beverage.getDescription() + "￥" + beverage.cost());
+		
+		BaseBeverage beverage2 = new Espresso();
+		beverage2 = new Mocha(beverage2);
+		beverage2 = new Mocha(beverage2);
+		System.out.println(beverage2.getDescription() + "￥" + beverage2.cost());
+	}
+
+}
+
+```
