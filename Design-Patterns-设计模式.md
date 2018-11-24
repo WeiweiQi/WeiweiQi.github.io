@@ -7,11 +7,12 @@ categories:
 - 读书笔记
 ---
 
-## 序
 > OO原则是我们的目标，而设计模式是我们的做法。
+
 
 <!-- more -->
 
+---
 ## 策略模式(Strategy)
 
 > 在软件开发上，一直不变的真理是“change”。不管软件设计的多好，一段时间之后，总是要成长与改变，否则软件就会“死亡”。
@@ -106,87 +107,6 @@ public class OneObserver implements Observer {
 }
 ```
 
----
-## 装饰者模式
-> 给爱用继承的人一个全新的设计眼界
+-----
 
-- ***开放-关闭原则***：类应该对扩展开放，对修改关闭。
-- 装饰者模式：动态地将责任附加到对象上。若要扩展功能，装饰者提供了比继承更有弹性的替代方案。
-```java
-package simple.pattern.decoration;
-
-/**
- * 	被装饰者基类
- */
-public abstract class BaseBeverage {
-	String description = "Unknown Beverage";
-	
-	public String getDescription() {
-		return description;
-	}
-	
-	public abstract double cost();
-}
-
-
-/**
- * 	装饰者基类
- */
-public abstract class BaseCondimentDecorator extends BaseBeverage {
-	public abstract String getDescription();
-}
-
-
-/**
- * 	被装饰者实体类
- */
-public class Espresso extends BaseBeverage {
-	public Espresso() {
-		description = "Espresso";
-	}
-	
-	@Override
-	public double cost() {
-		return 1.99;
-	}
-
-}
-
-/**
- *	装饰者实体类
- */
-public class Mocha extends BaseCondimentDecorator {
-	BaseBeverage beverage;
-	
-	public Mocha(BaseBeverage beverage) {
-		this.beverage = beverage;
-	}
-	@Override
-	public String getDescription() {
-		return beverage.getDescription() + ", Mocha";
-	}
-
-	@Override
-	public double cost() {
-		return 0.2 + beverage.cost();
-	}
-}
-
-/**
-*  装饰者使用方法
-*/
-public class StarBuzzCoffee {
-
-	public static void main(String[] args) {
-		BaseBeverage beverage = new Espresso();
-		System.out.println(beverage.getDescription() + "￥" + beverage.cost());
-		
-		BaseBeverage beverage2 = new Espresso();
-		beverage2 = new Mocha(beverage2);
-		beverage2 = new Mocha(beverage2);
-		System.out.println(beverage2.getDescription() + "￥" + beverage2.cost());
-	}
-
-}
-
-```
+未完待续...

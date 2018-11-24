@@ -3,7 +3,7 @@ title: Eclipse/Maven使用JUNIT进行单元测试
 date: 2018-11-12 16:03:51
 tags:
     - 敏捷开发之测试
-categories: 
+categories:
     - 敏捷开发之测试
 ---
 
@@ -11,6 +11,7 @@ eclipse/maven使用junit部署测试
 
 <!-- more -->
 
+---
 ### eclipse如何使用junit部署测试
 在要测试的类java文件上右键，选择New -> Junit Test Case/Suite
 https://mvnrepository.com/artifact/org.junit/junit5-engine/5.0.0-ALPHA
