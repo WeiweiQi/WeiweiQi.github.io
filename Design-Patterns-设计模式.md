@@ -109,23 +109,35 @@ public class OneObserver implements Observer {
 
 ---
 ## 装饰者模式
+
 > 给爱用继承的人一个全新的设计眼界
 
 - ***开放-关闭原则***：类应该对扩展开放，对修改关闭。
 - 装饰者模式：动态地将责任附加到对象上。若要扩展功能，装饰者提供了比继承更有弹性的替代方案。
+    - 装饰者和被装饰对象有相同的超类型。在任何需要原始对象的场合，可以用装饰过的对象替代它。
+    - 可以用一个或多个装饰者包装一个对象。
+    - 用装饰来包裹一个对象，动态的扩展功能
+    - ***装饰者可以在被委托装饰者的行为之前与/或之后，加上自己的行为，已达到特定的目的。***
+	- 对象可以在任何时候被装饰，所以可以在运行时动态地、不限量地用你喜欢的装饰者来装饰对象。
+- Java库中的装饰者模式：
+    - Java I/O
+    - Reader/Writer
+![Java I/O](https://t1.picb.cc/uploads/2018/11/24/JFtkYv.png)
+- 装饰者模式缺点：常常造成设计中有大量的小类，数量实在太多，可能造成使用此API程序员的困扰。
+- 要点：
+	- 继承属于扩展形式之一,但不见得是达到弹性设计的最佳方式。
+	- 在我们的设计中，
 ```java
-package simple.pattern.decoration;
-
 /**
  * 	被装饰者基类
  */
 public abstract class BaseBeverage {
 	String description = "Unknown Beverage";
-	
+
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public abstract double cost();
 }
 
@@ -145,12 +157,11 @@ public class Espresso extends BaseBeverage {
 	public Espresso() {
 		description = "Espresso";
 	}
-	
+
 	@Override
 	public double cost() {
 		return 1.99;
 	}
-
 }
 
 /**
@@ -158,7 +169,7 @@ public class Espresso extends BaseBeverage {
  */
 public class Mocha extends BaseCondimentDecorator {
 	BaseBeverage beverage;
-	
+
 	public Mocha(BaseBeverage beverage) {
 		this.beverage = beverage;
 	}
@@ -177,17 +188,22 @@ public class Mocha extends BaseCondimentDecorator {
 *  装饰者使用方法
 */
 public class StarBuzzCoffee {
-
 	public static void main(String[] args) {
 		BaseBeverage beverage = new Espresso();
 		System.out.println(beverage.getDescription() + "￥" + beverage.cost());
-		
+
 		BaseBeverage beverage2 = new Espresso();
 		beverage2 = new Mocha(beverage2);
 		beverage2 = new Mocha(beverage2);
 		System.out.println(beverage2.getDescription() + "￥" + beverage2.cost());
 	}
-
 }
-
 ```
+
+## 总结
+
+- 封装变化
+- 多用组合，少用继承
+- 针对接口编程，不针对实现编程
+- 为交互对象之间的松耦合而努力
+- 对扩展开放，对修改关闭
