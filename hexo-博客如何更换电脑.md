@@ -3,7 +3,6 @@ title: hexo 博客如何更换电脑
 date: 2018-11-23 08:13:15
 tags:
 categories: hexo
-  - hexo
 ---
 
 如何在更换电脑后继续使用Hexo部署博客
