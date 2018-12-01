@@ -205,22 +205,100 @@ public class StarBuzzCoffee {
 
 > 除了new操作符之外，还有更多制造对象的方法。实例化这个活动不应该总是公开地进行，也会认识到初始化经常造成“耦合”问题。
 
+> 理解关键点：工厂方法是将对象实例化延迟在具体子类中实现，返回不同的产品；抽象工厂模式（公共接口会抽象类）是为了创建产品家族，实现不同的工厂，制造出不同的产品、不同的区域、不同的操作系统、不同的外观及操作。
+
 - ***工厂方法模式***：定义了一个创建对象的接口，但由子类决定要实例化的类是哪一个。工厂方法让类把实例化推迟到子类。
 - ***依赖倒置原则：要依赖抽象，不要依赖具体类。***
-- ***抽象工厂模式***：
+- 几个避免你违反 ***依赖倒置*** 的指导方针
+		- 变量不可以持有具体类的引用。（如果使用```new```，就会持有具体类的引用。你可以改用工厂来避开这样的做法。）
+		- 不要让类派生自具体类。（如果派生自具体类，你就会依赖具体类。请派生自一个抽象——接口或抽象类）
+		- 不要覆盖基类中已实现的方法。（如果覆盖基类已实现的方法，那么你的基类就不是一个真正适合被继承的抽象。基类中已实现的方法，应该由所有的子类共享）
 - 不能让高层组件依赖低层组件，而且，不管高层或低层组件，“两者”都应该依赖于抽象。
-
+- ***抽象工厂模式***：提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类。
 - 工厂方法用来处理对象的创建，并将这样的行为封装在子类中。这样，客户程序中关于超类超类的代码就和子类对象创建代码解耦了。
 - 工厂方法模式通过让子类决定该创建的对象是什么，来达到将对象创建的过程封装的目的。
+
 ```java
+/**
+* 工厂方法模式
+*/
+public abstract class ProductFactory {
+    //获取对象
+    public Product getProduct(String type) {
+        Product product;
+        product = createProduct(type);
+
+        //call product same method
+        product.prepare();
+        product.bake();
+        product.cut();
+        product.box();
+
+        return product;
+    }
+
+    //工厂方法
+    public abstract Product createProduct(String type);
+}
+
+
+public abstract class Product {
+    String  name;
+    void prepare() { }
+    void bake() { }
+    void cut() { }
+    void box() { }
+}
+
 abstract Product factoryMethod(String);
 /**
 *	1. 工厂方法是抽象的，所以依赖子类来处理对象的创建；
-* 	2. 工厂方法必须返回一个产品。超类中定义的方法，通常使用到工厂方法的返回值。
+* 2. 工厂方法必须返回一个产品。超类中定义的方法，通常使用到工厂方法的返回值。
 *	3. 工厂方法将客户和实际创建具体产品的代码分隔开来。
 *	4. 工厂方法可能需要参数来指定所要的产品。
 */
+
 ```
+
+```Java
+/**
+* 抽象产品类
+*/
+public abstract class Product {
+    String name;
+    String source;
+    abstract void prepare();
+}
+
+/**
+* 抽象原料工厂
+*/
+public abstract class ProductIngredientFactory {
+    void createSource() { }
+}
+
+
+/**
+* 具体产品类
+*/
+public class RealProduct extends  Product {
+    //生产产品所需的某种原料的工厂
+    ProductIngredientFactory ingredientFactory;
+
+    public RealProduct(ProductIngredientFactory ingredientFactory) {
+        this.ingredientFactory = ingredientFactory;
+    }
+
+    @Override
+    void prepare() {
+        source = ingredientFactory.createSource();
+    }
+}
+
+
+```
+
+
 
 ## 总结
 
@@ -229,8 +307,3 @@ abstract Product factoryMethod(String);
 - 针对接口编程，不针对实现编程
 - 为交互对象之间的松耦合而努力
 - 对扩展开放，对修改关闭
-
-
-
-
-
