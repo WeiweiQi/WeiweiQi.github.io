@@ -214,7 +214,6 @@ public class StarBuzzCoffee {
 		- 不要让类派生自具体类。（如果派生自具体类，你就会依赖具体类。请派生自一个抽象——接口或抽象类）
 		- 不要覆盖基类中已实现的方法。（如果覆盖基类已实现的方法，那么你的基类就不是一个真正适合被继承的抽象。基类中已实现的方法，应该由所有的子类共享）
 - 不能让高层组件依赖低层组件，而且，不管高层或低层组件，“两者”都应该依赖于抽象。
-- ***抽象工厂模式***：提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类。
 - 工厂方法用来处理对象的创建，并将这样的行为封装在子类中。这样，客户程序中关于超类超类的代码就和子类对象创建代码解耦了。
 - 工厂方法模式通过让子类决定该创建的对象是什么，来达到将对象创建的过程封装的目的。
 
@@ -260,6 +259,9 @@ abstract Product factoryMethod(String);
 
 ```
 
+- ***抽象工厂模式***：提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类。
+- 抽象工厂使用对象组合：对象的创建被实现在工厂接口所暴露出来的方法中。
+
 ```Java
 /**
 * 抽象产品类
@@ -294,11 +296,59 @@ public class RealProduct extends  Product {
         source = ingredientFactory.createSource();
     }
 }
-
-
 ```
 
+## 单件模式 (Singleton Pattern)
 
+> 用来创建独立无二的，只能有一个实例的对象的入场券
+
+- 全局变量的缺点：必须在程序一开始就创建好对象，万一这个对象非常耗费资源，而程序在这次的执行过程中又一直没用到它，不就形成浪费了吗.(某些JVM在用到的时候才创建对象).
+- 例如线程池、缓存、对话框、处理偏好设置和注册表的对象、日志对象，充当打印机、显卡等设备的驱动程序的对象，这些对象只能有一个。
+- 单件模式常被用来管理共享资源，例如数据库连接或线程池。
+- ***单件模式*** 确保一个类只有一个实例，并提供一个全局访问点。
+- 在java中实现单件模式需要私有构造器、一个静态方法和一个静态变量。
+- 确定在性能和资源上的限制，然后小心地选择适当的方案来实现单件，以解决多线程问题。
+- 如果你使用多个 ***类加载器*** ，可能导致单件失效而产生多个实例。
+
+```java
+/**
+* 未考虑并发的单件模式
+*/
+public class Singleton {
+    private static Singleton uniqueInstance;
+    private Singleton() {}
+    public static Singleton getInstance() {
+        if (uniqueInstance == null) {
+            uniqueInstance = new Singleton();
+        }
+        return  uniqueInstance;
+    }
+}
+```
+
+```Java
+/**
+* 考虑并发的单件模式
+* 较好方式：双重检查加锁
+* 注意：要使用volatile-synchronized(不适用于java1.4或更早之前的版本)
+*
+* 1. 采用“急切”创建实例，即在声明处就创建对象。如果对象在创建和运行时很繁重，不推荐此种方法。
+* 2. 单纯使用synchronized设置整个方法为同步方法。性能较差
+*/
+public class SupportParrallSingleton {
+    private volatile static SupportParrallSingleton uniqueInstance;
+    public static SupportParrallSingleton getInstance(){
+        if (uniqueInstance == null) {
+            synchronized (SupportParrallSingleton.class) {
+                if (uniqueInstance == null) {
+                    uniqueInstance = new SupportParrallSingleton();
+                }
+            }
+        }
+        return uniqueInstance;
+    }
+}
+```
 
 ## 总结
 
@@ -306,4 +356,5 @@ public class RealProduct extends  Product {
 - 多用组合，少用继承
 - 针对接口编程，不针对实现编程
 - 为交互对象之间的松耦合而努力
-- 对扩展开放，对修改关闭
+- 类应该对扩展开放，对修改关闭
+- 依赖抽象，不要依赖具体类
