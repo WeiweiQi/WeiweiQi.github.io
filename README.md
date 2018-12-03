@@ -1,3 +1,5 @@
+<!-- more -->
+
 # WeiweiQi.github.io
 hexo blog
 
@@ -6,4 +8,4 @@ hexo blog
 博客园地址
 https://www.cnblogs.com/AbelZone/
 
-欢迎访问、评论与分享
+欢迎访问、评论与分享。

@@ -11,12 +11,14 @@ categories:
 
 > 测试覆盖率越高，代码就越灵活，生产中调试修补程序所花费的时间就越少。
 
+<!-- more -->
+
 首先，很遗憾的一点是，Postman不支持并发测试，但支持指定次数与间隔时间的串行测试。
 
 官方文档链接：[Postman Test scripts](https://www.getpostman.com/docs/v6/postman/scripts/test_scripts)
 
 ## postman请求流程
-![Postman请求流程图]()
+![Postman请求流程图](https://img2018.cnblogs.com/blog/671355/201812/671355-20181203192231866-1191984666.png)
 
 ## postman test 配置
 
