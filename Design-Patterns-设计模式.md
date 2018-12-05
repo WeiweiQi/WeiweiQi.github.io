@@ -50,6 +50,7 @@ categories:
 - 有多个观察者时，不可以依赖特定的通知次序。
 - Java有多种观察者模式的实现，包括了通用的java.util.Observerable.
 - 此模式被应用在许多地方，例如许多的GUI框架/Swing，JavaBeans、RMI。
+
 ```java
 //被观察者
 public class WeatherData implements Subject {
@@ -127,6 +128,7 @@ public class OneObserver implements Observer {
 - 要点：
 	- 继承属于扩展形式之一,但不见得是达到弹性设计的最佳方式。
 	- 在我们的设计中，
+
 ```java
 /**
  * 	被装饰者基类
@@ -262,6 +264,7 @@ abstract Product factoryMethod(String);
 - ***抽象工厂模式***：提供一个接口，用于创建相关或依赖对象的家族，而不需要明确指定具体类。
 - 抽象工厂使用对象组合：对象的创建被实现在工厂接口所暴露出来的方法中。
 
+
 ```Java
 /**
 * 抽象产品类
@@ -347,6 +350,91 @@ public class SupportParrallSingleton {
         }
         return uniqueInstance;
     }
+}
+```
+
+## 命令模式
+
+> 把方法调用封装起来
+
+- ***命令模式*** 将“请求”封装成对象，以便使用不同的请求、队列或者日志来参数化其他对象。命令模式也支持可撤销的操作。
+- 命令模式将发出请求的对象和执行请求的对象解耦。
+- 在被解耦的两者之间是通过命令对象进行沟通的。命令对象封装了接受者和一个或一组动作。
+- 调用者通过调用命令对象的execute()发出请求，这会使得接受者的动作被调用。
+- 调用者可以接受命令当做参数，甚至在运行时动态地进行。
+- 命令可以支持撤销，做法是实现一个undo()方法来回到execute()被执行前的状态。
+- 宏命令是命令的一个简单延伸，允许调用多个命令。宏方法可以支持撤销。
+- 实际操作中，很常见使用“聪明”命令对象，也就是直接实现了请求，而不是将工作委托给接收者。
+- 命令也可以用来实现日志和事务系统。
+- 命令模式的更多用途：
+	- ***队列请求*** 例如：日程安排、线程池、工作队列等。（想象有一个工作队列：你在一端添加命令，然后另一端则是线程。线程进行下面的动作：从队列中取出一个命令，然后调用它的execute()方法，等待这个调用完成，然后将此命令对象丢弃，再取出下一个命令……）
+	- ***日志请求*** 例如：系统检查点后的一系列操作；事务处理（Transaction）
+
+
+```java
+/**
+* 思考餐厅的下单过程：
+*/
+/**
+*	接口：命令对象
+* 例如，顾客交给服务员的订单，遥控器按钮所传输的对象
+* 注意：命令对象是个接口，将请求的对象和执行请求的对象进行沟通（关联在实现中）
+*/
+public interface Command {
+	public void execute();
+}
+
+/**
+*	 注意：将请求的对象和执行请求的对象进行沟通（关联在实现中）
+*/
+public class LightOnCommand implements Command {
+	Light light;//执行请求的对象
+
+	public LightOnCommand(Light light) {
+		this.light = light;
+	}
+
+	@Override
+	public void execute() {//执行请求的对象调用的方法
+		light.on();
+	}
+}
+
+/**
+ * 	执行请求的对象（类似：餐厅厨师）
+ */
+public class Light {
+	public void on() {
+		System.out.println("light on");
+	}
+}
+
+/**
+ * 	动作发起者：类似餐厅顾客
+ */
+public class SimpleRemoteControl {
+	Command slot;
+
+	public void setCommand(Command command) {//顾客下单
+		this.slot = command;
+	}
+
+	public void buttonWasPressed() {//提交订单
+		slot.execute();
+	}
+}
+
+/**
+* 执行流程
+*/
+public class CommandPatternTest {
+	public static void main(String[] args) {
+		SimpleRemoteControl remote = new SimpleRemoteControl();
+		Light light = new Light();
+		LightOnCommand lightOnCommand = new LightOnCommand(light);
+		remote.setCommand(lightOnCommand);
+		remote.buttonWasPressed();
+	}
 }
 ```
 
