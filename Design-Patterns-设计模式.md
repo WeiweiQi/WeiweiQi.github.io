@@ -13,7 +13,7 @@ categories:
 <!-- more -->
 
 ---
-## 策略模式(Strategy)
+## 策略模式 (Strategy)
 
 > 在软件开发上，一直不变的真理是“change”。不管软件设计的多好，一段时间之后，总是要成长与改变，否则软件就会“死亡”。
 
@@ -30,7 +30,7 @@ categories:
 
 ----
 
-## 观察者模式(Observer)
+## 观察者模式 (Observer)
 
 > 设计原则：为了交互对象之间的松耦合而努力
 
@@ -109,7 +109,7 @@ public class OneObserver implements Observer {
 ```
 
 ---
-## 装饰者模式
+## 装饰者模式 (Decorator)
 
 > 给爱用继承的人一个全新的设计眼界
 
@@ -203,7 +203,7 @@ public class StarBuzzCoffee {
 ```
 
 
-## 工厂模式(Factory)
+## 工厂模式 (Factory)
 
 > 除了new操作符之外，还有更多制造对象的方法。实例化这个活动不应该总是公开地进行，也会认识到初始化经常造成“耦合”问题。
 
@@ -301,7 +301,7 @@ public class RealProduct extends  Product {
 }
 ```
 
-## 单件模式 (Singleton Pattern)
+## 单件模式 (Singleton)
 
 > 用来创建独立无二的，只能有一个实例的对象的入场券
 
@@ -353,7 +353,7 @@ public class SupportParrallSingleton {
 }
 ```
 
-## 命令模式
+## 命令模式 (Command)
 
 > 把方法调用封装起来
 
