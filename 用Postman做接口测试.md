@@ -18,6 +18,7 @@ categories:
 官方文档链接：[Postman Test scripts](https://www.getpostman.com/docs/v6/postman/scripts/test_scripts)
 
 ## postman请求流程
+
 ![Postman请求流程图](https://img2018.cnblogs.com/blog/671355/201812/671355-20181203192231866-1191984666.png)
 
 ## postman test 配置
