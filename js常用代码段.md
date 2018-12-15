@@ -17,7 +17,7 @@ date: 2018-12-15 18:49:52
   $.pdialog.reload(url,data,dlid); //刷新dlid指定的dialog，url：刷新时可重新指定加载数据的url, data：为加载数据时所需的参数  
 ```
 
-# navTab的刷新
+## navTab的刷新
 
 ```javascript
   navTab.reloadFlag("navTabName");//navTab的名称
