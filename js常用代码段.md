@@ -8,9 +8,8 @@ abbrlink: 21817
 date: 2018-12-15 18:49:52
 ---
 
-<!-- more -->
-
 ## dialog的刷新，关闭
+<!-- more -->
 
 ```javascript
   $.pdialog.closeCurrent();//关闭当前活动层。
