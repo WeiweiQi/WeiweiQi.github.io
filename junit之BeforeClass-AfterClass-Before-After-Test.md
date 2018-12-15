@@ -1,10 +1,11 @@
 ---
 title: Eclipse/Maven使用JUNIT进行单元测试
-date: 2018-11-12 16:03:51
 tags:
-    - 敏捷开发之测试
+  - 敏捷开发之测试
 categories:
-    - 敏捷开发之测试
+  - 敏捷开发之测试
+abbrlink: 47006
+date: 2018-11-12 16:03:51
 ---
 
 eclipse/maven使用junit部署测试

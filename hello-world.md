@@ -1,6 +1,7 @@
 ---
 title: Hello World
 tags: hexo
+abbrlink: 16107
 ---
 Welcome to [Hexo]
 

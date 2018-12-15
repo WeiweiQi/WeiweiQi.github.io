@@ -1,8 +1,9 @@
 ---
 title: (Refactoring) 重构-改善既有代码的设计
+categories: 代码整洁
+abbrlink: 33251
 date: 2018-12-06 19:36:45
 tags:
-categories: 代码整洁
 ---
 
 > 重构是在不改变软件可观察行为的前提下改善其内部结构。

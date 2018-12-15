@@ -1,10 +1,12 @@
+---
 title: jfinal各类职责的理解
 date: 2018-12-6
 categories:
-    - 读书笔记
+  - 读书笔记
 tag:
-    - jfinal
-----
+  - jfinal
+abbrlink: 30885
+---
 
 > Controller/Service/Model类各司其职
 
