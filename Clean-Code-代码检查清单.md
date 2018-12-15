@@ -1,10 +1,11 @@
 ---
 title: Clean Code 代码检查清单
-date: 2018-11-12 14:33:18
 categories:
-    - 读书笔记
+  - 读书笔记
 tag:
-    - 代码整洁
+  - 代码整洁
+abbrlink: 32275
+date: 2018-11-12 14:33:18
 ---
 
 Clean Code 第十五章清单罗列

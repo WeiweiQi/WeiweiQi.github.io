@@ -1,3 +1,6 @@
+---
+abbrlink: 0
+---
 <!-- more -->
 
 # WeiweiQi.github.io

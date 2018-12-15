@@ -1,10 +1,11 @@
 ---
 title: Head First Design Patterns HeadFirst 设计模式
-date: 2018-11-15 19:32:55
 tags:
-	- 设计模式
+  - 设计模式
 categories:
-- 读书笔记
+  - 读书笔记
+abbrlink: 20723
+date: 2018-11-15 19:32:55
 ---
 
 > OO原则是我们的目标，而设计模式是我们的做法。

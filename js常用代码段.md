@@ -1,10 +1,14 @@
+---
 title: js常用代码片段
-date: 2018-12-12
 categories:
-    - javascript
+  - javascript
 tag:
-    - javascript
-----
+  - javascript
+abbrlink: 21817
+date: 2018-12-15 18:49:52
+---
+
+<!-- more -->
 
 ## dialog的刷新，关闭
 
