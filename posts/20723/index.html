@@ -99,7 +99,7 @@
 <meta property="og:description" content="OO原则是我们的目标，而设计模式是我们的做法。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://t1.picb.cc/uploads/2018/11/24/JFtkYv.png">
-<meta property="og:updated_time" content="2018-12-15T10:48:17.964Z">
+<meta property="og:updated_time" content="2018-12-17T07:27:34.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Head First Design Patterns HeadFirst 设计模式">
 <meta name="twitter:description" content="OO原则是我们的目标，而设计模式是我们的做法。">
@@ -538,10 +538,19 @@
 <li>保持父类中的抽象方法越少越好</li>
 <li><strong><em>好莱坞原则</em></strong> 别调用（打电话）我们，我们会调用（打电话给）你</li>
 <li>好莱坞原则：允许低层组件将自己挂钩到系统上，但是高层组件会决定什么时候和怎样使用这些低层组价。即，高层组件对待低层组件的方式是“别调用我们，我们会调用你”</li>
-<li>模板方法样例：如java: Arrays.sort(),</li>
+<li>模板方法样例：如java: Arrays.sort()</li>
 </ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>封装变化</li>
+<h2 id="迭代器-Iterator-与组合模式"><a href="#迭代器-Iterator-与组合模式" class="headerlink" title="迭代器(Iterator)与组合模式"></a>迭代器(Iterator)与组合模式</h2><ul>
+<li><strong><em>迭代器模式</em></strong> 提供了一种方法顺序访问一个聚合对象中的各个元素，而又不暴露其内部的表示.</li>
+<li>设计原则:一个类应该只有一个引起变化的原因.</li>
+<li><strong><em>组合模式</em></strong> 允许你将对象组合成树形结构来表现“整体/部分”层次结构。组合能让客户以一致的方式处理个别对象以及对象组合。</li>
+<li>组合模式以单一责任设计原则换取透明性：一个元素究竟是组合还是叶节点，对客户是透明的。</li>
+<li>实现组合模式时，有许多设计上的折衷。根据需要平衡透明性和安全性。</li>
+</ul>
+<h2 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h2><ul>
+<li><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2></li>
+<li><p>封装变化</p>
+</li>
 <li>多用组合，少用继承</li>
 <li>针对接口编程，不针对实现编程</li>
 <li>为交互对象之间的松耦合而努力</li>
@@ -549,6 +558,7 @@
 <li>依赖抽象，不要依赖具体类</li>
 <li>“最少知识”原则：只和你的密友谈话</li>
 <li>好莱坞原则：别调用（打电话）我们，我们会调用（打电话给）你</li>
+<li>一个类应该只有一个引起变化的原因.</li>
 </ul>
 
       
@@ -619,8 +629,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/7782/" rel="prev" title="hexo 博客如何更换电脑">
-                hexo 博客如何更换电脑 <i class="fa fa-chevron-right"></i>
+              <a href="/posts/69a1ef42/" rel="prev" title="高并发或高负载下的系统设计">
+                高并发或高负载下的系统设计 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -738,7 +748,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -821,7 +831,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#策略模式-Strategy"><span class="nav-number">1.</span> <span class="nav-text">策略模式 (Strategy)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#观察者模式-Observer"><span class="nav-number">2.</span> <span class="nav-text">观察者模式 (Observer)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰者模式-Decorator"><span class="nav-number">3.</span> <span class="nav-text">装饰者模式 (Decorator)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工厂模式-Factory"><span class="nav-number">4.</span> <span class="nav-text">工厂模式 (Factory)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单件模式-Singleton"><span class="nav-number">5.</span> <span class="nav-text">单件模式 (Singleton)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令模式-Command"><span class="nav-number">6.</span> <span class="nav-text">命令模式 (Command)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适配器模式-Adapter-与-外观模式"><span class="nav-number">7.</span> <span class="nav-text">适配器模式 (Adapter) 与 外观模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板方法模式"><span class="nav-number">8.</span> <span class="nav-text">模板方法模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">9.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#策略模式-Strategy"><span class="nav-number">1.</span> <span class="nav-text">策略模式 (Strategy)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#观察者模式-Observer"><span class="nav-number">2.</span> <span class="nav-text">观察者模式 (Observer)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰者模式-Decorator"><span class="nav-number">3.</span> <span class="nav-text">装饰者模式 (Decorator)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工厂模式-Factory"><span class="nav-number">4.</span> <span class="nav-text">工厂模式 (Factory)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单件模式-Singleton"><span class="nav-number">5.</span> <span class="nav-text">单件模式 (Singleton)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令模式-Command"><span class="nav-number">6.</span> <span class="nav-text">命令模式 (Command)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适配器模式-Adapter-与-外观模式"><span class="nav-number">7.</span> <span class="nav-text">适配器模式 (Adapter) 与 外观模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板方法模式"><span class="nav-number">8.</span> <span class="nav-text">模板方法模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器-Iterator-与组合模式"><span class="nav-number">9.</span> <span class="nav-text">迭代器(Iterator)与组合模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态模式"><span class="nav-number">10.</span> <span class="nav-text">状态模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">11.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
