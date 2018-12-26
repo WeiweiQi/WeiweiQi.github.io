@@ -79,7 +79,6 @@
 
 
 
-  <meta name="keywords" content="Java,">
 
 
 
@@ -89,21 +88,14 @@
 
 
 
-
-<meta name="description" content="Java异常类层次结构图">
-<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="编译时异常与运行时异常的区别">
-<meta property="og:url" content="http://qisichen.club/posts/44875/index.html">
+<meta property="og:title" content="SELECT * 与 SELECT id 性能对比">
+<meta property="og:url" content="http://qisichen.club/posts/69d6/index.html">
 <meta property="og:site_name" content="WeiweiQi Blog">
-<meta property="og:description" content="Java异常类层次结构图">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://img.my.csdn.net/uploads/201211/27/1354020417_5176.jpg">
-<meta property="og:updated_time" content="2018-12-15T10:48:17.946Z">
+<meta property="og:updated_time" content="2018-12-26T01:00:54.803Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="编译时异常与运行时异常的区别">
-<meta name="twitter:description" content="Java异常类层次结构图">
-<meta name="twitter:image" content="http://img.my.csdn.net/uploads/201211/27/1354020417_5176.jpg">
+<meta name="twitter:title" content="SELECT * 与 SELECT id 性能对比">
 
 
 
@@ -133,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://qisichen.club/posts/44875/">
+  <link rel="canonical" href="http://qisichen.club/posts/69d6/">
 
 
 
 
 
-  <title>编译时异常与运行时异常的区别 | WeiweiQi Blog</title>
+  <title>SELECT * 与 SELECT id 性能对比 | WeiweiQi Blog</title>
   
 
 
@@ -280,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/44875/">
+    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/69d6/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WeiweiQi">
@@ -297,7 +289,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">编译时异常与运行时异常的区别</h2>
+          <h2 class="post-title" itemprop="name headline">SELECT * 与 SELECT id 性能对比</h2>
         
 
         <div class="post-meta">
@@ -309,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-25T22:58:20+08:00">
-                2018-11-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-26T09:00:54+08:00">
+                2018-12-26
               </time>
             
 
@@ -319,28 +311,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -374,29 +344,7 @@
       
 
       
-        <p>Java异常类层次结构图</p>
-<a id="more"></a>
-<p>Java异常类层次结构图</p>
-<p><img src="http://img.my.csdn.net/uploads/201211/27/1354020417_5176.jpg" alt="Java异常类层次结构图"></p>
-<ul>
-<li><strong><em>运行时异常</em></strong>：都是<code>RuntimeException</code>类及其子类异常，如<code>NullPointerException</code>(空指针异常)、<code>IndexOutOfBoundsException</code>(下标越界异常)等，这些异常是<strong><em>不检查异常</em></strong>，程序中可以选择捕获处理，也可以不处理。这些异常一般是<strong><em>由程序逻辑错误引起</em></strong>的，程序应该从逻辑角度尽可能避免这类异常的发生。<br>运行时异常的特点是Java编译器不会检查它，也就是说，当程序中可能出现这类异常，即使没有用<code>try-catch</code>语句捕获它，也没有用<code>throws</code>子句声明抛出它，也会编译通过。</li>
-<li><strong><em>非运行时异常 （编译异常）</em></strong>：是<code>RuntimeException</code>以外的异常，类型上都属于<code>Exception</code>类及其子类。从程序语法角度讲是必须进行处理的异常，如果<strong><em>不处理，程序就不能编译通过</em></strong>。如<code>IOException</code>、<code>SQLException</code>等以及用户自定义的Exception异常，一般情况下不自定义检查异常。</li>
-</ul>
-<p>摘录：</p>
-<blockquote>
-<p>在 Java 中，所有的异常都有一个共同的祖先 <code>Throwable</code>（可抛出）。<code>Throwable</code> 指定代码中可用异常传播机制通过 Java 应用程序传输的任何问题的共性。<br><code>Throwable</code>： 有两个重要的子类：<code>Exception</code>（异常）和 <code>Error</code>（错误），二者都是 Java 异常处理的重要子类，各自都包含大量子类。</p>
-<ul>
-<li><code>Error</code>（错误）:是程序无法处理的错误，表示运行应用程序中较严重问题。大多数错误与代码编写者执行的操作无关，而表示代码运行时 JVM（Java 虚拟机）出现的问题。例如，Java虚拟机运行错误（Virtual MachineError），当 JVM 不再有继续执行操作所需的内存资源时，将出现 <code>OutOfMemoryError</code>。这些异常发生时，Java虚拟机（JVM）一般会选择线程终止。<br>。这些错误表示故障发生于虚拟机自身、或者发生在虚拟机试图执行应用时，如Java虚拟机运行错误（Virtual MachineError）、类定义错误（<code>NoClassDefFoundError</code>）等。这些错误是不可查的，因为它们在应用程序的控制和处理能力之 外，而且绝大多数是程序运行时不允许出现的状况。对于设计合理的应用程序来说，即使确实发生了错误，本质上也不应该试图去处理它所引起的异常状况。在 Java中，错误通过Error的子类描述。</li>
-<li>Exception（异常）:是程序本身可以处理的异常。<code>Exception</code> 类有一个重要的子类 RuntimeException。RuntimeException 类及其子类表示“JVM 常用操作”引发的错误。例如，若试图使用空值对象引用、除数为零或数组越界，则分别引发运行时异常（<code>NullPointerException</code>、<code>ArithmeticException</code>）和 <code>ArrayIndexOutOfBoundException</code>。</li>
-<li>注意：异常和错误的区别：异常能被程序本身可以处理，错误是无法处理。</li>
-<li>通常，Java的异常(包括<code>Exception</code>和<code>Error</code>)分为可查的异常（checked exceptions）和不可查的异常（unchecked exceptions）。</li>
-<li>可查异常（编译器要求必须处置的异常）：正确的程序在运行中，很容易出现的、情理可容的异常状况。可查异常虽然是异常状况，但在一定程度上它的发生是可以预计的，而且一旦发生这种异常状况，就必须采取某种方式进行处理。</li>
-<li>除了<code>RuntimeException</code>及其子类以外，其他的<code>Exception</code>类及其子类都属于可查异常。这种异常的特点是Java编译器会检查它，也就是说，当程序中可能出现这类异常，要么用try-catch语句捕获它，要么用throws子句声明抛出它，否则编译不会通过。</li>
-<li>不可查异常(编译器不要求强制处置的异常):包括运行时异常（<code>RuntimeException</code>与其子类）和错误（<code>Error</code>）。</li>
-<li><code>Exception</code> 这种异常分两大类运行时异常和非运行时异常(编译异常)。程序中应当尽可能去处理这些异常。</li>
-</ul>
-</blockquote>
-
+        
       
     </div>
     
@@ -440,12 +388,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Java/" rel="tag"># Java</a>
-          
-        </div>
-      
 
       
       
@@ -455,8 +397,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/undefined/" rel="next" title="用Postman做接口测试">
-                <i class="fa fa-chevron-left"></i> 用Postman做接口测试
+              <a href="/posts/f6e2/" rel="next" title="通往财富自由之路（李笑来）笔记精简">
+                <i class="fa fa-chevron-left"></i> 通往财富自由之路（李笑来）笔记精简
               </a>
             
           </div>
@@ -464,10 +406,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/0/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
