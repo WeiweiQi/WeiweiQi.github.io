@@ -88,19 +88,19 @@
 
 
 
-<meta name="description" content="时间差主要在data```上，其操作包括 “收集+发送 数据”。1234567891011121314151617&amp;lt;!-- more --&amp;gt;### 实验环境：- mysql 5.6.42 远程数据库- navcat 11.2.7- a_table 有约100个字段，约10万行数据- id 唯一主键### 实验步骤#### 对比SELECT * 与 SELECT id 的性能```sql">
+<meta name="description" content="时间差主要在 “Sending data” 上，其操作包括 “收集+发送 数据”。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SELECT * 与 SELECT id 性能对比">
 <meta property="og:url" content="http://qisichen.club/posts/69d6/index.html">
 <meta property="og:site_name" content="WeiweiQi Blog">
-<meta property="og:description" content="时间差主要在data```上，其操作包括 “收集+发送 数据”。1234567891011121314151617&amp;lt;!-- more --&amp;gt;### 实验环境：- mysql 5.6.42 远程数据库- navcat 11.2.7- a_table 有约100个字段，约10万行数据- id 唯一主键### 实验步骤#### 对比SELECT * 与 SELECT id 的性能```sql">
+<meta property="og:description" content="时间差主要在 “Sending data” 上，其操作包括 “收集+发送 数据”。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://wx4.sinaimg.cn/mw690/733866e8ly1fysdevd2cnj20by055t8s.jpg">
 <meta property="og:image" content="https://wx2.sinaimg.cn/mw690/733866e8ly1fysdm2mfwfj20co05w0sx.jpg">
-<meta property="og:updated_time" content="2019-01-02T10:22:49.729Z">
+<meta property="og:updated_time" content="2019-01-02T10:42:39.057Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SELECT * 与 SELECT id 性能对比">
-<meta name="twitter:description" content="时间差主要在data```上，其操作包括 “收集+发送 数据”。1234567891011121314151617&amp;lt;!-- more --&amp;gt;### 实验环境：- mysql 5.6.42 远程数据库- navcat 11.2.7- a_table 有约100个字段，约10万行数据- id 唯一主键### 实验步骤#### 对比SELECT * 与 SELECT id 的性能```sql">
+<meta name="twitter:description" content="时间差主要在 “Sending data” 上，其操作包括 “收集+发送 数据”。">
 <meta name="twitter:image" content="https://wx4.sinaimg.cn/mw690/733866e8ly1fysdevd2cnj20by055t8s.jpg">
 
 
@@ -350,7 +350,16 @@
       
 
       
-        <h3 id="时间差主要在"><a href="#时间差主要在" class="headerlink" title="时间差主要在"></a>时间差主要在<figure class="highlight plain"><figcaption><span>data```上，其操作包括 “收集+发送 数据”。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 实验环境：</span><br><span class="line"></span><br><span class="line">- mysql 5.6.42 远程数据库</span><br><span class="line">- navcat 11.2.7</span><br><span class="line">- a_table 有约100个字段，约10万行数据</span><br><span class="line">- id 唯一主键</span><br><span class="line"></span><br><span class="line">### 实验步骤</span><br><span class="line"></span><br><span class="line">#### 对比SELECT * 与 SELECT id 的性能</span><br><span class="line"></span><br><span class="line">```sql</span><br><span class="line">  SELECT * FROM a_table</span><br></pre></td></tr></table></figure></h3><p><img src="https://wx4.sinaimg.cn/mw690/733866e8ly1fysdevd2cnj20by055t8s.jpg" alt="SELECT * "></p>
+        <p>时间差主要在 “Sending data” 上，其操作包括 “收集+发送 数据”。</p>
+<a id="more"></a>
+<h3 id="实验环境："><a href="#实验环境：" class="headerlink" title="实验环境："></a>实验环境：</h3><ul>
+<li>mysql 5.6.42 远程数据库</li>
+<li>navcat 11.2.7</li>
+<li>a_table 有约100个字段，约10万行数据</li>
+<li>id 唯一主键</li>
+</ul>
+<h3 id="实验步骤"><a href="#实验步骤" class="headerlink" title="实验步骤"></a>实验步骤</h3><h4 id="对比SELECT-与-SELECT-id-的性能"><a href="#对比SELECT-与-SELECT-id-的性能" class="headerlink" title="对比SELECT * 与 SELECT id 的性能"></a>对比SELECT * 与 SELECT id 的性能</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> a_table</span><br></pre></td></tr></table></figure>
+<p><img src="https://wx4.sinaimg.cn/mw690/733866e8ly1fysdevd2cnj20by055t8s.jpg" alt="SELECT * "></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span> <span class="keyword">FROM</span> a_table</span><br></pre></td></tr></table></figure>
 <p><img src="https://wx2.sinaimg.cn/mw690/733866e8ly1fysdm2mfwfj20co05w0sx.jpg" alt="SELECT * "></p>
 <h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><ul>
@@ -621,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#时间差主要在"><span class="nav-number">1.</span> <span class="nav-text">时间差主要在data```上，其操作包括 “收集+发送 数据”。1234567891011121314151617&lt;!-- more --&gt;### 实验环境：- mysql 5.6.42 远程数据库- navcat 11.2.7- a_table 有约100个字段，约10万行数据- id 唯一主键### 实验步骤#### 对比SELECT * 与 SELECT id 的性能```sql  SELECT * FROM a_table</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#结果"><span class="nav-number">1.1.</span> <span class="nav-text">结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">2.</span> <span class="nav-text">结论</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验环境："><span class="nav-number">1.</span> <span class="nav-text">实验环境：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验步骤"><span class="nav-number">2.</span> <span class="nav-text">实验步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对比SELECT-与-SELECT-id-的性能"><span class="nav-number">2.1.</span> <span class="nav-text">对比SELECT * 与 SELECT id 的性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结果"><span class="nav-number">2.2.</span> <span class="nav-text">结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">3.</span> <span class="nav-text">结论</span></a></li></ol></div>
             
 
           </div>

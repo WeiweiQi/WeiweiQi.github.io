@@ -342,19 +342,14 @@
 
       
         
-          
-            <h3 id="时间差主要在"><a href="#时间差主要在" class="headerlink" title="时间差主要在"></a>时间差主要在<figure class="highlight plain"><figcaption><span>data```上，其操作包括 “收集+发送 数据”。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 实验环境：</span><br><span class="line"></span><br><span class="line">- mysql 5.6.42 远程数据库</span><br><span class="line">- navcat 11.2.7</span><br><span class="line">- a_table 有约100个字段，约10万行数据</span><br><span class="line">- id 唯一主键</span><br><span class="line"></span><br><span class="line">### 实验步骤</span><br><span class="line"></span><br><span class="line">#### 对比SELECT * 与 SELECT id 的性能</span><br><span class="line"></span><br><span class="line">```sql</span><br><span class="line">  SELECT * FROM a_table</span><br></pre></td></tr></table></figure></h3><p><img src="https://wx4.sinaimg.cn/mw690/733866e8ly1fysdevd2cnj20by055t8s.jpg" alt="SELECT * "></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span> <span class="keyword">FROM</span> a_table</span><br></pre></td></tr></table></figure>
-<p><img src="https://wx2.sinaimg.cn/mw690/733866e8ly1fysdm2mfwfj20co05w0sx.jpg" alt="SELECT * "></p>
-<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><ul>
-<li>SELECT * 总计用时 53.744s</li>
-<li>SELECT id 总计用时 0.936s</li>
-</ul>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><ul>
-<li>时间差主要在<code>Sending data</code>上，其操作包括 “收集+发送 数据”。<br>收集数据的原因是：mysql使用“索引”完成查询结束后，mysql得到了一堆的行id，如果有的列并不在索引中，mysql需要重新到“数据行”上将需要返回的数据读取出来返回给客户端。</li>
-</ul>
-
-          
+          <p>时间差主要在 “Sending data” 上，其操作包括 “收集+发送 数据”。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/posts/69d6/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
