@@ -7,7 +7,7 @@ categories:
 tags:
 ---
 
-### 时间差主要在 "Sending data" 上，其操作包括 “收集+发送 数据”。
+时间差主要在 "Sending data" 上，其操作包括 “收集+发送 数据”。
 
 <!-- more -->
 
