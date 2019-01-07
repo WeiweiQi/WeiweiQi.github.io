@@ -343,6 +343,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/47006/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/47006/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -464,8 +474,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/20723/" rel="prev" title="Head First Design Patterns HeadFirst 设计模式">
-                Head First Design Patterns HeadFirst 设计模式 <i class="fa fa-chevron-right"></i>
+              <a href="/posts/69a1ef42/" rel="prev" title="通往财富自由之路 （李笑来）">
+                通往财富自由之路 （李笑来） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -861,6 +871,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Lx94yoa9poRdoFE5H0OXgArW-gzGzoHsz',
+        appKey: 'pRKL2WbraNDsJPEnB5qlPmWa',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
