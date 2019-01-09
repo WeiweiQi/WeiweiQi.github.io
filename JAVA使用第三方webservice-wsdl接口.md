@@ -7,15 +7,19 @@ date: 2019-01-09 20:56:23
 tags:
 ---
 
-<!-- more -->
+
 
 前提：安装JAVA jdk之后
+
+<!-- more -->
 
 在命令行中使用
 
 ```shell
 wsimport -keep -p packageName http://..../service?wsdl
 ```
+
+
 
 wsimport常用参数：
 

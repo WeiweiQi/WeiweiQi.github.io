@@ -7,6 +7,9 @@ categories:
 tags:
 ---
 
+String + 与 StringBuilder 速度
+<!-- more -->
+
 ```java
     SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss:SSS");
 		String string = "";

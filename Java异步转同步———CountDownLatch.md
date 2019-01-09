@@ -8,6 +8,7 @@ categories:
 tags:
 ---
 
+异步转同步
 <!-- more -->
 
 ```java
