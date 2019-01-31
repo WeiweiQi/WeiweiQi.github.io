@@ -1,9 +1,9 @@
 ---
 title: mysql-主动退出存储过程：LEAVE
 comments: true
+categories: mysql
+abbrlink: '9184'
 date: 2019-01-17 11:03:30
-categories:
-  mysql
 tags:
 ---
 
