@@ -86,20 +86,17 @@
 
 
 
-<meta name="description" content="上篇文章中介绍了单线程化线程池newSingleThreadExecutor，可控最大并发数线程池(newFixedThreadPool)与其最大的区别是可以通知执行多个线程，可以简单的将newSingleThreadExecutor理解为newFixedThreadPool(1)。例如运行一下两个程序：">
+<meta name="description" content="微服务重构前猜测重构过程中可能遇到的一些问题。  设计系统的组织，其产生的设计和架构等价于组织间的沟通结构。- 康威定理   软件架构的最基本规律：架构是通过解决当前的需求和痛点而演进的，无法根据没有出现的问题和痛点进行设计。   技术问题和管理问题并不是两个问题，而是同一个问题的两个侧面。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA多线程实现-可控最大并发数线程池(newFixedThreadPool)">
-<meta property="og:url" content="http://qisichen.club/posts/cfbc/index.html">
+<meta property="og:title" content="微服务重构的一些问题">
+<meta property="og:url" content="http://qisichen.club/posts/41fa/index.html">
 <meta property="og:site_name" content="Kiwi Blog">
-<meta property="og:description" content="上篇文章中介绍了单线程化线程池newSingleThreadExecutor，可控最大并发数线程池(newFixedThreadPool)与其最大的区别是可以通知执行多个线程，可以简单的将newSingleThreadExecutor理解为newFixedThreadPool(1)。例如运行一下两个程序：">
+<meta property="og:description" content="微服务重构前猜测重构过程中可能遇到的一些问题。  设计系统的组织，其产生的设计和架构等价于组织间的沟通结构。- 康威定理   软件架构的最基本规律：架构是通过解决当前的需求和痛点而演进的，无法根据没有出现的问题和痛点进行设计。   技术问题和管理问题并不是两个问题，而是同一个问题的两个侧面。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://img-blog.csdn.net/20180321223738893">
-<meta property="og:image" content="https://img-blog.csdn.net/20180321223747635">
-<meta property="og:updated_time" content="2019-01-09T14:06:30.190Z">
+<meta property="og:updated_time" content="2019-02-18T09:46:37.022Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JAVA多线程实现-可控最大并发数线程池(newFixedThreadPool)">
-<meta name="twitter:description" content="上篇文章中介绍了单线程化线程池newSingleThreadExecutor，可控最大并发数线程池(newFixedThreadPool)与其最大的区别是可以通知执行多个线程，可以简单的将newSingleThreadExecutor理解为newFixedThreadPool(1)。例如运行一下两个程序：">
-<meta name="twitter:image" content="https://img-blog.csdn.net/20180321223738893">
+<meta name="twitter:title" content="微服务重构的一些问题">
+<meta name="twitter:description" content="微服务重构前猜测重构过程中可能遇到的一些问题。  设计系统的组织，其产生的设计和架构等价于组织间的沟通结构。- 康威定理   软件架构的最基本规律：架构是通过解决当前的需求和痛点而演进的，无法根据没有出现的问题和痛点进行设计。   技术问题和管理问题并不是两个问题，而是同一个问题的两个侧面。">
 
 
 
@@ -129,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://qisichen.club/posts/cfbc/">
+  <link rel="canonical" href="http://qisichen.club/posts/41fa/">
 
 
 
 
 
-  <title>JAVA多线程实现-可控最大并发数线程池(newFixedThreadPool) | Kiwi Blog</title>
+  <title>微服务重构的一些问题 | Kiwi Blog</title>
   
 
 
@@ -276,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/cfbc/">
+    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/41fa/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kiwi">
@@ -293,7 +290,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">JAVA多线程实现-可控最大并发数线程池(newFixedThreadPool)</h2>
+          <h2 class="post-title" itemprop="name headline">微服务重构的一些问题</h2>
         
 
         <div class="post-meta">
@@ -305,8 +302,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T21:11:12+08:00">
-                2019-01-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-18T14:24:38+08:00">
+                2019-02-18
               </time>
             
 
@@ -328,8 +325,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/java并发/" itemprop="url" rel="index">
-                    <span itemprop="name">java并发</span>
+                  <a href="/categories/微服务/" itemprop="url" rel="index">
+                    <span itemprop="name">微服务</span>
                   </a>
                 </span>
 
@@ -346,8 +343,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/cfbc/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/cfbc/" itemprop="commentCount"></span>
+                <a href="/posts/41fa/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/41fa/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -375,15 +372,43 @@
       
 
       
-        <p>上篇文章中介绍了单线程化线程池newSingleThreadExecutor，可控最大并发数线程池(newFixedThreadPool)与其最大的区别是可以通知执行多个线程，可以简单的将newSingleThreadExecutor理解为newFixedThreadPool(1)。例如运行一下两个程序：</p>
+        <p>微服务重构前猜测重构过程中可能遇到的一些问题。</p>
+<blockquote>
+<p>设计系统的组织，其产生的设计和架构等价于组织间的沟通结构。- 康威定理</p>
+</blockquote>
+<blockquote>
+<p>软件架构的最基本规律：架构是通过解决当前的需求和痛点而演进的，无法根据没有出现的问题和痛点进行设计。</p>
+</blockquote>
+<blockquote>
+<p>技术问题和管理问题并不是两个问题，而是同一个问题的两个侧面。</p>
+</blockquote>
 <a id="more"></a>
-<p>单线程化线程池（newSingleThreadExecutor）示例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.ExecutorService;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Executors;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadPoolByNewSingleThreadExecutor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">/**</span></span><br><span class="line"><span class="comment">		 * 单线程化的线程池</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">final</span> <span class="keyword">int</span> index = i;</span><br><span class="line">			singleThreadExecutor.execute(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">				<span class="meta">@Override</span></span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">					Thread.currentThread().setName(<span class="string">"Thread i = "</span> + index);</span><br><span class="line">					System.out.println(Thread.currentThread().getName() + <span class="string">" index = "</span> + index);</span><br><span class="line">					<span class="keyword">try</span> &#123;</span><br><span class="line">						Thread.sleep(<span class="number">500</span>);</span><br><span class="line">					&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">						System.out.println(<span class="string">"exception"</span>);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">		singleThreadExecutor.shutdown();</span><br><span class="line">		System.out.println(<span class="string">"on the main thread..."</span>);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可控最大并发数线程池（newFixedThreadPool）示例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.ExecutorService;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Executors;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadPoolByNewFixedThreadPool</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		ExecutorService newFixedThreadPool = Executors.newFixedThreadPool(<span class="number">3</span>);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">final</span> <span class="keyword">int</span> index = i;</span><br><span class="line">			newFixedThreadPool.execute(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">				<span class="meta">@Override</span></span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">					Thread.currentThread().setName(<span class="string">"Thread i = "</span> + index);</span><br><span class="line">					System.out.println(Thread.currentThread().getName() + <span class="string">" index = "</span> + index);</span><br><span class="line">					<span class="keyword">try</span> &#123;</span><br><span class="line">						Thread.sleep(<span class="number">500</span>);</span><br><span class="line">					&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">						System.out.println(<span class="string">"exception"</span>);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;</span><br><span class="line">		newFixedThreadPool.shutdown();</span><br><span class="line">		System.out.println(<span class="string">"on the main thread..."</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结果从显示上看虽然很相似，但是观察到的执行效果确实完全不一致的，newSingleThreadPool中，只有一个线程，每次输出一行后暂停0.5秒，newFixedThreadPool(3)中可以创建3个线程，一次输出3行后暂停0.5秒（当然是这三个线程都暂停0.5秒）。</p>
-<p>动画对比如下所示：<br><img src="https://img-blog.csdn.net/20180321223738893" alt="图1"></p>
-<p><img src="https://img-blog.csdn.net/20180321223747635" alt="图2"></p>
+<ul>
+<li>采用微服务架构的驱动力，基于什么问题和痛点需要重构为微服务框架？重构的动机是什么？<ul>
+<li>那些问题和痛点，在重构为微服务之前做过什么哪些尝试与改进（读写分离/动静分离）</li>
+</ul>
+</li>
+<li>如何选择技术栈，或选择原则与基本方向</li>
+<li>重构的起点，如何入手，从哪里开始，为什么从这里开始</li>
+<li>采用微服务后，有哪些对开发效率影响较大的一些制度或规则</li>
+<li><strong>自动化测试与部署</strong> 方案</li>
+<li><strong>安全问题</strong> 如何保证</li>
+<li>一个完整服务的卡顿问题如何定位</li>
+<li>微服务之间的调用方式</li>
+<li>微服务划分规则如何界定<ul>
+<li>按照组织结构来划分(人员)</li>
+<li>按照功能模块来划分</li>
+<li>依赖关系如何解决：两次实现/多次实现，还是1次实现，其他调用</li>
+</ul>
+</li>
+<li>开发人员的沟通问题：微服务拆分后，微服务业务开发任务如何分配给开发人员</li>
+<li>重构过程中遇到的技术难题</li>
+</ul>
+<p>太过具体，以后再说</p>
+<ul>
+<li>是否涉及到过分布式事务问题</li>
+</ul>
+<p>[1] <a href="https://gitbook.cn/books/59870d65d115e231bf3e3f5f/index.html" target="_blank" rel="noopener">https://gitbook.cn/books/59870d65d115e231bf3e3f5f/index.html</a></p>
 
       
     </div>
@@ -437,8 +462,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/c03a/" rel="next" title="JAVA多线程实现-可回收缓存线程池(newCachedThreadPool)">
-                <i class="fa fa-chevron-left"></i> JAVA多线程实现-可回收缓存线程池(newCachedThreadPool)
+              <a href="/posts/45c1/" rel="next" title="微服务初探">
+                <i class="fa fa-chevron-left"></i> 微服务初探
               </a>
             
           </div>
@@ -447,8 +472,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/affe/" rel="prev" title="JAVA多线程实现-单线程化线程池newSingleThreadExecutor">
-                JAVA多线程实现-单线程化线程池newSingleThreadExecutor <i class="fa fa-chevron-right"></i>
+              <a href="/posts/42aa/" rel="prev" title="持续交付-发布可靠软件的系统方法 读书笔记">
+                持续交付-发布可靠软件的系统方法 读书笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
