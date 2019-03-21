@@ -1,9 +1,9 @@
 ---
 title: maven添加本地jar包
 comments: true
+categories: maven
+abbrlink: 97fb
 date: 2019-02-27 14:59:02
-categories:
-  maven
 tags:
 ---
 
