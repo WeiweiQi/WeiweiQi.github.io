@@ -490,7 +490,244 @@ public class CommandPatternTest {
 
 ## 状态模式
 
-- 
+- 将每个状态的行为局部化到它自己的类中
+- 状态模式允许对象在内部状态改变时改变它的行为，对象看起来好像修改了它的类。
+
+![状态模式类图](https://wx4.sinaimg.cn/mw690/733866e8ly1g1bpugzc3jj20wi0gz799.jpg)
+
+- 状态模式允许一个对象基于内部状态而拥有不同的行为
+- 和程序状态机（PSM）不同，**状态模式用类代表状态**
+- Context会将行为委托给当前状态对象
+- 通过将每个状态封装进一个类，我们把以后需要做的任何改变局部化了。
+- 状态模式和策略模式有相同的类图，但是它们的意图不同
+- 策略模式通常会用行为或算法配置Context类
+- 状态模式允许Context随着状态的改变而改变行为
+- 状态转换可以由State类或Context类控制
+- 使用状态模式通常会导致设计中类的数目大量增加
+- 状态类可以被多个Context实例共享
+
+## 代理模式
+
+- 控制和管理对象访问
+- **代理模式** 为另一个对象提供一个替身或占位符以控制对这个对象的访问
+> 远程方法调用：
+> 1. 客户对象调用客户辅助对象的doBigThing()方法。
+> 2. 客户辅助对象打包调用信息（变量、方法名称等），然后通过网络将它运给服务辅助对象。
+> 3. 服务辅助对象把来自客户辅助对象的信息解包，找出被调用的方法（以及在哪个对象内），然后调用真正的服务对象上的真正方法。
+> 4. 服务对象上的方法被调用，将结果返回给服务辅助对象。
+> 5. 服务辅助对象把调用的返回信息打包，然后通过网络运回给客户辅助对象。
+> 6. 客户辅助对象把返回值解包，返回给客户对象。对于客户来说，这是完全透明的。
+
+- 代理模式为另一个对象提供代表，以便控制客户对对象的访问，管理访问的方式有许多种。
+- 远程代理控制访问远程对象；虚拟代理控制访问创建开销大的资源；保护代理基于权限控制对资源的访问。
+- 代理模式有许多变体，例如：缓存代理、同步代理、防火墙代理和写入时复制代理
+- 代理在结构上类似装饰者，但是目的不同。装饰者模式为对象加上行为，而代理则是控制访问。
+- Java内置的代理支持，可以根据需要建立动态代理，并将所有调用分配到所选的处理器。
+- 就和其他的包装者一样，代理会造成你的设计中类的数目增加。
+
+```java
+/**
+* 保护代理
+**/
+public interface PersonBean {
+	String getName();
+	String getGender();
+	String getInterests();
+	int getHotOrNotRating();
+
+	void setName(String name);
+	void setGender(String gender);
+	void setInterests(String interests);
+	void setHotOrNotRating(int rating);
+}
+
+
+/**
+ * 	实际操作的类
+ */
+public class PersonBeanImpl implements PersonBean {
+	String name;
+	String gender;
+	String interests;
+	int rating;
+	int ratingCount = 0;
+
+	public PersonBeanImpl(String name, String gender, String interests) {
+		this.name = name;
+		this.gender = gender;
+		this.interests = interests;
+	}
+
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public String getGender() {
+		return gender;
+	}
+
+	@Override
+	public String getInterests() {
+		return interests;
+	}
+
+	@Override
+	public int getHotOrNotRating() {
+		if (ratingCount == 0) {
+			return 0;
+		}
+		return (rating/ratingCount);
+	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	@Override
+	public void setInterests(String interests) {
+		this.interests = interests;
+	}
+
+	@Override
+	public void setHotOrNotRating(int rating) {
+		this.rating += rating;
+		ratingCount++;
+	}
+}
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+
+/**
+* 所有者访问控制
+*/
+public class OwnerInvocationHandler implements InvocationHandler {
+
+	PersonBean person;
+
+	public OwnerInvocationHandler(PersonBean person) {
+		this.person = person;
+	}
+
+	@Override
+	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+		try {
+			if (method.getName().startsWith("get") || method.getName().startsWith("set")) {
+				return method.invoke(person, args);
+			} else if (method.getName().equals("setHotOrNotRating")) {
+				throw new IllegalAccessException();
+			}
+		} catch (Exception e) {
+			System.out.println();
+		}
+		return null;
+	}
+
+}
+
+
+package com.designpattern.proxy;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+
+/**
+* 非所有者的访问控制
+*/
+public class NonOwnerInvocationHandler implements InvocationHandler {
+
+	PersonBean person;
+
+	public NonOwnerInvocationHandler(PersonBean person) {
+		this.person = person;
+	}
+
+	@Override
+	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+		try {
+			if (method.getName().startsWith("get")) {
+				return method.invoke(person, args);
+			} else if (method.getName().equals("setHotOrNotRating")) {
+				method.invoke(person, args);
+			} else if (method.getName().startsWith("set")) {
+				throw new IllegalAccessException();
+			}
+		} catch (Exception e) {
+			System.out.println();
+		}
+		return null;
+	}
+
+}
+
+
+/**
+* 使用保护代理访问
+*/
+package com.designpattern.proxy;
+
+import java.lang.reflect.Proxy;
+
+public class MatchMakingTestDrive {
+
+	public static void main(String[] args) {
+		MatchMakingTestDrive test = new MatchMakingTestDrive();
+		test.drive();
+	}
+
+	public void drive() {
+		PersonBean joe = new PersonBeanImpl("Joe", "Male", "Programming");
+		PersonBean ownerProxy = getOwernerProxy(joe);
+		System.out.println("Name is " + ownerProxy.getName());
+		ownerProxy.setInterests("bowling, Go");
+		System.out.println("Interests set from owner proxy");
+		try {
+			ownerProxy.setHotOrNotRating(10);
+		} catch (Exception e) {
+			System.out.println("Can't set rating from owner proxy");
+		}
+		System.out.println("Rating is " + ownerProxy.getHotOrNotRating());
+
+		PersonBean nonOwernerProxy = getNonOwnerProxy(joe);
+		System.out.println("Name is " + nonOwernerProxy.getName());
+		try {
+			nonOwernerProxy.setInterests("Bowling, Go");
+		} catch (Exception ee) {
+			System.out.println("Can't set interests from non owner proxy");
+		}
+		nonOwernerProxy.setHotOrNotRating(3);
+		System.out.println("Rating set from non owner proxy");
+		System.out.println("Rating is " + nonOwernerProxy.getHotOrNotRating());
+
+	}
+
+	public PersonBean getOwernerProxy(PersonBean person) {
+		return (PersonBean)Proxy.newProxyInstance(
+				person.getClass().getClassLoader(),
+				person.getClass().getInterfaces(),
+				new OwnerInvocationHandler(person));
+	}
+
+	public PersonBean getNonOwnerProxy(PersonBean person) {
+		return (PersonBean)Proxy.newProxyInstance(
+				person.getClass().getClassLoader(),
+				person.getClass().getInterfaces(),
+				new NonOwnerInvocationHandler(person));
+	}
+}
+
+```
+
+
+-
 
 ## 总结
 

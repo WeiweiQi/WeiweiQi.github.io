@@ -37,11 +37,11 @@ spring.profiles.active=dev
 
 ```shell
 #application.properties
-spring.redis.host=117.78.47.178
-spring.redis.name=holdredis
-spring.redis.password=r_123456
-spring.redis.database=2
-spring.redis.port=6379
+spring.redis.host=
+spring.redis.name=
+spring.redis.password=
+spring.redis.database=
+spring.redis.port=
 ```
 
 java中取的配置文件的值
