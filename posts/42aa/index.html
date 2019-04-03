@@ -94,7 +94,7 @@
 <meta property="og:description" content="本书讲述如何实现更快、更可靠、低成本的自动化软件交付，描述了如何通过增加反馈，并改进开发人员、测试人员、运维人员和项目经理之间的协作来达到这个目标。本书由三部分组成。第一部分阐述了持续交付背后的一些原则，以及支持这些原则的实践。第二部分是本书的核心，全面讲述了部署流水线。第三部分围绕部署流水线的投入阐述讨论了更多细节，包括增量开发技术、高级版本控制模式，以及基础设施、环境和数据的管理和组织治理。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://wx1.sinaimg.cn/mw690/733866e8ly1g0d2dperpgj20vk08rq5e.jpg">
-<meta property="og:updated_time" content="2019-03-21T01:55:13.515Z">
+<meta property="og:updated_time" content="2019-04-03T07:32:01.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="持续交付-发布可靠软件的系统方法 读书笔记">
 <meta name="twitter:description" content="本书讲述如何实现更快、更可靠、低成本的自动化软件交付，描述了如何通过增加反馈，并改进开发人员、测试人员、运维人员和项目经理之间的协作来达到这个目标。本书由三部分组成。第一部分阐述了持续交付背后的一些原则，以及支持这些原则的实践。第二部分是本书的核心，全面讲述了部署流水线。第三部分围绕部署流水线的投入阐述讨论了更多细节，包括增量开发技术、高级版本控制模式，以及基础设施、环境和数据的管理和组织治理。">
@@ -429,8 +429,19 @@
 </ul>
 <h5 id="反模式：生产环境的手工配置管理"><a href="#反模式：生产环境的手工配置管理" class="headerlink" title="反模式：生产环境的手工配置管理"></a>反模式：生产环境的手工配置管理</h5><ul>
 <li>本书的关键实践之一就是配置管理，其责任之一就是让你能够重复地创建那些你开发的应用程序所依赖的每个基础设施。这意味着操作系统、补丁级别、操作系统配置、应用程序所依赖的其他软件及其配置、基础设施的配置等都应该处于受控状态。</li>
+<li>你应该完全掌握生产环境中的任何信息。这意味着生产环境中的每次变更都应该被记录下来，而且做到今后可以查阅。</li>
+<li>自动化是关键</li>
+<li>变更首先应该被提交到版本控制系统中，然后通过某个自动化过程对生产环境进行更新。</li>
 </ul>
-
+<h5 id="我们能做的更好吗？"><a href="#我们能做的更好吗？" class="headerlink" title="我们能做的更好吗？"></a>我们能做的更好吗？</h5><ul>
+<li>软件发布能够也应该成为一个低风险、频繁、廉价、迅速且可预见的过程。</li>
+</ul>
+<h4 id="如何实现目标"><a href="#如何实现目标" class="headerlink" title="如何实现目标"></a>如何实现目标</h4><ul>
+<li>本书由两个目标，其中之一就是找到减少周期时间(Cycle time)的方法。周期时间是从决定进行变更的时刻开始，包括修正缺陷或增加特性，直至用户可以使用本次变更后的结果。</li>
+<li><strong>目标</strong>：找到可以以一种高效、快速、可靠的方式交付高质量且有价值的软件的方法。</li>
+<li>为了达到目标，我们需要频繁且自动化地发布软件。</li>
+</ul>
+<h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3>
       
     </div>
     
@@ -687,7 +698,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#译者序"><span class="nav-number">1.</span> <span class="nav-text">译者序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#马丁·福勒-序"><span class="nav-number">2.</span> <span class="nav-text">马丁·福勒. 序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">3.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读者对象及本书内容"><span class="nav-number">3.1.</span> <span class="nav-text">读者对象及本书内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内容简介"><span class="nav-number">3.2.</span> <span class="nav-text">内容简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一部分——基础篇"><span class="nav-number">3.2.1.</span> <span class="nav-text">第一部分——基础篇</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二部分——部署流水线"><span class="nav-number">3.2.2.</span> <span class="nav-text">第二部分——部署流水线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三部分——交付生态圈"><span class="nav-number">3.2.3.</span> <span class="nav-text">第三部分——交付生态圈</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章-软件交付的问题"><span class="nav-number">3.3.</span> <span class="nav-text">第一章 软件交付的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引言"><span class="nav-number">3.3.1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一些常见的发布反模式"><span class="nav-number">3.3.2.</span> <span class="nav-text">一些常见的发布反模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#反模式：手工部署软件"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">反模式：手工部署软件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#反模式：开发完成之后才向类生产环境部署"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">反模式：开发完成之后才向类生产环境部署</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#反模式：生产环境的手工配置管理"><span class="nav-number">3.3.2.3.</span> <span class="nav-text">反模式：生产环境的手工配置管理</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#译者序"><span class="nav-number">1.</span> <span class="nav-text">译者序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#马丁·福勒-序"><span class="nav-number">2.</span> <span class="nav-text">马丁·福勒. 序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">3.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读者对象及本书内容"><span class="nav-number">3.1.</span> <span class="nav-text">读者对象及本书内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内容简介"><span class="nav-number">3.2.</span> <span class="nav-text">内容简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一部分——基础篇"><span class="nav-number">3.2.1.</span> <span class="nav-text">第一部分——基础篇</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二部分——部署流水线"><span class="nav-number">3.2.2.</span> <span class="nav-text">第二部分——部署流水线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三部分——交付生态圈"><span class="nav-number">3.2.3.</span> <span class="nav-text">第三部分——交付生态圈</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章-软件交付的问题"><span class="nav-number">3.3.</span> <span class="nav-text">第一章 软件交付的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引言"><span class="nav-number">3.3.1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一些常见的发布反模式"><span class="nav-number">3.3.2.</span> <span class="nav-text">一些常见的发布反模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#反模式：手工部署软件"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">反模式：手工部署软件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#反模式：开发完成之后才向类生产环境部署"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">反模式：开发完成之后才向类生产环境部署</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#反模式：生产环境的手工配置管理"><span class="nav-number">3.3.2.3.</span> <span class="nav-text">反模式：生产环境的手工配置管理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#我们能做的更好吗？"><span class="nav-number">3.3.2.4.</span> <span class="nav-text">我们能做的更好吗？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何实现目标"><span class="nav-number">3.3.3.</span> <span class="nav-text">如何实现目标</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TODO"><span class="nav-number">3.4.</span> <span class="nav-text">TODO</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -734,6 +745,8 @@
 <span id="busuanzi_container_site_uv" style="display:none">
     有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
 </span>
+<br>
+<span><a href="http://www.miibeian.gov.cn">冀ICP备18034425号-1</a></span>
 </div>
 
 
