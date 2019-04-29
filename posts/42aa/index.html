@@ -12,14 +12,6 @@
 
 
 
-	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-	<script>
-	  (adsbygoogle = window.adsbygoogle || []).push({
-		google_ad_client: "ca-pub-7083117783441075",
-		enable_page_level_ads: true
-	  });
-	</script>
-
 
 
 
@@ -94,7 +86,7 @@
 <meta property="og:description" content="本书讲述如何实现更快、更可靠、低成本的自动化软件交付，描述了如何通过增加反馈，并改进开发人员、测试人员、运维人员和项目经理之间的协作来达到这个目标。本书由三部分组成。第一部分阐述了持续交付背后的一些原则，以及支持这些原则的实践。第二部分是本书的核心，全面讲述了部署流水线。第三部分围绕部署流水线的投入阐述讨论了更多细节，包括增量开发技术、高级版本控制模式，以及基础设施、环境和数据的管理和组织治理。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://wx1.sinaimg.cn/mw690/733866e8ly1g0d2dperpgj20vk08rq5e.jpg">
-<meta property="og:updated_time" content="2019-04-03T07:32:01.273Z">
+<meta property="og:updated_time" content="2019-04-18T08:35:10.229Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="持续交付-发布可靠软件的系统方法 读书笔记">
 <meta name="twitter:description" content="本书讲述如何实现更快、更可靠、低成本的自动化软件交付，描述了如何通过增加反馈，并改进开发人员、测试人员、运维人员和项目经理之间的协作来达到这个目标。本书由三部分组成。第一部分阐述了持续交付背后的一些原则，以及支持这些原则的实践。第二部分是本书的核心，全面讲述了部署流水线。第三部分围绕部署流水线的投入阐述讨论了更多细节，包括增量开发技术、高级版本控制模式，以及基础设施、环境和数据的管理和组织治理。">
@@ -439,7 +431,161 @@
 <h4 id="如何实现目标"><a href="#如何实现目标" class="headerlink" title="如何实现目标"></a>如何实现目标</h4><ul>
 <li>本书由两个目标，其中之一就是找到减少周期时间(Cycle time)的方法。周期时间是从决定进行变更的时刻开始，包括修正缺陷或增加特性，直至用户可以使用本次变更后的结果。</li>
 <li><strong>目标</strong>：找到可以以一种高效、快速、可靠的方式交付高质量且有价值的软件的方法。</li>
-<li>为了达到目标，我们需要频繁且自动化地发布软件。</li>
+<li>为了达到目标，我们需要 <strong>频繁</strong> 且 <strong>自动化</strong> 地发布软件。</li>
+<li>反馈的三个标准<ul>
+<li>无论什么样的修改都应该触发反馈流程</li>
+<li>反馈应该尽快发出</li>
+<li>交付团队必须接受反馈，并依据它作出相应的行动</li>
+</ul>
+</li>
+</ul>
+<h5 id="每次修改都应该出发反馈流程"><a href="#每次修改都应该出发反馈流程" class="headerlink" title="每次修改都应该出发反馈流程"></a>每次修改都应该出发反馈流程</h5><ul>
+<li>反馈流程：完全以自动化方式尽可能地测试每一次变更。根据系统的不同，测试会有所不同，但通常至少包括下面的测试。<ul>
+<li>编译通过（语法验证）</li>
+<li>单元测试必须成功</li>
+<li>一定的质量标准：比如测试覆盖率以及其他与技术相关的度量项</li>
+<li>功能验收测试必须成功：业务验收条件</li>
+<li>非功能测试必须成功，检查是否满足用户对性能、有效性、安全性等方面的要求</li>
+<li>必须通过了探索性测试，并给客户以及部分用户做过演示</li>
+</ul>
+</li>
+</ul>
+<h5 id="必须尽快接受反馈"><a href="#必须尽快接受反馈" class="headerlink" title="必须尽快接受反馈"></a>必须尽快接受反馈</h5><ul>
+<li>快速反馈的关键是自动化</li>
+<li>对于整个流水线中的提交阶段，其测试应具有如下特征：<ul>
+<li>运行速度快</li>
+<li>尽可能全面，75%左右的代码库覆盖率</li>
+<li>测试失败说明应用程序有严重问题</li>
+<li>尽可能做到环境中立</li>
+</ul>
+</li>
+</ul>
+<h5 id="交付团队必须接受反馈并作出相应的行动"><a href="#交付团队必须接受反馈并作出相应的行动" class="headerlink" title="交付团队必须接受反馈并作出相应的行动"></a>交付团队必须接受反馈并作出相应的行动</h5><ul>
+<li>对于快速交付高质量的软件来说，基于持续改进的过程是非常关键的。</li>
+</ul>
+<h5 id="推广"><a href="#推广" class="headerlink" title="推广"></a>推广</h5><ul>
+<li>本书的理论与实践可以应用在大型组织中，也可以应用于小团队</li>
+</ul>
+<h4 id="收效"><a href="#收效" class="headerlink" title="收效"></a>收效</h4><ul>
+<li>主要收益是创建了一个发布流程，这个流程是可重复的、可靠的且可预见的，从而大大缩短了发布周期，使新增功能和缺陷修复能更早与用户见面。</li>
+</ul>
+<h5 id="授权团队"><a href="#授权团队" class="headerlink" title="授权团队"></a>授权团队</h5><ul>
+<li>部署流水线的一个关键点是，它是一个“拉动(pull)”系统，它使测试人员、运维人员或支持服务人员能够做到自服务，即他们可以自行决定将哪个版本的应用程序部署到哪个环境中。</li>
+</ul>
+<h5 id="减少错误"><a href="#减少错误" class="headerlink" title="减少错误"></a>减少错误</h5><ul>
+<li>配置信息错误，配置信息都应放在版本控制系统中</li>
+</ul>
+<h5 id="缓解压力"><a href="#缓解压力" class="headerlink" title="缓解压力"></a>缓解压力</h5><ul>
+<li>压力本身就是问题的根源所在</li>
+<li>减少压力的关键在于拥有一个我们前面所描述的的自动化部署过程，并频繁的运行它，当部署失败后还能够快速恢复到原来的状态</li>
+</ul>
+<h5 id="部署的灵活性"><a href="#部署的灵活性" class="headerlink" title="部署的灵活性"></a>部署的灵活性</h5><ul>
+<li>在一个全新环境上运行应用程序应该是相当简单的事。</li>
+<li>“只要需要，就可以让软件运行在任何环境中”的能力使我们和客户对我们随时管理所有版本发布过程充满信心。</li>
+</ul>
+<h5 id="多加练习，使其完美"><a href="#多加练习，使其完美" class="headerlink" title="多加练习，使其完美"></a>多加练习，使其完美</h5><ul>
+<li>最好的策略就是无论部署到什么样的目标环境，都使用相同的部署方法。</li>
+<li>只有一种环境可以有多变性，那就是开发环境。</li>
+</ul>
+<h4 id="候选发布版本"><a href="#候选发布版本" class="headerlink" title="候选发布版本"></a>候选发布版本</h4><ul>
+<li>每次提交代码都可能产生一个可发布的版本</li>
+</ul>
+<h4 id="软件交付的原则"><a href="#软件交付的原则" class="headerlink" title="软件交付的原则"></a>软件交付的原则</h4><h5 id="为软件的发布创建一个可重复且可靠的过程"><a href="#为软件的发布创建一个可重复且可靠的过程" class="headerlink" title="为软件的发布创建一个可重复且可靠的过程"></a>为软件的发布创建一个可重复且可靠的过程</h5><ul>
+<li>几乎将所有的事情自动化</li>
+<li>将构建、部署、测试和发布软件所需的东西全部纳入到版本控制管理之中</li>
+<li>软件部署包括三件事：<ul>
+<li>提供并管理你的软件所需要的运行环境：硬件、软件、基础设施以及所需的外部服务</li>
+<li>将你的应用程序的正确版本安装在其之上</li>
+<li>配置你的应用程序，包括它所需要的任何数据以及状态</li>
+</ul>
+</li>
+</ul>
+<h5 id="将几乎所有事情自动化"><a href="#将几乎所有事情自动化" class="headerlink" title="将几乎所有事情自动化"></a>将几乎所有事情自动化</h5><ul>
+<li>自动化是部署流水线的前提条件</li>
+</ul>
+<h5 id="把所有的东西都纳入版本控制"><a href="#把所有的东西都纳入版本控制" class="headerlink" title="把所有的东西都纳入版本控制"></a>把所有的东西都纳入版本控制</h5><ul>
+<li>需求文档</li>
+<li>测试脚本</li>
+<li>自动化测试用例</li>
+<li>网络配置脚本</li>
+<li>部署脚本</li>
+<li>数据库创建、升级、回滚和初始化脚本</li>
+<li>应用程序所依赖的软件集合的配置脚本、库文件、工具链</li>
+<li>技术文档等</li>
+</ul>
+<h5 id="提前并频繁地做让你感到痛苦的事"><a href="#提前并频繁地做让你感到痛苦的事" class="headerlink" title="提前并频繁地做让你感到痛苦的事"></a>提前并频繁地做让你感到痛苦的事</h5><h5 id="内建质量"><a href="#内建质量" class="headerlink" title="内建质量"></a>内建质量</h5><ul>
+<li>越早发现缺陷，修复它们的成本越低</li>
+<li>一旦发现缺陷，就要马上着手修复</li>
+<li>测试不是一个阶段，不应该开发结束之后才开始</li>
+<li>测试也不纯粹或主要是测试人员的领域</li>
+</ul>
+<h5 id="“DONE”意味着“已发布”"><a href="#“DONE”意味着“已发布”" class="headerlink" title="“DONE”意味着“已发布”"></a>“DONE”意味着“已发布”</h5><ul>
+<li>一件事情的完成与否，并不是一个人能控制得了的，它需要整个交付团队共同来完成</li>
+</ul>
+<h5 id="交付过程是每个成员的责任"><a href="#交付过程是每个成员的责任" class="headerlink" title="交付过程是每个成员的责任"></a>交付过程是每个成员的责任</h5><h5 id="持续改进"><a href="#持续改进" class="headerlink" title="持续改进"></a>持续改进</h5><ul>
+<li>计划，做，研究，行动</li>
+<li>如果只在自己所在角色的内部进行反馈环，而不是整个团队范围内进行的话，就必将产生一种“顽疾”：以整体优化为代价的局部优化，最终导致互相指责</li>
+</ul>
+<h3 id="配置管理"><a href="#配置管理" class="headerlink" title="配置管理"></a>配置管理</h3><ul>
+<li>配置管理是指一个过程，通过该过程，所有与项目相关的产物，以及它们之间的关系都被唯一定义、修改、存储和检索。</li>
+<li>配置管理策略将决定如何管理项目中发生的一切变化</li>
+<li>决定一个版本控制工具仅仅是制定配置管理策略的第一步而已</li>
+<li>假如项目中有良好的配置管理策略，那么你对下列所有问题的回答都应该是“YES”<ul>
+<li>你能否完全再现你所需要的任何环境吗？（包括操作系统的版本及其补丁级别、网络配置、软件堆栈、以及部署在其上的软件应用及其配置）</li>
+<li>你能很轻松地对上述内容进行增量式修改，并将修改部署到任意一种或所有环境中吗？</li>
+<li>你能否很容易地看到已被部署到某个具体环境中的某次修改，并能追溯到修改源，知道是谁做的修改，什么时候做的修改吗？</li>
+<li>你能满足所有必须遵守的法规吗？</li>
+<li>是否每个团队成员都能很容易地得到他们所需要的信息，并进行必要的修改呢？这个配置管理策略是否会妨碍高效交付，导致周期时间增加，反馈减少呢？</li>
+</ul>
+</li>
+<li>本章解决的三个问题：<ul>
+<li>为管理应用程序的构建、部署、测试和发布过程做好准备。从两个方面解决这个问题：对所有内容进行版本控制；管理依赖关系。</li>
+<li>管理应用软件的配置信息。</li>
+<li>整个环境的配置管理，这包括应用程序所依赖的软件、硬件和基础设施。另外还有环境管理背后的原则，包括操作系统、应用服务器、数据库和其他商业现货软件。</li>
+</ul>
+</li>
+</ul>
+<h4 id="使用版本控制"><a href="#使用版本控制" class="headerlink" title="使用版本控制"></a>使用版本控制</h4><ul>
+<li>版本控制系统的目的有两个：保留每个文件的所有版本的历史信息，并使之易于查找。让分布式团队（空间/时间）可以合作。</li>
+<li>目标是能够随时获取软件在整个生命周期中任意时间点的文件状态</li>
+<li>高效使用版本控制系统的几点建议：<ul>
+<li>对所有内容进行版本控制：源代码，测试代码、数据库脚本、构建和部署脚本、文档、库文件和应用软件所用的配置文件；甚至把编译器以及工具集等也放在里面，以便新成员可以很容易的从零开始工作。每个成员都应该将于项目相关的任何文件及其修订状态保存在版本控制存储库之中。<ul>
+<li>不推荐将源代码编译后得到的二进制文件也纳入版本控制中</li>
+</ul>
+</li>
+<li>频繁提交代码到主干<ul>
+<li>只有频繁提交代码，你才能享受版本控制所带来的众多好处，比如回滚； 一旦将变更提交到版本控制，那么团队的所有人都能看到这些变更，也能签出它</li>
+<li>尽量使用增量方式开发新功能</li>
+<li>为保证提交代码不破坏已有的应用程序：(1)提交代码之前运行测试套件；(2)增量式引入变化</li>
+</ul>
+</li>
+<li>使用意义明显的提交注释：<ul>
+<li>一种注释风格：第一段是简短的总结性描述，接下来的几段描述更多细节。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="依赖管理："><a href="#依赖管理：" class="headerlink" title="依赖管理："></a>依赖管理：</h4><ul>
+<li>外部库文件管理：  建议在本地保存一份外部库的副本；在构建系统中，应该始终指定项目所需外部库的确切版本。</li>
+<li>组件管理：构建流水线之间的依赖应该是二进制文件依赖，而不是源文件依赖</li>
+</ul>
+<h4 id="软件配置管理："><a href="#软件配置管理：" class="headerlink" title="软件配置管理："></a>软件配置管理：</h4><ul>
+<li>应该以对待代码的方式来对待你的系统配置，使其受到正确的管理和测试</li>
+<li>配置与灵活性：先专注于提供具有高价值且可配置程度较低的功能，然后在真正需要时再添加可配置选项。</li>
+<li>配置的分类：<ul>
+<li>构建时配置：不推荐</li>
+<li>打包时配置：不推荐</li>
+<li>部署时配置</li>
+<li>启动/运行时配置</li>
+</ul>
+</li>
+<li>应用程序的配置管理：<ul>
+<li>如何描述配置信息：通常为键值对</li>
+<li>部署脚本如何存取这些配置信息：数据库、版本控制库、文件目录或注册表；与源代码分离有利于重要信息的安全性 <strong>不要把密码签入版本控制系统中，也不要把它硬编码到应用程序中</strong> （如果坚持要将密码存在某处而不是自己记住的话，可以试着把它加密后放在Home目录下）</li>
+<li>在环境、应用程序，以及应用程序各版本之间，每个配置信息有什么不同：将那些特定于测试环境或生产环境的实际配置信息存放于与源代码分离的单独代码库中通常是非常必要的，因为这些信息与源代码的变更频率是不同的。而且这种分离方式特别有利于重要信息的安全性，对于这些重要信息（如密码和数字证书等）的存取需要施加限制。</li>
+</ul>
+</li>
 </ul>
 <h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3>
       
@@ -615,7 +761,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -698,7 +844,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#译者序"><span class="nav-number">1.</span> <span class="nav-text">译者序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#马丁·福勒-序"><span class="nav-number">2.</span> <span class="nav-text">马丁·福勒. 序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">3.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读者对象及本书内容"><span class="nav-number">3.1.</span> <span class="nav-text">读者对象及本书内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内容简介"><span class="nav-number">3.2.</span> <span class="nav-text">内容简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一部分——基础篇"><span class="nav-number">3.2.1.</span> <span class="nav-text">第一部分——基础篇</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二部分——部署流水线"><span class="nav-number">3.2.2.</span> <span class="nav-text">第二部分——部署流水线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三部分——交付生态圈"><span class="nav-number">3.2.3.</span> <span class="nav-text">第三部分——交付生态圈</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章-软件交付的问题"><span class="nav-number">3.3.</span> <span class="nav-text">第一章 软件交付的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引言"><span class="nav-number">3.3.1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一些常见的发布反模式"><span class="nav-number">3.3.2.</span> <span class="nav-text">一些常见的发布反模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#反模式：手工部署软件"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">反模式：手工部署软件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#反模式：开发完成之后才向类生产环境部署"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">反模式：开发完成之后才向类生产环境部署</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#反模式：生产环境的手工配置管理"><span class="nav-number">3.3.2.3.</span> <span class="nav-text">反模式：生产环境的手工配置管理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#我们能做的更好吗？"><span class="nav-number">3.3.2.4.</span> <span class="nav-text">我们能做的更好吗？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何实现目标"><span class="nav-number">3.3.3.</span> <span class="nav-text">如何实现目标</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TODO"><span class="nav-number">3.4.</span> <span class="nav-text">TODO</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#译者序"><span class="nav-number">1.</span> <span class="nav-text">译者序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#马丁·福勒-序"><span class="nav-number">2.</span> <span class="nav-text">马丁·福勒. 序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">3.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读者对象及本书内容"><span class="nav-number">3.1.</span> <span class="nav-text">读者对象及本书内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内容简介"><span class="nav-number">3.2.</span> <span class="nav-text">内容简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一部分——基础篇"><span class="nav-number">3.2.1.</span> <span class="nav-text">第一部分——基础篇</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二部分——部署流水线"><span class="nav-number">3.2.2.</span> <span class="nav-text">第二部分——部署流水线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三部分——交付生态圈"><span class="nav-number">3.2.3.</span> <span class="nav-text">第三部分——交付生态圈</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章-软件交付的问题"><span class="nav-number">3.3.</span> <span class="nav-text">第一章 软件交付的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引言"><span class="nav-number">3.3.1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一些常见的发布反模式"><span class="nav-number">3.3.2.</span> <span class="nav-text">一些常见的发布反模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#反模式：手工部署软件"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">反模式：手工部署软件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#反模式：开发完成之后才向类生产环境部署"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">反模式：开发完成之后才向类生产环境部署</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#反模式：生产环境的手工配置管理"><span class="nav-number">3.3.2.3.</span> <span class="nav-text">反模式：生产环境的手工配置管理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#我们能做的更好吗？"><span class="nav-number">3.3.2.4.</span> <span class="nav-text">我们能做的更好吗？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何实现目标"><span class="nav-number">3.3.3.</span> <span class="nav-text">如何实现目标</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#每次修改都应该出发反馈流程"><span class="nav-number">3.3.3.1.</span> <span class="nav-text">每次修改都应该出发反馈流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#必须尽快接受反馈"><span class="nav-number">3.3.3.2.</span> <span class="nav-text">必须尽快接受反馈</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#交付团队必须接受反馈并作出相应的行动"><span class="nav-number">3.3.3.3.</span> <span class="nav-text">交付团队必须接受反馈并作出相应的行动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#推广"><span class="nav-number">3.3.3.4.</span> <span class="nav-text">推广</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#收效"><span class="nav-number">3.3.4.</span> <span class="nav-text">收效</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#授权团队"><span class="nav-number">3.3.4.1.</span> <span class="nav-text">授权团队</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#减少错误"><span class="nav-number">3.3.4.2.</span> <span class="nav-text">减少错误</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#缓解压力"><span class="nav-number">3.3.4.3.</span> <span class="nav-text">缓解压力</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#部署的灵活性"><span class="nav-number">3.3.4.4.</span> <span class="nav-text">部署的灵活性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多加练习，使其完美"><span class="nav-number">3.3.4.5.</span> <span class="nav-text">多加练习，使其完美</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#候选发布版本"><span class="nav-number">3.3.5.</span> <span class="nav-text">候选发布版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软件交付的原则"><span class="nav-number">3.3.6.</span> <span class="nav-text">软件交付的原则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#为软件的发布创建一个可重复且可靠的过程"><span class="nav-number">3.3.6.1.</span> <span class="nav-text">为软件的发布创建一个可重复且可靠的过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#将几乎所有事情自动化"><span class="nav-number">3.3.6.2.</span> <span class="nav-text">将几乎所有事情自动化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#把所有的东西都纳入版本控制"><span class="nav-number">3.3.6.3.</span> <span class="nav-text">把所有的东西都纳入版本控制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#提前并频繁地做让你感到痛苦的事"><span class="nav-number">3.3.6.4.</span> <span class="nav-text">提前并频繁地做让你感到痛苦的事</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内建质量"><span class="nav-number">3.3.6.5.</span> <span class="nav-text">内建质量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#“DONE”意味着“已发布”"><span class="nav-number">3.3.6.6.</span> <span class="nav-text">“DONE”意味着“已发布”</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#交付过程是每个成员的责任"><span class="nav-number">3.3.6.7.</span> <span class="nav-text">交付过程是每个成员的责任</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#持续改进"><span class="nav-number">3.3.6.8.</span> <span class="nav-text">持续改进</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置管理"><span class="nav-number">3.4.</span> <span class="nav-text">配置管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用版本控制"><span class="nav-number">3.4.1.</span> <span class="nav-text">使用版本控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#依赖管理："><span class="nav-number">3.4.2.</span> <span class="nav-text">依赖管理：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软件配置管理："><span class="nav-number">3.4.3.</span> <span class="nav-text">软件配置管理：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TODO"><span class="nav-number">3.5.</span> <span class="nav-text">TODO</span></a></li></ol></li></ol></div>
             
 
           </div>
