@@ -1,6 +1,7 @@
 ---
 title: Effective Java 3rd 阅读笔记
 comments: true
+abbrlink: 81a9
 date: 2019-06-24 11:18:28
 categories:
 tags:

@@ -1,6 +1,7 @@
 ---
 title: 高性能mysql第三版阅读笔记
 comments: true
+abbrlink: a8ad
 date: 2019-06-19 09:44:39
 categories:
 tags:
