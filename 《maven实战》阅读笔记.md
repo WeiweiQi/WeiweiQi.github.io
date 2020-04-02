@@ -1,6 +1,7 @@
 ---
 title: 《maven实战》阅读笔记
 comments: true
+abbrlink: 3a99
 date: 2019-10-10 16:24:44
 categories:
 tags:
