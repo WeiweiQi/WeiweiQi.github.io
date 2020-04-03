@@ -86,8 +86,8 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  # repository: git@github.com:WeiweiQi/WeiweiQi.github.io.git
-  repository: root@118.24.248.78:/var/repo/blog.git
+  repository: git@github.com:WeiweiQi/WeiweiQi.github.io.git
+  ## repository: root@118.24.248.78:/var/repo/blog.git
   branch: master
 
 # ===============================================================
