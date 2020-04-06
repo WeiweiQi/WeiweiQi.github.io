@@ -96,17 +96,17 @@ var _hmt = _hmt || [];
 
 
 
-<meta name="description" content="1. el-table 嵌套 el-image 导致侧边栏滚动条失效网络上有说是因为el-table内容溢出导致的，也可能是el-image中的clickHandler覆盖body的overflow属性导致的。 遇到的实际情况是，el-table中的el-image在不设置width/height的情况下，需要重新刷新页面才会展示el-table的侧边滚动条。目前的解决方案是给el-image设置">
+<meta name="description" content="1. el-table 嵌套 el-image 导致侧边栏滚动条失效网络上有说是因为el-table内容溢出导致的，也可能是el-image中的clickHandler覆盖body的overflow属性导致的。 遇到的实际情况是，el-table中的el-image在不设置width/height的情况下，需要重新刷新页面才会展示el-table的侧边滚动条。遗憾的是在单独element-ui的环">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue开发踩坑记录">
 <meta property="og:url" content="http://qisichen.club/posts/2e59/index.html">
 <meta property="og:site_name" content="Kiwi Blog">
-<meta property="og:description" content="1. el-table 嵌套 el-image 导致侧边栏滚动条失效网络上有说是因为el-table内容溢出导致的，也可能是el-image中的clickHandler覆盖body的overflow属性导致的。 遇到的实际情况是，el-table中的el-image在不设置width/height的情况下，需要重新刷新页面才会展示el-table的侧边滚动条。目前的解决方案是给el-image设置">
+<meta property="og:description" content="1. el-table 嵌套 el-image 导致侧边栏滚动条失效网络上有说是因为el-table内容溢出导致的，也可能是el-image中的clickHandler覆盖body的overflow属性导致的。 遇到的实际情况是，el-table中的el-image在不设置width/height的情况下，需要重新刷新页面才会展示el-table的侧边滚动条。遗憾的是在单独element-ui的环">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-03T14:31:30.783Z">
+<meta property="og:updated_time" content="2020-04-06T13:13:25.003Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue开发踩坑记录">
-<meta name="twitter:description" content="1. el-table 嵌套 el-image 导致侧边栏滚动条失效网络上有说是因为el-table内容溢出导致的，也可能是el-image中的clickHandler覆盖body的overflow属性导致的。 遇到的实际情况是，el-table中的el-image在不设置width/height的情况下，需要重新刷新页面才会展示el-table的侧边滚动条。目前的解决方案是给el-image设置">
+<meta name="twitter:description" content="1. el-table 嵌套 el-image 导致侧边栏滚动条失效网络上有说是因为el-table内容溢出导致的，也可能是el-image中的clickHandler覆盖body的overflow属性导致的。 遇到的实际情况是，el-table中的el-image在不设置width/height的情况下，需要重新刷新页面才会展示el-table的侧边滚动条。遗憾的是在单独element-ui的环">
 
 
 
@@ -361,8 +361,10 @@ var _hmt = _hmt || [];
 
       
         <h4 id="1-el-table-嵌套-el-image-导致侧边栏滚动条失效"><a href="#1-el-table-嵌套-el-image-导致侧边栏滚动条失效" class="headerlink" title="1. el-table 嵌套 el-image 导致侧边栏滚动条失效"></a>1. el-table 嵌套 el-image 导致侧边栏滚动条失效</h4><p>网络上有说是因为<a href="https://blog.csdn.net/dg_zing/article/details/87191772" target="_blank" rel="noopener">el-table内容溢出</a>导致的，也可能是<a href="https://juejin.im/post/5e54d18a51882549522abe76#comment" target="_blank" rel="noopener">el-image中的clickHandler覆盖body的overflow属性</a>导致的。</p>
-<p>遇到的实际情况是，el-table中的el-image在不设置width/height的情况下，需要重新刷新页面才会展示el-table的侧边滚动条。目前的解决方案是给el-image设置width/height。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-table-column label=&quot;图片&quot; width=&quot;85&quot; fixed=&quot;left&quot; align=&quot;center&quot;&gt;</span><br><span class="line">  &lt;template slot-scope=&quot;scope&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;my-el-row&quot;&gt;</span><br><span class="line">      &lt;el-image :src=&quot;scope.row.picurl&quot; style=&quot;width: 4vw;height: 4vw;&quot; /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/el-table-column&gt;</span><br></pre></td></tr></table></figure>
+<p>遇到的实际情况是，el-table中的el-image在不设置width/height的情况下，需要重新刷新页面才会展示el-table的侧边滚动条。遗憾的是在单独element-ui的环境下，并没有成功复现这个bug，所以具体原因还不清楚。</p>
+<p>解决方案是给el-image设置width/height。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-table-column label=&quot;图片&quot; width=&quot;85&quot; fixed=&quot;left&quot; align=&quot;center&quot;&gt;</span><br><span class="line">  &lt;template 2. -scope=&quot;scope&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;my-el-row&quot;&gt;</span><br><span class="line">      &lt;el-image :src=&quot;scope.row.picurl&quot; style=&quot;width: 4vw;height: 4vw;&quot; /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/el-table-column&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="2-axio提交数据后刷新数据不是最新的"><a href="#2-axio提交数据后刷新数据不是最新的" class="headerlink" title="2. axio提交数据后刷新数据不是最新的"></a>2. axio提交数据后刷新数据不是最新的</h4><p>提交数据后想要看到最新的数据，需要将“刷新函数”写在 .then(reponse =&gt; { ‘执行刷新’ })， 若是在外侧，在axio请求成功之前，函数照样执行，不能保证刷新到最新数据</p>
 
       
     </div>
@@ -622,7 +624,7 @@ var _hmt = _hmt || [];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-el-table-嵌套-el-image-导致侧边栏滚动条失效"><span class="nav-number">1.</span> <span class="nav-text">1. el-table 嵌套 el-image 导致侧边栏滚动条失效</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-el-table-嵌套-el-image-导致侧边栏滚动条失效"><span class="nav-number">1.</span> <span class="nav-text">1. el-table 嵌套 el-image 导致侧边栏滚动条失效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-axio提交数据后刷新数据不是最新的"><span class="nav-number">2.</span> <span class="nav-text">2. axio提交数据后刷新数据不是最新的</span></a></li></ol></div>
             
 
           </div>
