@@ -366,6 +366,8 @@ var _hmt = _hmt || [];
 <p>解决方案是给el-image设置width/height。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-table-column label=&quot;图片&quot; width=&quot;85&quot; fixed=&quot;left&quot; align=&quot;center&quot;&gt;</span><br><span class="line">  &lt;template 2. -scope=&quot;scope&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;my-el-row&quot;&gt;</span><br><span class="line">      &lt;el-image :src=&quot;scope.row.picurl&quot; style=&quot;width: 4vw;height: 4vw;&quot; /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/el-table-column&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="2-axio提交数据后刷新数据不是最新的"><a href="#2-axio提交数据后刷新数据不是最新的" class="headerlink" title="2. axio提交数据后刷新数据不是最新的"></a>2. axio提交数据后刷新数据不是最新的</h4><p>提交数据后想要看到最新的数据，需要将“刷新函数”写在 .then(reponse =&gt; { ‘执行刷新’ })， 若是在外侧，在axio请求成功之前，函数照样执行，不能保证刷新到最新数据</p>
+<h4 id="3-vue-项目传参："><a href="#3-vue-项目传参：" class="headerlink" title="3. vue 项目传参："></a>3. vue 项目传参：</h4><p>（1） 一般直接使用json格式传递即可：{参数名 ： 参数值}</p>
+<p>（2） 复杂参数，例如列表，使用 {参数名： JSON.stringify(参数值)}，然后后台再进行json解析</p>
 
           
         
