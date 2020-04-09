@@ -47,3 +47,8 @@ tags:
 
 
 
+#### 4. 使用SortableJS对el-table进行排序时容易遗漏row-key
+
+
+
+5. 

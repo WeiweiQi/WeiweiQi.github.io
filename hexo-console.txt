@@ -1,0 +1,6 @@
+hexo new "新文章"
+hexo generate --config ./source/_data/next.yml
+hexo deploy --config ./source/_data/next.yml
+git add .
+git commit -m "提交评论"
+git push
