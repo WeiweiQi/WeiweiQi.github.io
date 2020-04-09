@@ -103,7 +103,7 @@ var _hmt = _hmt || [];
 <meta property="og:site_name" content="Kiwi Blog">
 <meta property="og:description" content="1. el-table 嵌套 el-image 导致侧边栏滚动条失效网络上有说是因为el-table内容溢出导致的，也可能是el-image中的clickHandler覆盖body的overflow属性导致的。 遇到的实际情况是，el-table中的el-image在不设置width/height的情况下，需要重新刷新页面才会展示el-table的侧边滚动条。遗憾的是在单独element-ui的环">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-07T13:47:24.557Z">
+<meta property="og:updated_time" content="2020-04-09T14:29:26.284Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue开发踩坑记录">
 <meta name="twitter:description" content="1. el-table 嵌套 el-image 导致侧边栏滚动条失效网络上有说是因为el-table内容溢出导致的，也可能是el-image中的clickHandler覆盖body的overflow属性导致的。 遇到的实际情况是，el-table中的el-image在不设置width/height的情况下，需要重新刷新页面才会展示el-table的侧边滚动条。遗憾的是在单独element-ui的环">
@@ -367,6 +367,7 @@ var _hmt = _hmt || [];
 <h4 id="2-axio提交数据后刷新数据不是最新的"><a href="#2-axio提交数据后刷新数据不是最新的" class="headerlink" title="2. axio提交数据后刷新数据不是最新的"></a>2. axio提交数据后刷新数据不是最新的</h4><p>提交数据后想要看到最新的数据，需要将“刷新函数”写在 .then(reponse =&gt; { ‘执行刷新’ })， 若是在外侧，在axio请求成功之前，函数照样执行，不能保证刷新到最新数据</p>
 <h4 id="3-vue-项目传参："><a href="#3-vue-项目传参：" class="headerlink" title="3. vue 项目传参："></a>3. vue 项目传参：</h4><p>（1） 一般直接使用json格式传递即可：{参数名 ： 参数值}</p>
 <p>（2） 复杂参数，例如列表，使用 {参数名： JSON.stringify(参数值)}，然后后台再进行json解析</p>
+<h4 id="4-使用SortableJS对el-table进行排序时容易遗漏row-key"><a href="#4-使用SortableJS对el-table进行排序时容易遗漏row-key" class="headerlink" title="4. 使用SortableJS对el-table进行排序时容易遗漏row-key"></a>4. 使用SortableJS对el-table进行排序时容易遗漏row-key</h4><p>5. </p>
 
       
     </div>
@@ -429,6 +430,10 @@ var _hmt = _hmt || [];
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/5b02/" rel="prev" title="思考随记：需求需要从全局去思考，善用工具">
+                思考随记：需求需要从全局去思考，善用工具 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -537,7 +542,7 @@ var _hmt = _hmt || [];
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -626,7 +631,7 @@ var _hmt = _hmt || [];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-el-table-嵌套-el-image-导致侧边栏滚动条失效"><span class="nav-number">1.</span> <span class="nav-text">1. el-table 嵌套 el-image 导致侧边栏滚动条失效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-axio提交数据后刷新数据不是最新的"><span class="nav-number">2.</span> <span class="nav-text">2. axio提交数据后刷新数据不是最新的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-vue-项目传参："><span class="nav-number">3.</span> <span class="nav-text">3. vue 项目传参：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-el-table-嵌套-el-image-导致侧边栏滚动条失效"><span class="nav-number">1.</span> <span class="nav-text">1. el-table 嵌套 el-image 导致侧边栏滚动条失效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-axio提交数据后刷新数据不是最新的"><span class="nav-number">2.</span> <span class="nav-text">2. axio提交数据后刷新数据不是最新的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-vue-项目传参："><span class="nav-number">3.</span> <span class="nav-text">3. vue 项目传参：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-使用SortableJS对el-table进行排序时容易遗漏row-key"><span class="nav-number">4.</span> <span class="nav-text">4. 使用SortableJS对el-table进行排序时容易遗漏row-key</span></a></li></ol></div>
             
 
           </div>
