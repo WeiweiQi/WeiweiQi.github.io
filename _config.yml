@@ -80,5 +80,6 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: root@qisichen.club:/var/repo/blog.git
+  ## repository: root@qisichen.club:/var/repo/blog.git
+  repository: git@github.com:WeiweiQi/WeiweiQi.github.io.git
   branch: master
