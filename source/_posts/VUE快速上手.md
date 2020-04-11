@@ -8,9 +8,17 @@ tags:
 
 
 
-vue.js是什么
+Vue.js
 
-渐进式框架，与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。
+渐进式框架： 核心库专注视图层，便于与第三方与现有项目整合。
+
+
+
+
+
+
+
+
 
 
 
@@ -41,6 +49,9 @@ axios
 
 第三方组件的使用——element-ui
 
+	1. 布局
+ 	2. 
+
 
 
 现有项目的目录结构
@@ -59,5 +70,8 @@ axios
 推荐编辑器
 
 1. WebStorm
+
+   (1) split Vertically/Horizontally 纵向/横向分隔窗口
+
 2. HbuilderX
 
