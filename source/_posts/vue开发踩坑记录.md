@@ -57,7 +57,13 @@ tags:
 
 
 
-6. 
+#### 6.  同router.path的情况下组件复用的问题：
+
+统一处理方法是，tagview不可复用，每次添加新的tagview时，移除相同path的其他view，避免后续编程人员因为忘记监听query/params变化导致错误
+
+
+
+
 
 
 
