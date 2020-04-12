@@ -10,21 +10,99 @@ tags:
 
 Vue.js
 
-渐进式框架： 核心库专注视图层，便于与第三方与现有项目整合。
 
 
+## 一、vue简介
 
+1. 渐进式框架： 核心库专注视图层，便于与第三方与现有项目整合。
 
+2. 简单示例：看视频
 
+3. 代码结构
 
+   ```html
+   <html>
+   	<div id="app">
+   	    {{message}}
+   	</div>
+   </html>
+   
+   <script>
+   	var app =new Vue({
+           el: '#app',
+           data: {
+               message: 'abc'
+           }
+       })
+   </script>
+   
+   <style>
+       .class-style {
+           color: red
+       }
+   </style>
+   ```
 
+4. 常用指令：
 
+   (1) **v-if**
 
+   ```html
+   <p v-if="seen">现在你看到我了</p>
+   ```
 
+   
 
-简单示例
+   (2) **v-for**
 
-单页/多页
+   ```html
+   <li v-for="todo in todos">
+     {{ todo.text }}
+   </li>
+   ```
+
+   
+
+   (3) **v-on**    简写 @
+
+   ```html
+   `<button v-on:click="reverseMessage">反转消息</button>`
+   `<button @click="reverseMessage">反转消息</button>
+   ```
+
+   (4) **v-model**， 表单输入双向绑定
+
+   ```html
+   <input v-model="message">
+   ```
+
+   
+
+ ## 二、 Vue组件
+
+1. 元素：template/script/style
+2. script中的元素：
+	(1) name 组件名称
+	(2) props 从外部向组件内传递参数
+	(3) data 元素内部的参数：object/array/...
+	(4) computed: 计算属性
+	(6) watch 	
+	(5) methods
+2. 组件的使用
+3. 组件生命周期
+4. 页面元素的获取方式： refs
+```html
+<template>
+	<div ref="my-div-ref" id="my-div-id">
+		
+	</div>
+</template>
+<script>
+	var dom = this.$refs.my-div-ref
+	// 等价于
+	var dom = document.getElmentById('my-div-id')
+</script>
+```
 
 
 
@@ -34,6 +112,12 @@ Vue.js
 2. 子组件 -> 父组件： 
    1. v-model/value 
    2. this.$emit(..)
+
+
+
+二、项目上手
+
+现有项目的目录结构
 
 
 
@@ -54,11 +138,13 @@ axios
 
 
 
-现有项目的目录结构
+常用HTML
+
+常用CSS
 
 
 
-编码规范
+三、编码规范
 
 1. 尽量多写可复用的小组件
 2. 参数注释要写明：例如一个Object包含哪些字段
@@ -67,7 +153,7 @@ axios
 
 
 
-推荐编辑器
+题外：推荐编辑器
 
 1. WebStorm
 
