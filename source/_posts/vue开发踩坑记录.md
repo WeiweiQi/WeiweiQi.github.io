@@ -63,6 +63,12 @@ tags:
 
 
 
+#### 7. 常用组件易错点：
+
+1. el-table的Event： select与select-all都需要处理
+
+
+
 
 
 

@@ -14,6 +14,8 @@ Vue.js
 
 ## 一、vue简介
 
+官方文档： [中文](https://cn.vuejs.org/v2/guide/index.html)， [英文](https://vuejs.org/v2/guide/)
+
 1. 渐进式框架： 核心库专注视图层，便于与第三方与现有项目整合。
 
 2. 简单示例：看视频
@@ -81,21 +83,25 @@ Vue.js
  ## 二、 Vue组件
 
 1. 元素：template/script/style
+
 2. script中的元素：
 	(1) name 组件名称
-	(2) props 从外部向组件内传递参数
+	(2) props 从组件外向组件内传递参数
 	(3) data 元素内部的参数：object/array/...
 	(4) computed: 计算属性
-	(6) watch 	
-	(5) methods
-2. 组件的使用
-3. 组件生命周期
-4. 页面元素的获取方式： refs
+	(6) watch： 监听
+	(5) methods： 组件内的方法
+	
+3. 组件的使用
+
+4. 组件生命周期
+
+   ![VUE组件的生命周期](https://cn.vuejs.org/images/lifecycle.png)
+
+5. 页面元素的获取方式： refs
 ```html
 <template>
-	<div ref="my-div-ref" id="my-div-id">
-		
-	</div>
+	<div ref="my-div-ref" id="my-div-id"></div>
 </template>
 <script>
 	var dom = this.$refs.my-div-ref
@@ -108,10 +114,54 @@ Vue.js
 
 组件间的数据传递
 
-1. 父组件 -> 子组件： prop
+1. 父组件 -> 子组件： props
+
+   ```html
+   // 子组件
+   <script>
+   	export default {
+   		name: 'abc',
+   		props: {
+   			product: {
+   				type: Object,
+   				default() {
+   					return {
+   						id: null,
+   						name: '无'
+   					}
+   				}
+   			}
+   		}
+   	}
+   </script>
+   
+   // 父组件
+   <template>
+   	<abc :product="product"></abc>
+   </template>
+   <script>
+   	export default {
+   		name: 'abc',
+   		data() {
+   			return {
+   				product: {
+   					id: 2,
+   					name: '商品名'
+   				}
+   			}
+   		}
+   	}
+   </script>
+   ```
+
 2. 子组件 -> 父组件： 
    1. v-model/value 
-   2. this.$emit(..)
+
+   2. this.$emit(‘$event’, params)： 
+
+      ​	单参（推荐）
+
+      ​	多参(arguments) 例子 Tabs.vue
 
 
 
@@ -160,4 +210,10 @@ axios
    (1) split Vertically/Horizontally 纵向/横向分隔窗口
 
 2. HbuilderX
+
+
+
+
+
+编程实践
 
