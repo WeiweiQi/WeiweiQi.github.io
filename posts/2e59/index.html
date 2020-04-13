@@ -103,7 +103,7 @@ var _hmt = _hmt || [];
 <meta property="og:site_name" content="Kiwi Blog">
 <meta property="og:description" content="1. el-table 嵌套 el-image 导致侧边栏滚动条失效网络上有说是因为el-table内容溢出导致的，也可能是el-image中的clickHandler覆盖body的overflow属性导致的。 遇到的实际情况是，el-table中的el-image在不设置width/height的情况下，需要重新刷新页面才会展示el-table的侧边滚动条。遗憾的是在单独element-ui的环">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-09T14:29:26.284Z">
+<meta property="og:updated_time" content="2020-04-13T07:36:26.738Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue开发踩坑记录">
 <meta name="twitter:description" content="1. el-table 嵌套 el-image 导致侧边栏滚动条失效网络上有说是因为el-table内容溢出导致的，也可能是el-image中的clickHandler覆盖body的overflow属性导致的。 遇到的实际情况是，el-table中的el-image在不设置width/height的情况下，需要重新刷新页面才会展示el-table的侧边滚动条。遗憾的是在单独element-ui的环">
@@ -367,7 +367,11 @@ var _hmt = _hmt || [];
 <h4 id="2-axio提交数据后刷新数据不是最新的"><a href="#2-axio提交数据后刷新数据不是最新的" class="headerlink" title="2. axio提交数据后刷新数据不是最新的"></a>2. axio提交数据后刷新数据不是最新的</h4><p>提交数据后想要看到最新的数据，需要将“刷新函数”写在 .then(reponse =&gt; { ‘执行刷新’ })， 若是在外侧，在axio请求成功之前，函数照样执行，不能保证刷新到最新数据</p>
 <h4 id="3-vue-项目传参："><a href="#3-vue-项目传参：" class="headerlink" title="3. vue 项目传参："></a>3. vue 项目传参：</h4><p>（1） 一般直接使用json格式传递即可：{参数名 ： 参数值}</p>
 <p>（2） 复杂参数，例如列表，使用 {参数名： JSON.stringify(参数值)}，然后后台再进行json解析</p>
-<h4 id="4-使用SortableJS对el-table进行排序时容易遗漏row-key"><a href="#4-使用SortableJS对el-table进行排序时容易遗漏row-key" class="headerlink" title="4. 使用SortableJS对el-table进行排序时容易遗漏row-key"></a>4. 使用SortableJS对el-table进行排序时容易遗漏row-key</h4><p>5. </p>
+<h4 id="4-使用SortableJS对el-table进行排序时容易遗漏row-key"><a href="#4-使用SortableJS对el-table进行排序时容易遗漏row-key" class="headerlink" title="4. 使用SortableJS对el-table进行排序时容易遗漏row-key"></a>4. 使用SortableJS对el-table进行排序时容易遗漏row-key</h4><h4 id="5-textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法"><a href="#5-textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法" class="headerlink" title="5. textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法"></a>5. textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法</h4><p>（这一点应该不属于vue）</p>
+<h4 id="6-同router-path的情况下组件复用的问题："><a href="#6-同router-path的情况下组件复用的问题：" class="headerlink" title="6.  同router.path的情况下组件复用的问题："></a>6.  同router.path的情况下组件复用的问题：</h4><p>统一处理方法是，tagview不可复用，每次添加新的tagview时，移除相同path的其他view，避免后续编程人员因为忘记监听query/params变化导致错误</p>
+<h4 id="7-常用组件易错点："><a href="#7-常用组件易错点：" class="headerlink" title="7. 常用组件易错点："></a>7. 常用组件易错点：</h4><ol>
+<li>el-table的Event： select与select-all都需要处理</li>
+</ol>
 
       
     </div>
@@ -542,7 +546,7 @@ var _hmt = _hmt || [];
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -631,7 +635,7 @@ var _hmt = _hmt || [];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-el-table-嵌套-el-image-导致侧边栏滚动条失效"><span class="nav-number">1.</span> <span class="nav-text">1. el-table 嵌套 el-image 导致侧边栏滚动条失效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-axio提交数据后刷新数据不是最新的"><span class="nav-number">2.</span> <span class="nav-text">2. axio提交数据后刷新数据不是最新的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-vue-项目传参："><span class="nav-number">3.</span> <span class="nav-text">3. vue 项目传参：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-使用SortableJS对el-table进行排序时容易遗漏row-key"><span class="nav-number">4.</span> <span class="nav-text">4. 使用SortableJS对el-table进行排序时容易遗漏row-key</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-el-table-嵌套-el-image-导致侧边栏滚动条失效"><span class="nav-number">1.</span> <span class="nav-text">1. el-table 嵌套 el-image 导致侧边栏滚动条失效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-axio提交数据后刷新数据不是最新的"><span class="nav-number">2.</span> <span class="nav-text">2. axio提交数据后刷新数据不是最新的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-vue-项目传参："><span class="nav-number">3.</span> <span class="nav-text">3. vue 项目传参：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-使用SortableJS对el-table进行排序时容易遗漏row-key"><span class="nav-number">4.</span> <span class="nav-text">4. 使用SortableJS对el-table进行排序时容易遗漏row-key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法"><span class="nav-number">5.</span> <span class="nav-text">5. textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-同router-path的情况下组件复用的问题："><span class="nav-number">6.</span> <span class="nav-text">6.  同router.path的情况下组件复用的问题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-常用组件易错点："><span class="nav-number">7.</span> <span class="nav-text">7. 常用组件易错点：</span></a></li></ol></div>
             
 
           </div>

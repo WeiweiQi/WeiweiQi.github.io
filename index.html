@@ -280,6 +280,213 @@ var _hmt = _hmt || [];
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/f771/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kiwi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kiwi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/f771/" itemprop="url">VUE快速上手</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-10T23:28:49+08:00">
+                2020-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/f771/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/f771/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Vue.js</p>
+<h2 id="一、vue简介"><a href="#一、vue简介" class="headerlink" title="一、vue简介"></a>一、vue简介</h2><p>官方文档： <a href="https://cn.vuejs.org/v2/guide/index.html" target="_blank" rel="noopener">中文</a>， <a href="https://vuejs.org/v2/guide/" target="_blank" rel="noopener">英文</a></p>
+<ol>
+<li><p>渐进式框架： 核心库专注视图层，便于与第三方与现有项目整合。</p>
+</li>
+<li><p>简单示例：看视频</p>
+</li>
+<li><p>代码结构</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">	    &#123;&#123;message&#125;&#125;</span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">	var app =new Vue(&#123;</span></span><br><span class="line"><span class="undefined">        el: '#app',</span></span><br><span class="line"><span class="undefined">        data: &#123;</span></span><br><span class="line"><span class="undefined">            message: 'abc'</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    .class-style &#123;</span></span><br><span class="line"><span class="undefined">        color: red</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常用指令：</p>
+<p>(1) <strong>v-if</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">v-if</span>=<span class="string">"seen"</span>&gt;</span>现在你看到我了<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>   (2) <strong>v-for</strong></p>
+   <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"todo in todos"</span>&gt;</span></span><br><span class="line">  &#123;&#123; todo.text &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>   (3) <strong>v-on</strong>    简写 @</p>
+   <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">`<span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"reverseMessage"</span>&gt;</span>反转消息<span class="tag">&lt;/<span class="name">button</span>&gt;</span>`</span><br><span class="line">`<span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"reverseMessage"</span>&gt;</span>反转消息<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>   (4) <strong>v-model</strong>， 表单输入双向绑定</p>
+   <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"message"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="二、-Vue组件"><a href="#二、-Vue组件" class="headerlink" title="二、 Vue组件"></a>二、 Vue组件</h2><ol>
+<li><p>元素：template/script/style</p>
+</li>
+<li><p>script中的元素：<br> (1) name 组件名称<br> (2) props 从组件外向组件内传递参数<br> (3) data 元素内部的参数：object/array/…<br> (4) computed: 计算属性<br> (6) watch： 监听<br> (5) methods： 组件内的方法</p>
+</li>
+<li><p>组件的使用</p>
+</li>
+<li><p>组件生命周期</p>
+<p><img src="https://cn.vuejs.org/images/lifecycle.png" alt="VUE组件的生命周期"></p>
+</li>
+<li><p>页面元素的获取方式： refs</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">"my-div-ref"</span> <span class="attr">id</span>=<span class="string">"my-div-id"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">	var dom = this.$refs.my-div-ref</span></span><br><span class="line"><span class="undefined">	// 等价于</span></span><br><span class="line"><span class="undefined">	var dom = document.getElmentById('my-div-id')</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>组件间的数据传递</p>
+<ol>
+<li><p>父组件 -&gt; 子组件： props</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">// 子组件</span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">	export default &#123;</span></span><br><span class="line"><span class="undefined">		name: 'abc',</span></span><br><span class="line"><span class="undefined">		props: &#123;</span></span><br><span class="line"><span class="undefined">			product: &#123;</span></span><br><span class="line"><span class="undefined">				type: Object,</span></span><br><span class="line"><span class="undefined">				default() &#123;</span></span><br><span class="line"><span class="undefined">					return &#123;</span></span><br><span class="line"><span class="undefined">						id: null,</span></span><br><span class="line"><span class="undefined">						name: '无'</span></span><br><span class="line"><span class="undefined">					&#125;</span></span><br><span class="line"><span class="undefined">				&#125;</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// 父组件</span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">abc</span> <span class="attr">:product</span>=<span class="string">"product"</span>&gt;</span><span class="tag">&lt;/<span class="name">abc</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">	export default &#123;</span></span><br><span class="line"><span class="undefined">		name: 'abc',</span></span><br><span class="line"><span class="undefined">		data() &#123;</span></span><br><span class="line"><span class="undefined">			return &#123;</span></span><br><span class="line"><span class="undefined">				product: &#123;</span></span><br><span class="line"><span class="undefined">					id: 2,</span></span><br><span class="line"><span class="undefined">					name: '商品名'</span></span><br><span class="line"><span class="undefined">				&#125;</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子组件 -&gt; 父组件： </p>
+<ol>
+<li><p>v-model/value </p>
+</li>
+<li><p>this.$emit(‘$event’, params)： </p>
+<p>​    单参（推荐）</p>
+<p>​    多参(arguments) 例子 Tabs.vue</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>二、项目上手</p>
+<p>现有项目的目录结构</p>
+<p>vue-router</p>
+<p>axios</p>
+<p>跨域问题的解决方案</p>
+<p>文件上传/下载</p>
+<p>第三方组件的使用——element-ui</p>
+<pre><code>1. 布局
+ 2. 
+</code></pre><p>常用HTML</p>
+<p>常用CSS</p>
+<p>三、编码规范</p>
+<ol>
+<li>尽量多写可复用的小组件</li>
+<li>参数注释要写明：例如一个Object包含哪些字段</li>
+<li>先设计，后编码，先整体，再细节</li>
+<li></li>
+</ol>
+<p>题外：推荐编辑器</p>
+<ol>
+<li><p>WebStorm</p>
+<p>(1) split Vertically/Horizontally 纵向/横向分隔窗口</p>
+</li>
+<li><p>HbuilderX</p>
+</li>
+</ol>
+<p>编程实践</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/5b02/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -506,7 +713,11 @@ var _hmt = _hmt || [];
 <h4 id="2-axio提交数据后刷新数据不是最新的"><a href="#2-axio提交数据后刷新数据不是最新的" class="headerlink" title="2. axio提交数据后刷新数据不是最新的"></a>2. axio提交数据后刷新数据不是最新的</h4><p>提交数据后想要看到最新的数据，需要将“刷新函数”写在 .then(reponse =&gt; { ‘执行刷新’ })， 若是在外侧，在axio请求成功之前，函数照样执行，不能保证刷新到最新数据</p>
 <h4 id="3-vue-项目传参："><a href="#3-vue-项目传参：" class="headerlink" title="3. vue 项目传参："></a>3. vue 项目传参：</h4><p>（1） 一般直接使用json格式传递即可：{参数名 ： 参数值}</p>
 <p>（2） 复杂参数，例如列表，使用 {参数名： JSON.stringify(参数值)}，然后后台再进行json解析</p>
-<h4 id="4-使用SortableJS对el-table进行排序时容易遗漏row-key"><a href="#4-使用SortableJS对el-table进行排序时容易遗漏row-key" class="headerlink" title="4. 使用SortableJS对el-table进行排序时容易遗漏row-key"></a>4. 使用SortableJS对el-table进行排序时容易遗漏row-key</h4><p>5. </p>
+<h4 id="4-使用SortableJS对el-table进行排序时容易遗漏row-key"><a href="#4-使用SortableJS对el-table进行排序时容易遗漏row-key" class="headerlink" title="4. 使用SortableJS对el-table进行排序时容易遗漏row-key"></a>4. 使用SortableJS对el-table进行排序时容易遗漏row-key</h4><h4 id="5-textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法"><a href="#5-textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法" class="headerlink" title="5. textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法"></a>5. textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法</h4><p>（这一点应该不属于vue）</p>
+<h4 id="6-同router-path的情况下组件复用的问题："><a href="#6-同router-path的情况下组件复用的问题：" class="headerlink" title="6.  同router.path的情况下组件复用的问题："></a>6.  同router.path的情况下组件复用的问题：</h4><p>统一处理方法是，tagview不可复用，每次添加新的tagview时，移除相同path的其他view，避免后续编程人员因为忘记监听query/params变化导致错误</p>
+<h4 id="7-常用组件易错点："><a href="#7-常用组件易错点：" class="headerlink" title="7. 常用组件易错点："></a>7. 常用组件易错点：</h4><ol>
+<li>el-table的Event： select与select-all都需要处理</li>
+</ol>
 
           
         
@@ -1221,6 +1432,7 @@ var _hmt = _hmt || [];
 <li>如何确定一个数是梅森数</li>
 </ul>
 <h2 id="千禧年问题"><a href="#千禧年问题" class="headerlink" title="千禧年问题"></a>千禧年问题</h2><p>//TODO</p>
+<p>TEST update</p>
 
           
         
@@ -1530,145 +1742,11 @@ var _hmt = _hmt || [];
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/a8ad/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kiwi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kiwi Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/a8ad/" itemprop="url">高性能mysql第三版阅读笔记</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-19T09:44:39+08:00">
-                2019-06-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/a8ad/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/a8ad/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="第一章-mysql架构与历史"><a href="#第一章-mysql架构与历史" class="headerlink" title="第一章 mysql架构与历史"></a>第一章 mysql架构与历史</h2><blockquote>
-<p>概要地描述了MySQL的服务器架构、各种存储引擎之间的主要区别，以及这些区别的重要性。</p>
-</blockquote>
-<h3 id="MySQL-逻辑架构"><a href="#MySQL-逻辑架构" class="headerlink" title="MySQL 逻辑架构"></a>MySQL 逻辑架构</h3><p>MySQL 逻辑架构图<br><img src="https://wx3.sinaimg.cn/mw690/733866e8ly1g4a2yb8gsdj20cq0ds0w6.jpg" alt="MySQL 逻辑架构图"></p>
-<p>第一层：连接管理，授权认证，安全等<br>第二层：核心服务层，查询解析、分析、优化、缓存以及所有的内置函数，跨存储引擎的功能，包括存储过程，触发器，视图等<br>第三层：存储引擎，负责数据的存储和提取。服务器通过API与存储引擎进行通信。这些接口屏蔽了不同存储引擎之间的差异，使得这些差异对上层的查询过程透明。存储引擎API包含几十个底层函数，用于执行诸如“开启一个事务”或者“根据主键提取一行记录”等操作。但存储引擎不会去解析SQL，不同存储引擎之间也不会相互通信，而只是简单地响应上层服务器的请求。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1716,7 +1794,7 @@ var _hmt = _hmt || [];
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
