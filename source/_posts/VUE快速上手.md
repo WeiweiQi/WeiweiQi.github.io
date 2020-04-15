@@ -164,9 +164,7 @@ Vue.js
 
       ​	多参(arguments) 例子 Tabs.vue
 
-
-
-二、项目上手
+## 三、项目上手
 
 在线文档：[vue-element-admin](https://panjiachen.github.io/vue-element-admin-site/zh/guide/)
 
@@ -215,7 +213,25 @@ vue-router
 
 axios
 
+复杂参数传递：
 
+​	2. json字符串：paraNames: JSON.stringify(object)
+
+​	1. 数组：
+
+```javascript
+{
+	const ids = [1,2]
+	params: {
+		ids: ids
+	}
+}
+```
+
+```java
+// 后端
+Integer[] ids = getParaValuesToInt("ids[]");
+```
 
 跨域问题的解决方案
 
@@ -264,7 +280,12 @@ axios
 
 
 
-
-
 编程实践
 
+
+
+易错点：
+
+​	el-table: 
+
+​		@select与@select-all都需要监听
