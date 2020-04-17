@@ -9,25 +9,25 @@ tags:
 
 
 
-Vue.js
-
-
-
 ## 一、vue简介
 
 官方文档： [中文](https://cn.vuejs.org/v2/guide/index.html)， [英文](https://vuejs.org/v2/guide/)
 
 1. 渐进式框架： 核心库专注视图层，便于与第三方与现有项目整合。
 
-2. 简单示例：看视频
+2. 简单示例： 看视频[中文](https://cn.vuejs.org/v2/guide/index.html)
 
-3. 代码结构
+3. 结构：数据绑定
 
    ```html
    <html>
+       ...
    	<div id="app">
    	    {{message}}
+           <!-- 文本插值 -->
+           
    	</div>
+       ...
    </html>
    
    <script>
@@ -48,52 +48,58 @@ Vue.js
 
 4. 常用指令：
 
-   (1) **v-if**
+   (1) **v-if **条件渲染
 
    ```html
    <p v-if="seen">现在你看到我了</p>
    ```
 
-   
-
-   (2) **v-for**
+   (2) **v-for **循环
 
    ```html
-   <li v-for="todo in todos">
+<li v-for="todo in todos">
      {{ todo.text }}
    </li>
    ```
-
    
-
    (3) **v-on**    简写 @
 
    ```html
-   `<button v-on:click="reverseMessage">反转消息</button>`
-   `<button @click="reverseMessage">反转消息</button>
+	<button v-on:click="reverseMessage">反转消息</button>
+    <button @click="reverseMessage">反转消息</button>
    ```
-
-   (4) **v-model**， 表单输入双向绑定， 简写 **:**
-
-   ```html
-   <input v-model="message">
-   ```
-
    
+   (4) v-model， 表单输入双向绑定
+   
+	```html
+	<input v-model="message">
+	```
 
- ## 二、 Vue组件
 
-1. 元素：template/script/style
+ ## 二、 Vue组件 [链接](https://cn.vuejs.org/v2/guide/components-registration.html)
 
-2. script中的元素：
-	(1) name 组件名称
-	(2) props 从组件外向组件内传递参数
-	(3) data 元素内部的参数：object/array/...
-	(4) computed: 计算属性
-	(6) watch： 监听
-	(5) methods： 组件内的方法
-	
+1. 模板组成：
+
+   template 展示
+
+   script 数据/方法等
+
+   style 样式
+
+2. 元素：
+    (1) name 组件名称
+    (2) props 从组件外向组件内传递参数
+    (3) data 元素内部的参数：object/array/...
+    (4) computed 计算属性
+    (5) methods： 组件内的方法
+    (6) watch 监听参数
+    ...
+
 3. 组件的使用
+
+```html
+<todo-item></todo-item>
+```
 
 4. 组件生命周期
 
@@ -209,15 +215,40 @@ github： [vue-elment-admin](https://github.com/PanJiaChen/vue-element-admin)
 
 
 
-vue-router
+[vue-router](https://router.vuejs.org/zh/): 路由/跳转
 
-axios
+[axios](http://axios-js.com/) ： http请求
 
 复杂参数传递：
 
-​	2. json字符串：paraNames: JSON.stringify(object)
+ 2. json字符串：
 
-​	1. 数组：
+```javascript
+    {
+   		paraNames: JSON.stringify(object)
+    }
+```
+
+```java
+    String paraNames = getPara("paraNames");
+	...
+   	// jsonObject解析
+    Record productInfo = new Record()
+        .setColumns(
+        	FastJson.getJson()
+        		.parse(productInfoJsonStr, Map.class)
+    	);
+	... 
+    // json中的jsonArray解析
+    List<Record> imgList = StrUtil
+        .getRecordListFromJsonArray(
+        	productInfo.get("imgList")
+    	);
+```
+
+​    
+
+​	1. 数组参数：
 
 ```javascript
 {
@@ -235,18 +266,23 @@ Integer[] ids = getParaValuesToInt("ids[]");
 
 跨域问题的解决方案
 
-​	普通接口
+​	普通接口：
 
-​	文件上传/下载
+​		测试环境：前台代理
+
+​		正式环境：nginx	(目前单机部署，尚未涉及)
+
+​	文件上传/下载: 已封装，参照管理模块-人员管理下载模板/上传人员
 
 第三方组件的使用——element-ui
-
 	1. 常用布局：el-row/el-col
- 	2.  常用组件: el-table/el-dialog
+ 	2. 常用组件: el-table/el-dialog
 
+易错点：
+​	el-table: 
+​		@select与@select-all都需要监听
 
-
-常用HTML
+​		//...
 
 常用CSS:
 
@@ -261,31 +297,18 @@ Integer[] ids = getParaValuesToInt("ids[]");
 
 
 
-三、编码规范
+## 四、编码规范
 
 1. 尽量多写可复用的小组件
 2. 参数注释要写明：例如一个Object包含哪些字段
-3. 先设计，后编码，先整体，再细节
-4. 
-
-
+3. eslint
 
 题外：推荐编辑器
-
 1. WebStorm
-
-   (1) split Vertically/Horizontally 纵向/横向分隔窗口
-
+   
+   (1) 常用功能：split Vertically/Horizontally 纵向/横向分隔窗口
+   
 2. HbuilderX
-
-
+    免费
 
 编程实践
-
-
-
-易错点：
-
-​	el-table: 
-
-​		@select与@select-all都需要监听
