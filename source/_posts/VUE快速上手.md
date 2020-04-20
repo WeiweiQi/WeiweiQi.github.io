@@ -312,3 +312,10 @@ Integer[] ids = getParaValuesToInt("ids[]");
     免费
 
 编程实践
+
+	1. 添加路由
+ 	2. 添加组件
+ 	3. 组件内引用其他组件，例如el-table， paginate
+ 	4. 跳转到其他页面
+ 	5. 布局组件: 分栏split-pane, el-row, el-col
+
