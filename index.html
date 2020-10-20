@@ -280,6 +280,446 @@ var _hmt = _hmt || [];
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/35299/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kiwi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kiwi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/35299/" itemprop="url">浑浑噩噩的2020</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-19T15:49:34+08:00">
+                2020-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/35299/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/35299/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>疫情<br>加班<br>媳妇流产</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/posts/35299/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/43685/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kiwi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kiwi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/43685/" itemprop="url">使用keep-alive保存滚动条的位置</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-17T14:14:36+08:00">
+                2020-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/43685/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/43685/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一、组件整体的滚动条</p>
+<ol>
+<li>keep-alive内部组件添加id标识，以便后期设置scrollTop</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- AppMain.vue --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">keep-alive</span> <span class="attr">:include</span>=<span class="string">"cachedViews"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">router-view</span> <span class="attr">:id</span>=<span class="string">"id"</span> <span class="attr">:key</span>=<span class="string">"key"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>路由组件添加暂存scrollTop字段</li>
+</ol>
+<p>重点代码在于增加<strong>scrollTop: 0</strong>.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: <span class="string">'order_summary'</span>,</span><br><span class="line">  component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'@/views/ordermanage/OrderSummary'</span>),</span><br><span class="line">  name: <span class="string">'OrderSummary'</span>,</span><br><span class="line">  meta: &#123; <span class="attr">title</span>: <span class="string">'订单数据汇总'</span>, <span class="attr">icon</span>: <span class="string">'tab'</span>, <span class="attr">noCache</span>: <span class="literal">false</span>, <span class="attr">roles</span>: [<span class="string">'order_summary'</span>], <span class="attr">scrollTop</span>: <span class="number">0</span> &#125;,</span><br><span class="line">  hidden: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol start="3">
+<li>离开此页面/路由时，保存当前组件的scrollTop值到路由中</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">router.beforeEach(<span class="keyword">async</span>(to, <span class="keyword">from</span>, next) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">from</span>.meta.noCache === <span class="literal">false</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> $content = <span class="built_in">document</span>.querySelector(<span class="string">'#'</span> + <span class="string">'md5_'</span> + md5(<span class="keyword">from</span>.path))</span><br><span class="line">    <span class="keyword">const</span> scrollTop = $content ? $content.scrollTop : <span class="number">0</span></span><br><span class="line">    <span class="keyword">from</span>.meta.scrollTop = scrollTop</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 其他代码....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>对应组件activated方法设置scrollTop</li>
+</ol>
+<p><strong>只有用<keep-alive></keep-alive>包裹的组件才会有activated生命周期</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">activated() &#123;</span><br><span class="line">    <span class="keyword">const</span> scrollTop = <span class="keyword">this</span>.$route.meta.scrollTop</span><br><span class="line">    <span class="keyword">const</span> $content = <span class="built_in">document</span>.querySelector(<span class="string">'#md5_'</span> + md5(<span class="keyword">this</span>.$route.path))</span><br><span class="line">    <span class="keyword">if</span> (scrollTop &amp;&amp; $content) &#123;</span><br><span class="line">    $content.scrollTop = scrollTop</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>备注：其中的md5是为了避免path中的非法id值字符，md5引用与js-md5<br>（package.json添加js-md5依赖，引用import md5 from ‘js-md5’）</p>
+<p>二、组件内部的滚动条</p>
+<p>例如companymanage/index组件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-table</span> <span class="attr">ref</span>=<span class="string">"companyTable"</span> <span class="attr">...</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">  activated() &#123;</span><br><span class="line">    <span class="comment">// 激活后重新设置滚动条</span></span><br><span class="line">    <span class="keyword">this</span>.saveScroll()</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    <span class="comment">// 监听滚动条的位置</span></span><br><span class="line">    <span class="keyword">this</span>.$refs.companyTable.bodyWrapper.addEventListener(<span class="string">'scroll'</span>, (res) =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> height = res.target</span><br><span class="line">      <span class="keyword">this</span>.tableScrollTop = height.scrollTop</span><br><span class="line">    &#125;, <span class="literal">false</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeDestroy() &#123;</span><br><span class="line">    <span class="keyword">this</span>.$refs.companyTable.bodyWrapper.removeEventListener(<span class="string">'scroll'</span>, (res) =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> height = res.target</span><br><span class="line">      <span class="keyword">this</span>.scrollTop = height.scrollTop</span><br><span class="line">    &#125;, <span class="literal">false</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    saveScroll() &#123;</span><br><span class="line">      <span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">var</span> scrollTop = <span class="keyword">this</span>.$el.querySelector(<span class="string">'.el-table__body-wrapper'</span>)</span><br><span class="line">          scrollTop.scrollTop = <span class="keyword">this</span>.tableScrollTop</span><br><span class="line">        &#125;, <span class="number">13</span>)</span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="comment">// var scrollTop = this.$el.querySelector('.el-table__body-wrapper')</span></span><br><span class="line">      <span class="comment">// scrollTop.scrollTop = this.tableScrollTop</span></span><br><span class="line">    &#125;</span><br><span class="line">    .....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/50970/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kiwi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kiwi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/50970/" itemprop="url">shell学习记录</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-08T15:49:19+08:00">
+                2020-05-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/shell/" itemprop="url" rel="index">
+                    <span itemprop="name">shell</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/50970/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/50970/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>学习shell记录和踩过的坑</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/posts/50970/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/f771/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -464,6 +904,7 @@ var _hmt = _hmt || [];
  3. 组件内引用其他组件，例如el-table， paginate
  4. 跳转到其他页面
  5. 布局组件: 分栏split-pane, el-row, el-col
+ 6. 上传/下载：
 </code></pre>
           
         
@@ -742,6 +1183,13 @@ var _hmt = _hmt || [];
 <h4 id="6-同router-path的情况下组件复用的问题："><a href="#6-同router-path的情况下组件复用的问题：" class="headerlink" title="6.  同router.path的情况下组件复用的问题："></a>6.  同router.path的情况下组件复用的问题：</h4><p>统一处理方法是，tagview不可复用，每次添加新的tagview时，移除相同path的其他view，避免后续编程人员因为忘记监听query/params变化导致错误</p>
 <h4 id="7-常用组件易错点："><a href="#7-常用组件易错点：" class="headerlink" title="7. 常用组件易错点："></a>7. 常用组件易错点：</h4><ol>
 <li>el-table的Event： select与select-all都需要处理</li>
+</ol>
+<h4 id="8-执行后运行接口问题："><a href="#8-执行后运行接口问题：" class="headerlink" title="8. 执行后运行接口问题："></a>8. 执行后运行接口问题：</h4><p>检查portfinder包的版本</p>
+<p>检查环境变量是佛有port-*之类的变量</p>
+<h4 id="9-Header参数编码问题"><a href="#9-Header参数编码问题" class="headerlink" title="9. Header参数编码问题"></a>9. Header参数编码问题</h4><p>因为系统内部分参数，如username是中文，而采用http-header中存储，而http-header只支持英文字符，因此在需要判断header参数时，应将参数写在body中。例如接口中判断登录人时，应前台body写：{username: this.$store.username}</p>
+<h4 id="10-el-popover手动关闭问题"><a href="#10-el-popover手动关闭问题" class="headerlink" title="10. el-popover手动关闭问题"></a>10. el-popover手动关闭问题</h4><p>el-table-column添加了 fixed=”left” 或 fixed=”right”后，el-popover无法使用id进行关闭</p>
+<ol start="11">
+<li>TODO</li>
 </ol>
 
           
@@ -1166,15 +1614,51 @@ var _hmt = _hmt || [];
 
       
         
-          
-            <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><ol>
+          <p>提示汇总：</p>
+<ol>
 <li>Care About Your Craft. 关心你的技艺。</li>
 <li>Think! About Your Work. 思考！你的工作。</li>
+<li>提供各种选择，不要找蹩脚的借口。</li>
+<li>不要容忍破窗户。</li>
+<li>做变化的催化剂。Be the Catalyst for Change!</li>
+<li>记住大图景。Remember the Big Picture!</li>
+<li>使质量成为需求问题。</li>
+<li>定期为你的知识资产投资</li>
+<li>批判地分析你读到的和听到的。</li>
+<li>你说什么和你怎么说同样重要！</li>
+<li>DRY - Don’t Repeat Yourself.  不要重复你自己。</li>
+<li>Make It Easy To Reuse。 让复用变得容易。</li>
+<li>消除无关事物之间的影响。</li>
+<li>不存在最终决策。There Are No Final Decisions.</li>
+<li>用曳光弹找到目标。Use Tracer Bullets to Find the Target.</li>
+<li>为了学习而制作原型。Prototype to Learn.</li>
+<li>靠近问题领域编程。Program Close to the Problem domain.</li>
+<li>估算，以避免发生意外。Estimate to Avoid Surprises.</li>
+<li>通过代码对进度表进行迭代。Iterate the Schedule with the Code.</li>
+<li>用纯文本保存知识。Keep Knowledge in Plain Text.</li>
+<li>利用命令Shell的力量。Use the Power of Command Shells.</li>
+<li>用好一种编辑器。Use a Single Editor Well.</li>
+<li>总是使用源码控制。Always Use Source Code Control</li>
+<li>要修正问题，而不是发出指责。 Fix the Problem, not the Blame.</li>
+<li>调试第一准则：不要恐慌。Don’t Panic.</li>
+<li>“Select”没有问题。不要先怀疑是第三方产品的问题</li>
+<li>不要假定，要证明。</li>
+<li>学习一种文本操纵语言，如Python，Tcl， Perl</li>
+<li>编写能编写代码的代码。Write Code That Writes Code。</li>
+<li>你不可能写出完美的软件</li>
+<li>通过合约进行设计。Design with Contracts.</li>
+<li>早崩溃。Crash Early.</li>
+<li>如果它不可能发生，用断言确保它不会发生。If it can’t Happen, Use Assertions to Ensure That It won’t.</li>
+<li>将异常用于异常的问题。Use Exceptions For Exceptional Problems.</li>
+<li>要有始有终。Finish What You Start.</li>
 </ol>
-<p>我们采集的只是石头，却必须时刻展望未来的大教堂。</p>
-<p>它是一个持续的过程！</p>
-<h2 id="第一章-注重实效的哲学"><a href="#第一章-注重实效的哲学" class="headerlink" title="第一章 注重实效的哲学"></a>第一章 注重实效的哲学</h2>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/posts/430c/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1352,421 +1836,6 @@ var _hmt = _hmt || [];
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/1939/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kiwi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kiwi Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/1939/" itemprop="url">“待解决的数学问题</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T16:59:49+08:00">
-                2019-08-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/1939/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/1939/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="梅森素数问题"><a href="#梅森素数问题" class="headerlink" title="梅森素数问题"></a>梅森素数问题</h2><p>定义：梅森数是指形如 2^n - 1 的数，记为M_n如果一个梅森数是素数那么它称为梅森素数（英语：Mersenne prime）。</p>
-<p>截至2018年12月，已知的梅森素数共有51个，最大的梅森素数是2^82589933 - 1。从1997年至今，所有新的梅森素数都是由互联网梅森素数大搜索（GIMPS）分布式计算项目发现的。</p>
-<ul>
-<li>如何确定一个数是素数：<ul>
-<li>判断一个数是不是质数，只需用比这个数小的所有质数，依次去除它即可，如果都不能整除的话，这个数就一定是质数</li>
-<li>以步长为6做判断可以加速</li>
-</ul>
-</li>
-<li>如何确定一个数是梅森数</li>
-</ul>
-<h2 id="千禧年问题"><a href="#千禧年问题" class="headerlink" title="千禧年问题"></a>千禧年问题</h2><p>//TODO</p>
-<p>TEST update</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/1c0d/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kiwi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kiwi Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/1c0d/" itemprop="url">红玫瑰与白玫瑰</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-25T10:41:32+08:00">
-                2019-06-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/1c0d/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/1c0d/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>海中月是天上月,眼前人是心上人,向来心是看客心,奈何人是剧中人。 —-原：张爱玲</p>
-</blockquote>
-<p>也许每一个男子全都有过这样的两个女人，至少两个。娶了红玫瑰，久而久之，红的变了墙上的一抹蚊子血，白的还是“床前明月光”；娶了白玫瑰，白的便是衣服上沾的一粒饭黏子，红的却是心口上一颗朱砂痣</p>
-<p>张爱玲在《倾城之恋》里借白流苏的口对范柳原说：“你最高的理想是一个冰清玉洁而又富地挑逗性的女人。冰清玉洁，是对于他人。挑逗，是对于你自己。”可见，张爱玲也是不赞成佟振保对女人的二分法。</p>
-<p>谁都没错，但却是不对的。</p>
-<p>&#8195;&#8195;同事送了一本张爱玲的中短篇小说集，《红玫瑰与白玫瑰》，原本用来打发闲暇时间，可越来越发现，应当早些时候读的。<br>&#8195;&#8195;给我最大冲击的是小说“红玫瑰与白玫瑰”。<br>&#8195;&#8195;男主角名叫振保，初恋是一名外国女，名叫玫瑰，“坐怀不乱”的分了手，文中讲“这女人在外国没什么，在中国却行不通”。第二个女人是一个已婚妇女，这段恋情便是题目中热烈的红玫瑰。虽然红玫瑰已婚，但他们还是相爱了，至少从后来再相遇振保大哭，我觉得振保是爱的。振保当时的生活“来之不易”，又有母亲，社会在有形或无形地施压，也或许只是自己放不下，即便红玫瑰主动与她丈夫坦白，要和振保结婚，振保却抛弃了她。后来，娶了“笼统的白净”的白玫瑰，处女，大家闺秀，不擅交际，一位社会上看“再理想不过的”妻子。</p>
-<p>&#8195;&#8195;张爱玲在《倾城之恋》里借白流苏的口对范柳原说：“你最高的理想是一个冰清玉洁而又富地挑逗性的女人。冰清玉洁，是对于他人。挑逗，是对于你自己。”</p>
-<p>&#8195;&#8195;记得李笑来在某本书上提到过一个概念，叫做“SB速率”，你有多快的感觉到昨天是个SB，你的成长速度就有多快。读了张爱玲后，才发现自己以前的头脑被困住了，当然，如今仍然困在其中，不过至少看到了一些枷锁痕迹。当然，解开枷锁也是要付出代价的。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/81a9/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kiwi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kiwi Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/81a9/" itemprop="url">Effective Java 3rd 阅读笔记</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-24T11:18:28+08:00">
-                2019-06-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/81a9/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/81a9/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>发生错误之后应该尽快检测出错误<br>尽量让错误/警告在编译的时候就出现<br>尽量异常，不要试图隐藏错误</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/posts/81a9/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1819,7 +1888,7 @@ var _hmt = _hmt || [];
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1830,7 +1899,7 @@ var _hmt = _hmt || [];
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1841,7 +1910,7 @@ var _hmt = _hmt || [];
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

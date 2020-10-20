@@ -103,7 +103,7 @@ var _hmt = _hmt || [];
 <meta property="og:site_name" content="Kiwi Blog">
 <meta property="og:description" content="1. el-table 嵌套 el-image 导致侧边栏滚动条失效网络上有说是因为el-table内容溢出导致的，也可能是el-image中的clickHandler覆盖body的overflow属性导致的。 遇到的实际情况是，el-table中的el-image在不设置width/height的情况下，需要重新刷新页面才会展示el-table的侧边滚动条。遗憾的是在单独element-ui的环">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-13T07:36:26.738Z">
+<meta property="og:updated_time" content="2020-05-15T12:13:04.119Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue开发踩坑记录">
 <meta name="twitter:description" content="1. el-table 嵌套 el-image 导致侧边栏滚动条失效网络上有说是因为el-table内容溢出导致的，也可能是el-image中的clickHandler覆盖body的overflow属性导致的。 遇到的实际情况是，el-table中的el-image在不设置width/height的情况下，需要重新刷新页面才会展示el-table的侧边滚动条。遗憾的是在单独element-ui的环">
@@ -372,6 +372,13 @@ var _hmt = _hmt || [];
 <h4 id="7-常用组件易错点："><a href="#7-常用组件易错点：" class="headerlink" title="7. 常用组件易错点："></a>7. 常用组件易错点：</h4><ol>
 <li>el-table的Event： select与select-all都需要处理</li>
 </ol>
+<h4 id="8-执行后运行接口问题："><a href="#8-执行后运行接口问题：" class="headerlink" title="8. 执行后运行接口问题："></a>8. 执行后运行接口问题：</h4><p>检查portfinder包的版本</p>
+<p>检查环境变量是佛有port-*之类的变量</p>
+<h4 id="9-Header参数编码问题"><a href="#9-Header参数编码问题" class="headerlink" title="9. Header参数编码问题"></a>9. Header参数编码问题</h4><p>因为系统内部分参数，如username是中文，而采用http-header中存储，而http-header只支持英文字符，因此在需要判断header参数时，应将参数写在body中。例如接口中判断登录人时，应前台body写：{username: this.$store.username}</p>
+<h4 id="10-el-popover手动关闭问题"><a href="#10-el-popover手动关闭问题" class="headerlink" title="10. el-popover手动关闭问题"></a>10. el-popover手动关闭问题</h4><p>el-table-column添加了 fixed=”left” 或 fixed=”right”后，el-popover无法使用id进行关闭</p>
+<ol start="11">
+<li>TODO</li>
+</ol>
 
       
     </div>
@@ -546,7 +553,7 @@ var _hmt = _hmt || [];
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -557,7 +564,7 @@ var _hmt = _hmt || [];
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -568,7 +575,7 @@ var _hmt = _hmt || [];
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -635,7 +642,7 @@ var _hmt = _hmt || [];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-el-table-嵌套-el-image-导致侧边栏滚动条失效"><span class="nav-number">1.</span> <span class="nav-text">1. el-table 嵌套 el-image 导致侧边栏滚动条失效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-axio提交数据后刷新数据不是最新的"><span class="nav-number">2.</span> <span class="nav-text">2. axio提交数据后刷新数据不是最新的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-vue-项目传参："><span class="nav-number">3.</span> <span class="nav-text">3. vue 项目传参：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-使用SortableJS对el-table进行排序时容易遗漏row-key"><span class="nav-number">4.</span> <span class="nav-text">4. 使用SortableJS对el-table进行排序时容易遗漏row-key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法"><span class="nav-number">5.</span> <span class="nav-text">5. textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-同router-path的情况下组件复用的问题："><span class="nav-number">6.</span> <span class="nav-text">6.  同router.path的情况下组件复用的问题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-常用组件易错点："><span class="nav-number">7.</span> <span class="nav-text">7. 常用组件易错点：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-el-table-嵌套-el-image-导致侧边栏滚动条失效"><span class="nav-number">1.</span> <span class="nav-text">1. el-table 嵌套 el-image 导致侧边栏滚动条失效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-axio提交数据后刷新数据不是最新的"><span class="nav-number">2.</span> <span class="nav-text">2. axio提交数据后刷新数据不是最新的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-vue-项目传参："><span class="nav-number">3.</span> <span class="nav-text">3. vue 项目传参：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-使用SortableJS对el-table进行排序时容易遗漏row-key"><span class="nav-number">4.</span> <span class="nav-text">4. 使用SortableJS对el-table进行排序时容易遗漏row-key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法"><span class="nav-number">5.</span> <span class="nav-text">5. textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-同router-path的情况下组件复用的问题："><span class="nav-number">6.</span> <span class="nav-text">6.  同router.path的情况下组件复用的问题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-常用组件易错点："><span class="nav-number">7.</span> <span class="nav-text">7. 常用组件易错点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-执行后运行接口问题："><span class="nav-number">8.</span> <span class="nav-text">8. 执行后运行接口问题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-Header参数编码问题"><span class="nav-number">9.</span> <span class="nav-text">9. Header参数编码问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-el-popover手动关闭问题"><span class="nav-number">10.</span> <span class="nav-text">10. el-popover手动关闭问题</span></a></li></ol></div>
             
 
           </div>
