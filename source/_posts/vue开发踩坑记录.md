@@ -69,7 +69,101 @@ tags:
 
 
 
+#### 8. 执行后运行接口问题：
+
+检查portfinder包的版本
+
+检查环境变量是佛有port-*之类的变量
 
 
 
+#### 9. Header参数编码问题
 
+因为系统内部分参数，如username是中文，而采用http-header中存储，而http-header只支持英文字符，因此在需要判断header参数时，应将参数写在body中。例如接口中判断登录人时，应前台body写：{username: this.$store.username}
+
+
+
+#### 10. el-popover手动关闭问题
+
+el-table-column添加了 fixed="left" 或 fixed="right"后，el-popover无法使用id进行关闭
+
+
+
+#### 11. 页面缓存
+
+要保证路由中的name与组件的name一致
+
+```javascript
+  {
+      path: '....',
+      component: () => import('@/views/..../...'),
+      name: 'ThisNameMustBeSame',
+      meta: { title: '...', icon: 'tab', noCache: false, roles: ['...'] }
+    }
+```
+
+```javascript
+  export default {
+    name: 'ThisNameMustBeSame'
+  }
+```
+
+12. elment-ui走马灯总有滚动条的问题 el-carousel滚动条问题
+
+    需要设置height值
+
+    ```html
+    <el-carousel height="100px" >
+    ```
+    
+13. el-input的change事件与input事件的区别
+
+    change事件仅“仅在输入框失去焦点或用户按下回车时触发”
+
+    input事件是“在 Input 值改变时触发”
+
+14. JS中的计算问题
+
+    和java一样，js中涉及到数值计算，要用bigNumber
+
+15. 时间格式问题
+
+    
+
+16. 常用数组操作
+
+    注意区分slice与splice
+
+    https://www.cnblogs.com/tu-0718/p/10396545.html
+
+    　**slice()定义：**从已有的数组中返回你选择的某段数组元素
+
+    　**slice()语法：**arrayObject.slice(start,end)
+
+    　**①：**start表示从何处开始选取，end表示从何处开始结束选取，表示一个选取的范围
+
+    　**②：**start可以为负数，此时它规定从数组尾部开始算起的位置。也就是-1 ，指最后一个元素，-2 指倒数第二个元素，以此类推
+
+    　**③：**end如果没有被指定参数，数组会包含从 start 到最后一个数组元素的所有元素
+
+    　**④：**slice()方法不会修改数组本身，而是返回所选取范围的数组元素。如果想删除数组中的某一个元素，需要使用splice()
+
+    　**splice()**
+
+    　**splice()定义：**从数组中添加或删除元素，然后返回被删除的数组元素。
+
+    　**splice()语法：**arrayObject.splice(index,howmany,item1,.....,itemX)
+
+    　**①：**index表示从什么位置开始添加或删除数组元素
+
+    　**②：**howmany表示删除的元素数量，如果为0，则表示不删除数组元素
+
+    　**③：i**tem1,.....,itemX表示新增的数组元素
+
+    　**④：**splice()方法会改变原始数组
+
+17. TODO
+
+18. TODO
+
+19. TODO

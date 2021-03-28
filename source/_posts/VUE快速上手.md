@@ -7,6 +7,9 @@ categories:
 tags:
 ---
 
+vue基本知识
+
+<!-- more -->
 
 
 ## 一、vue简介
@@ -318,4 +321,5 @@ Integer[] ids = getParaValuesToInt("ids[]");
  	3. 组件内引用其他组件，例如el-table， paginate
  	4. 跳转到其他页面
  	5. 布局组件: 分栏split-pane, el-row, el-col
+ 	6. 上传/下载：
 
