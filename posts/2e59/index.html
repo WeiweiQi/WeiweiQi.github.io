@@ -11,16 +11,6 @@
 <meta name="theme-color" content="#222">
 
 
-
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-	google_ad_client: "ca-pub-7083117783441075",
-	enable_page_level_ads: true
-  });
-</script>
-
-
 <script>
 var _hmt = _hmt || [];
 (function() {
@@ -103,7 +93,7 @@ var _hmt = _hmt || [];
 <meta property="og:site_name" content="Kiwi Blog">
 <meta property="og:description" content="1. el-table 嵌套 el-image 导致侧边栏滚动条失效网络上有说是因为el-table内容溢出导致的，也可能是el-image中的clickHandler覆盖body的overflow属性导致的。 遇到的实际情况是，el-table中的el-image在不设置width/height的情况下，需要重新刷新页面才会展示el-table的侧边滚动条。遗憾的是在单独element-ui的环">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-15T12:13:04.119Z">
+<meta property="og:updated_time" content="2023-03-09T00:20:10.695Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue开发踩坑记录">
 <meta name="twitter:description" content="1. el-table 嵌套 el-image 导致侧边栏滚动条失效网络上有说是因为el-table内容溢出导致的，也可能是el-image中的clickHandler覆盖body的overflow属性导致的。 遇到的实际情况是，el-table中的el-image在不设置width/height的情况下，需要重新刷新页面才会展示el-table的侧边滚动条。遗憾的是在单独element-ui的环">
@@ -141,6 +131,7 @@ var _hmt = _hmt || [];
 
 
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7083117783441075" crossorigin="anonymous"></script>
 
   <title>vue开发踩坑记录 | Kiwi Blog</title>
   
@@ -376,10 +367,59 @@ var _hmt = _hmt || [];
 <p>检查环境变量是佛有port-*之类的变量</p>
 <h4 id="9-Header参数编码问题"><a href="#9-Header参数编码问题" class="headerlink" title="9. Header参数编码问题"></a>9. Header参数编码问题</h4><p>因为系统内部分参数，如username是中文，而采用http-header中存储，而http-header只支持英文字符，因此在需要判断header参数时，应将参数写在body中。例如接口中判断登录人时，应前台body写：{username: this.$store.username}</p>
 <h4 id="10-el-popover手动关闭问题"><a href="#10-el-popover手动关闭问题" class="headerlink" title="10. el-popover手动关闭问题"></a>10. el-popover手动关闭问题</h4><p>el-table-column添加了 fixed=”left” 或 fixed=”right”后，el-popover无法使用id进行关闭</p>
-<ol start="11">
-<li>TODO</li>
-</ol>
+<h4 id="11-页面缓存"><a href="#11-页面缓存" class="headerlink" title="11. 页面缓存"></a>11. 页面缓存</h4><p>要保证路由中的name与组件的name一致</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    path: <span class="string">'....'</span>,</span><br><span class="line">    component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'@/views/..../...'</span>),</span><br><span class="line">    name: <span class="string">'ThisNameMustBeSame'</span>,</span><br><span class="line">    meta: &#123; <span class="attr">title</span>: <span class="string">'...'</span>, <span class="attr">icon</span>: <span class="string">'tab'</span>, <span class="attr">noCache</span>: <span class="literal">false</span>, <span class="attr">roles</span>: [<span class="string">'...'</span>] &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'ThisNameMustBeSame'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="12-elment-ui走马灯总有滚动条的问题-el-carousel滚动条问题"><a href="#12-elment-ui走马灯总有滚动条的问题-el-carousel滚动条问题" class="headerlink" title="12.  elment-ui走马灯总有滚动条的问题 el-carousel滚动条问题"></a>12.  elment-ui走马灯总有滚动条的问题 el-carousel滚动条问题</h4><pre><code>需要设置height值
 
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-carousel</span> <span class="attr">height</span>=<span class="string">"100px"</span> &gt;</span></span><br></pre></td></tr></table></figure>
+</code></pre><h4 id="13-el-input的change事件与input事件的区别"><a href="#13-el-input的change事件与input事件的区别" class="headerlink" title="13. el-input的change事件与input事件的区别"></a>13. el-input的change事件与input事件的区别</h4><pre><code>change事件仅“仅在输入框失去焦点或用户按下回车时触发”
+
+input事件是“在 Input 值改变时触发”
+</code></pre><h4 id="14-JS中的计算问题"><a href="#14-JS中的计算问题" class="headerlink" title="14.  JS中的计算问题"></a>14.  JS中的计算问题</h4><pre><code>和java一样，js中涉及到数值计算，要用bigNumber
+</code></pre><h4 id="15-时间格式问题"><a href="#15-时间格式问题" class="headerlink" title="15.  时间格式问题"></a>15.  时间格式问题</h4><p>​    </p>
+<h4 id="16-常用数组操作"><a href="#16-常用数组操作" class="headerlink" title="16.  常用数组操作"></a>16.  常用数组操作</h4><pre><code>注意区分slice与splice
+
+https://www.cnblogs.com/tu-0718/p/10396545.html
+
+　**slice()定义：**从已有的数组中返回你选择的某段数组元素
+
+　**slice()语法：**arrayObject.slice(start,end)
+
+　**①：**start表示从何处开始选取，end表示从何处开始结束选取，表示一个选取的范围
+
+　**②：**start可以为负数，此时它规定从数组尾部开始算起的位置。也就是-1 ，指最后一个元素，-2 指倒数第二个元素，以此类推
+
+　**③：**end如果没有被指定参数，数组会包含从 start 到最后一个数组元素的所有元素
+
+　**④：**slice()方法不会修改数组本身，而是返回所选取范围的数组元素。如果想删除数组中的某一个元素，需要使用splice()
+
+　**splice()**
+
+　**splice()定义：**从数组中添加或删除元素，然后返回被删除的数组元素。
+
+　**splice()语法：**arrayObject.splice(index,howmany,item1,.....,itemX)
+
+　**①：**index表示从什么位置开始添加或删除数组元素
+
+　**②：**howmany表示删除的元素数量，如果为0，则表示不删除数组元素
+
+　**③：i**tem1,.....,itemX表示新增的数组元素
+
+　**④：**splice()方法会改变原始数组
+</code></pre><h4 id="17-element-ui-table合并单元格问题"><a href="#17-element-ui-table合并单元格问题" class="headerlink" title="17.  element-ui table合并单元格问题"></a>17.  element-ui table合并单元格问题</h4><pre><code>函数返回值表达的不同含义
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 舍弃该单元格</span></span><br><span class="line">&#123;</span><br><span class="line">	rowspan: <span class="number">0</span>,</span><br><span class="line">	colspan: <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 保留，不跨单元格</span></span><br><span class="line">&#123;</span><br><span class="line">	rowspan: <span class="number">1</span>,</span><br><span class="line">	colspan: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// a &gt; 1, b &gt; 1时，跨单元格</span></span><br><span class="line">&#123;</span><br><span class="line">	rowspan: a,</span><br><span class="line">	colspan: b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><p>​    </p>
+<h4 id="18-下载文件乱码问题"><a href="#18-下载文件乱码问题" class="headerlink" title="18. 下载文件乱码问题"></a>18. 下载文件乱码问题</h4><pre><code>iconv-lite可解决axios下载文件名中文乱码问题，关键代码: 
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> iconv = <span class="built_in">require</span>(<span class="string">'iconv-lite'</span>) </span><br><span class="line">fileName = iconv.decode(fileName, <span class="string">'UTF-8'</span>)</span><br></pre></td></tr></table></figure>
+</code></pre><h4 id="19-vue-element-admin中刷新当前tagview"><a href="#19-vue-element-admin中刷新当前tagview" class="headerlink" title="19. vue-element-admin中刷新当前tagview"></a>19. vue-element-admin中刷新当前tagview</h4><pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">'@/store'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">refreshView</span>(<span class="params">thisobj</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// In order to make the cached page re-rendered</span></span><br><span class="line">  store.dispatch(<span class="string">'tagsView/delAllCachedViews'</span>, thisobj.$route)</span><br><span class="line">  <span class="keyword">const</span> &#123; fullPath &#125; = thisobj.$route</span><br><span class="line">  thisobj.$router.replace(&#123;</span><br><span class="line">    path: <span class="string">'/redirect'</span> + fullPath</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用</span></span><br><span class="line">refreshView(<span class="keyword">this</span>)</span><br></pre></td></tr></table></figure>
+</code></pre><p>​    </p>
+<h4 id="20-Promise-prototype-finally-方法"><a href="#20-Promise-prototype-finally-方法" class="headerlink" title="20. Promise.prototype.finally()方法"></a>20. Promise.prototype.finally()方法</h4><pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">apiMethod(&#123;</span><br><span class="line">    data...</span><br><span class="line">&#125;).then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 请求成功执行的代码</span></span><br><span class="line">&#125;).finally(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 不管请求失败成功与否, 总是执行</span></span><br><span class="line">    <span class="comment">// 此处可以放置类似loading = false之类的代码</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</code></pre><p>​    </p>
+<h4 id="21-使用VSCODE编辑支持eslint的项目时报错"><a href="#21-使用VSCODE编辑支持eslint的项目时报错" class="headerlink" title="21. 使用VSCODE编辑支持eslint的项目时报错"></a>21. 使用VSCODE编辑支持eslint的项目时报错</h4><p>VScode默认使用jshint，需要配置关闭jshint。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"jshint.enable": "false"</span><br></pre></td></tr></table></figure></p>
+<h4 id="22-TODO"><a href="#22-TODO" class="headerlink" title="22. TODO"></a>22. TODO</h4>
       
     </div>
     
@@ -432,8 +472,8 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/16107/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/posts/3a99/" rel="next" title="《maven实战》阅读笔记">
+                <i class="fa fa-chevron-left"></i> 《maven实战》阅读笔记
               </a>
             
           </div>
@@ -553,7 +593,7 @@ var _hmt = _hmt || [];
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -564,7 +604,7 @@ var _hmt = _hmt || [];
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -575,7 +615,7 @@ var _hmt = _hmt || [];
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -642,7 +682,7 @@ var _hmt = _hmt || [];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-el-table-嵌套-el-image-导致侧边栏滚动条失效"><span class="nav-number">1.</span> <span class="nav-text">1. el-table 嵌套 el-image 导致侧边栏滚动条失效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-axio提交数据后刷新数据不是最新的"><span class="nav-number">2.</span> <span class="nav-text">2. axio提交数据后刷新数据不是最新的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-vue-项目传参："><span class="nav-number">3.</span> <span class="nav-text">3. vue 项目传参：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-使用SortableJS对el-table进行排序时容易遗漏row-key"><span class="nav-number">4.</span> <span class="nav-text">4. 使用SortableJS对el-table进行排序时容易遗漏row-key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法"><span class="nav-number">5.</span> <span class="nav-text">5. textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-同router-path的情况下组件复用的问题："><span class="nav-number">6.</span> <span class="nav-text">6.  同router.path的情况下组件复用的问题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-常用组件易错点："><span class="nav-number">7.</span> <span class="nav-text">7. 常用组件易错点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-执行后运行接口问题："><span class="nav-number">8.</span> <span class="nav-text">8. 执行后运行接口问题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-Header参数编码问题"><span class="nav-number">9.</span> <span class="nav-text">9. Header参数编码问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-el-popover手动关闭问题"><span class="nav-number">10.</span> <span class="nav-text">10. el-popover手动关闭问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-el-table-嵌套-el-image-导致侧边栏滚动条失效"><span class="nav-number">1.</span> <span class="nav-text">1. el-table 嵌套 el-image 导致侧边栏滚动条失效</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-axio提交数据后刷新数据不是最新的"><span class="nav-number">2.</span> <span class="nav-text">2. axio提交数据后刷新数据不是最新的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-vue-项目传参："><span class="nav-number">3.</span> <span class="nav-text">3. vue 项目传参：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-使用SortableJS对el-table进行排序时容易遗漏row-key"><span class="nav-number">4.</span> <span class="nav-text">4. 使用SortableJS对el-table进行排序时容易遗漏row-key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法"><span class="nav-number">5.</span> <span class="nav-text">5. textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-同router-path的情况下组件复用的问题："><span class="nav-number">6.</span> <span class="nav-text">6.  同router.path的情况下组件复用的问题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-常用组件易错点："><span class="nav-number">7.</span> <span class="nav-text">7. 常用组件易错点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-执行后运行接口问题："><span class="nav-number">8.</span> <span class="nav-text">8. 执行后运行接口问题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-Header参数编码问题"><span class="nav-number">9.</span> <span class="nav-text">9. Header参数编码问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-el-popover手动关闭问题"><span class="nav-number">10.</span> <span class="nav-text">10. el-popover手动关闭问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-页面缓存"><span class="nav-number">11.</span> <span class="nav-text">11. 页面缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-elment-ui走马灯总有滚动条的问题-el-carousel滚动条问题"><span class="nav-number">12.</span> <span class="nav-text">12.  elment-ui走马灯总有滚动条的问题 el-carousel滚动条问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-el-input的change事件与input事件的区别"><span class="nav-number">13.</span> <span class="nav-text">13. el-input的change事件与input事件的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-JS中的计算问题"><span class="nav-number">14.</span> <span class="nav-text">14.  JS中的计算问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-时间格式问题"><span class="nav-number">15.</span> <span class="nav-text">15.  时间格式问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16-常用数组操作"><span class="nav-number">16.</span> <span class="nav-text">16.  常用数组操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17-element-ui-table合并单元格问题"><span class="nav-number">17.</span> <span class="nav-text">17.  element-ui table合并单元格问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#18-下载文件乱码问题"><span class="nav-number">18.</span> <span class="nav-text">18. 下载文件乱码问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#19-vue-element-admin中刷新当前tagview"><span class="nav-number">19.</span> <span class="nav-text">19. vue-element-admin中刷新当前tagview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#20-Promise-prototype-finally-方法"><span class="nav-number">20.</span> <span class="nav-text">20. Promise.prototype.finally()方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#21-使用VSCODE编辑支持eslint的项目时报错"><span class="nav-number">21.</span> <span class="nav-text">21. 使用VSCODE编辑支持eslint的项目时报错</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#22-TODO"><span class="nav-number">22.</span> <span class="nav-text">22. TODO</span></a></li></ol></div>
             
 
           </div>
@@ -662,7 +702,7 @@ var _hmt = _hmt || [];
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

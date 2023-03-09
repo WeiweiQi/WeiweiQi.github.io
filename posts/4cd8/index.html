@@ -11,16 +11,6 @@
 <meta name="theme-color" content="#222">
 
 
-
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-	google_ad_client: "ca-pub-7083117783441075",
-	enable_page_level_ads: true
-  });
-</script>
-
-
 <script>
 var _hmt = _hmt || [];
 (function() {
@@ -87,6 +77,7 @@ var _hmt = _hmt || [];
 
 
 
+  <meta name="keywords" content="后端,">
 
 
 
@@ -96,17 +87,21 @@ var _hmt = _hmt || [];
 
 
 
-<meta name="description" content="异步转同步">
+
+<meta name="description" content="这是我参与更文挑战的第19天，活动详情查看： 更文挑战  桃李不言，下自成蹊  事情起源前一段时间学习Go语言，了解到Go中的关键字go可以开启协程goroutine从而实现并发并行。其中有一个sync包中的WaitGroup可以实现异步转同步的功能：等待一组线程的结束。父协程调用Add方法来设定等待的协程的数量，每个被等待的协程在结束任务执行时调用Done方法；同时，父协程调用Wait方法阻塞至">
+<meta name="keywords" content="后端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java异步转同步———CountDownLatch">
 <meta property="og:url" content="http://qisichen.club/posts/4cd8/index.html">
 <meta property="og:site_name" content="Kiwi Blog">
-<meta property="og:description" content="异步转同步">
+<meta property="og:description" content="这是我参与更文挑战的第19天，活动详情查看： 更文挑战  桃李不言，下自成蹊  事情起源前一段时间学习Go语言，了解到Go中的关键字go可以开启协程goroutine从而实现并发并行。其中有一个sync包中的WaitGroup可以实现异步转同步的功能：等待一组线程的结束。父协程调用Add方法来设定等待的协程的数量，每个被等待的协程在结束任务执行时调用Done方法；同时，父协程调用Wait方法阻塞至">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-09T14:13:41.621Z">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5274a0078fc34ce78a297feec238791c~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:updated_time" content="2023-03-09T00:20:10.640Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java异步转同步———CountDownLatch">
-<meta name="twitter:description" content="异步转同步">
+<meta name="twitter:description" content="这是我参与更文挑战的第19天，活动详情查看： 更文挑战  桃李不言，下自成蹊  事情起源前一段时间学习Go语言，了解到Go中的关键字go可以开启协程goroutine从而实现并发并行。其中有一个sync包中的WaitGroup可以实现异步转同步的功能：等待一组线程的结束。父协程调用Add方法来设定等待的协程的数量，每个被等待的协程在结束任务执行时调用Done方法；同时，父协程调用Wait方法阻塞至">
+<meta name="twitter:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5274a0078fc34ce78a297feec238791c~tplv-k3u1fbpfcp-watermark.image">
 
 
 
@@ -141,6 +136,7 @@ var _hmt = _hmt || [];
 
 
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7083117783441075" crossorigin="anonymous"></script>
 
   <title>Java异步转同步———CountDownLatch | Kiwi Blog</title>
   
@@ -335,8 +331,8 @@ var _hmt = _hmt || [];
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
+                  <a href="/categories/后端/" itemprop="url" rel="index">
+                    <span itemprop="name">后端</span>
                   </a>
                 </span>
 
@@ -382,12 +378,22 @@ var _hmt = _hmt || [];
       
 
       
-        <p>异步转同步<br><a id="more"></a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> multi.thread.qiweiwei.com;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.CountDownLatch;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CountDownLatchTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">final</span> CountDownLatch latch = <span class="keyword">new</span> CountDownLatch(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    System.out.println(<span class="string">"子线程"</span>+Thread.currentThread().getName()+<span class="string">"正在执行"</span>);</span><br><span class="line">                   Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">                   System.out.println(<span class="string">"子线程"</span>+Thread.currentThread().getName()+<span class="string">"执行完毕"</span>);</span><br><span class="line">               &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">                latch.countDown();</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;.start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    System.out.println(<span class="string">"子线程"</span>+Thread.currentThread().getName()+<span class="string">"正在执行"</span>);</span><br><span class="line">                    Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">                    System.out.println(<span class="string">"子线程"</span>+Thread.currentThread().getName()+<span class="string">"执行完毕"</span>);</span><br><span class="line"></span><br><span class="line">               &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">               latch.countDown();</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;.start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"等待2个子线程执行完毕..."</span>);</span><br><span class="line">           latch.await();</span><br><span class="line">           System.out.println(<span class="string">"2个子线程已经执行完毕"</span>);</span><br><span class="line">           System.out.println(<span class="string">"继续执行主线程"</span>);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>这是我参与更文挑战的第19天，活动详情查看： <a href="https://juejin.cn/post/6967194882926444557" target="_blank" rel="noopener">更文挑战</a></p>
+<blockquote>
+<p>桃李不言，下自成蹊</p>
+</blockquote>
+<h2 id="事情起源"><a href="#事情起源" class="headerlink" title="事情起源"></a>事情起源</h2><p>前一段时间学习Go语言，了解到Go中的关键字<code>go</code>可以开启协程<code>goroutine</code>从而实现并发并行。其中有一个<code>sync</code>包中的<code>WaitGroup</code>可以实现异步转同步的功能：等待一组线程的结束。父协程调用<code>Add</code>方法来设定等待的协程的数量，每个被等待的协程在结束任务执行时调用<code>Done</code>方法；同时，父协程调用<code>Wait</code>方法阻塞至所有线程结束。</p>
+<p>例如，在另一篇文章：<a href="https://juejin.cn/post/6971002900608712711" target="_blank" rel="noopener">Go缓存击穿方案-singleflight源码解读</a>，其中的singleflight就用waitGroup实现了其他协程需等待执行数据库请求的协程程执行完毕后才可获取到数据。如图中的：<code>R2:call.wg.wait()</code>会等待 <code>R1: call.done()</code>执行完后才执行后续代码。</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5274a0078fc34ce78a297feec238791c~tplv-k3u1fbpfcp-watermark.image" alt="singleflight4.jpg"></p>
+<p>问题来了，Java中异步转同步的方式又是如何呢？</p>
+<h2 id="CountDownLatch"><a href="#CountDownLatch" class="headerlink" title="CountDownLatch"></a>CountDownLatch</h2><p>CountDownLatch是Java的包<code>java.util.concurrent</code>中的一个类，允许一个或多个线程等待其他线程完成操作后再执行，从而可以实现与Go中的<code>WaitGroup</code>相同的效果。</p>
+<blockquote>
+<p>Talk is Cheap, Show me the code!</p>
+</blockquote>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> multi.thread.xxxxx.com;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.CountDownLatch;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CountDownLatchTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">final</span> CountDownLatch latch = <span class="keyword">new</span> CountDownLatch(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    System.out.println(<span class="string">"子线程"</span>+Thread.currentThread().getName()+<span class="string">"正在执行"</span>);</span><br><span class="line">                   Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">                   System.out.println(<span class="string">"子线程"</span>+Thread.currentThread().getName()+<span class="string">"执行完毕"</span>);</span><br><span class="line">               &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">                latch.countDown();</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;.start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> Thread()&#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    System.out.println(<span class="string">"子线程"</span>+Thread.currentThread().getName()+<span class="string">"正在执行"</span>);</span><br><span class="line">                    Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">                    System.out.println(<span class="string">"子线程"</span>+Thread.currentThread().getName()+<span class="string">"执行完毕"</span>);</span><br><span class="line"></span><br><span class="line">               &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">               latch.countDown();</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;.start();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"等待2个子线程执行完毕..."</span>);</span><br><span class="line">           latch.await();</span><br><span class="line">           System.out.println(<span class="string">"2个子线程已经执行完毕"</span>);</span><br><span class="line">           System.out.println(<span class="string">"继续执行主线程"</span>);</span><br><span class="line">       &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">           e.printStackTrace();</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>执行结果：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">子线程Thread-0正在执行</span><br><span class="line">等待2个子线程执行完毕...</span><br><span class="line">子线程Thread-1正在执行</span><br><span class="line">子线程Thread-0执行完毕</span><br><span class="line">子线程Thread-1执行完毕</span><br><span class="line">2个子线程已经执行完毕</span><br><span class="line">继续执行主线程</span><br></pre></td></tr></table></figure>
-<p>CountDownLatch –异步转同步</p>
-<p>【推荐】使用 CountDownLatch 进行异步转同步操作，每个线程退出前必须调用 countDown<br>方法，线程执行代码注意 catch 异常，确保 countDown 方法被执行到，避免主线程无法执行<br>至 await 方法，直到超时才返回结果。<br>说明： 注意，子线程抛出异常堆栈，不能在主线程 try-catch 到。</p>
+<p>需要注意的是，子线程抛出异常堆栈，不能在主线程 try-catch 到。所以，子线程注意catch 异常，确保 countDown 方法被执行到，避免主线程无法执行至 await 方法，直到超时才返回结果。</p>
 
       
     </div>
@@ -431,6 +437,12 @@ var _hmt = _hmt || [];
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/后端/" rel="tag"># 后端</a>
+          
+        </div>
       
 
       
@@ -535,8 +547,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -553,7 +574,7 @@ var _hmt = _hmt || [];
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -564,7 +585,7 @@ var _hmt = _hmt || [];
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -575,7 +596,7 @@ var _hmt = _hmt || [];
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -633,6 +654,22 @@ var _hmt = _hmt || [];
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事情起源"><span class="nav-number">1.</span> <span class="nav-text">事情起源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CountDownLatch"><span class="nav-number">2.</span> <span class="nav-text">CountDownLatch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -646,7 +683,7 @@ var _hmt = _hmt || [];
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

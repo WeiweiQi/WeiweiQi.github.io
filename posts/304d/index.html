@@ -11,16 +11,6 @@
 <meta name="theme-color" content="#222">
 
 
-
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-	google_ad_client: "ca-pub-7083117783441075",
-	enable_page_level_ads: true
-  });
-</script>
-
-
 <script>
 var _hmt = _hmt || [];
 (function() {
@@ -96,17 +86,17 @@ var _hmt = _hmt || [];
 
 
 
-<meta name="description" content="//TODO">
+<meta name="description" content="问题起源在Java中一个很便利的东西就是注解，而注解中最最核心就是注解执行器，而理解注解执行器就涉及到Java的反射原理。 为此，我们来通过简单的程序来了解Java反射是如何应用的。 JDK中的反射包Java是静态语言，但是Java的反射原理使得Java具有的动态性。 使用Java的反射，不需要引入任何额外的jar包或者是maven依赖，在其基本的JDK中就有，其路径为：com.lang.refl">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java反射机制与拦截器的实现">
+<meta property="og:title" content="Java反射机制">
 <meta property="og:url" content="http://qisichen.club/posts/304d/index.html">
 <meta property="og:site_name" content="Kiwi Blog">
-<meta property="og:description" content="//TODO">
+<meta property="og:description" content="问题起源在Java中一个很便利的东西就是注解，而注解中最最核心就是注解执行器，而理解注解执行器就涉及到Java的反射原理。 为此，我们来通过简单的程序来了解Java反射是如何应用的。 JDK中的反射包Java是静态语言，但是Java的反射原理使得Java具有的动态性。 使用Java的反射，不需要引入任何额外的jar包或者是maven依赖，在其基本的JDK中就有，其路径为：com.lang.refl">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-09T12:44:11.152Z">
+<meta property="og:updated_time" content="2023-03-09T00:20:10.638Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java反射机制与拦截器的实现">
-<meta name="twitter:description" content="//TODO">
+<meta name="twitter:title" content="Java反射机制">
+<meta name="twitter:description" content="问题起源在Java中一个很便利的东西就是注解，而注解中最最核心就是注解执行器，而理解注解执行器就涉及到Java的反射原理。 为此，我们来通过简单的程序来了解Java反射是如何应用的。 JDK中的反射包Java是静态语言，但是Java的反射原理使得Java具有的动态性。 使用Java的反射，不需要引入任何额外的jar包或者是maven依赖，在其基本的JDK中就有，其路径为：com.lang.refl">
 
 
 
@@ -141,8 +131,9 @@ var _hmt = _hmt || [];
 
 
 
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7083117783441075" crossorigin="anonymous"></script>
 
-  <title>Java反射机制与拦截器的实现 | Kiwi Blog</title>
+  <title>Java反射机制 | Kiwi Blog</title>
   
 
 
@@ -300,7 +291,7 @@ var _hmt = _hmt || [];
 
         
         
-          <h2 class="post-title" itemprop="name headline">Java反射机制与拦截器的实现</h2>
+          <h2 class="post-title" itemprop="name headline">Java反射机制</h2>
         
 
         <div class="post-meta">
@@ -382,7 +373,47 @@ var _hmt = _hmt || [];
       
 
       
-        <p>//TODO</p>
+        <h2 id="问题起源"><a href="#问题起源" class="headerlink" title="问题起源"></a>问题起源</h2><p>在Java中一个很便利的东西就是注解，而注解中最最核心就是注解执行器，而理解注解执行器就涉及到Java的反射原理。</p>
+<p>为此，我们来通过简单的程序来了解Java反射是如何应用的。</p>
+<h2 id="JDK中的反射包"><a href="#JDK中的反射包" class="headerlink" title="JDK中的反射包"></a>JDK中的反射包</h2><p>Java是静态语言，但是Java的反射原理使得Java具有的动态性。</p>
+<p>使用Java的反射，不需要引入任何额外的jar包或者是maven依赖，在其基本的JDK中就有，其路径为：<code>com.lang.reflect</code>。</p>
+<h2 id="反射的基本形式"><a href="#反射的基本形式" class="headerlink" title="反射的基本形式"></a>反射的基本形式</h2><p>如下所示，有一个简单的类：<code>Student</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.qw.reflect;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们现在通过反射获取其内部属性，并打印名称，程序如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Object s = <span class="keyword">new</span> Student();</span><br><span class="line">        Field[] fields = s.getClass().getDeclaredFields();</span><br><span class="line">        <span class="keyword">for</span> (Field f : fields) &#123;</span><br><span class="line">            System.out.println(f.getName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>而且，特别需要注意到的是，上述代码中，我们声明的参数<code>s</code>是一个父类型<code>Object</code>，还不是子类型。当然，设置<code>s</code>为子类型的时候也可以获取到。</p>
+<h2 id="反射中常用的类："><a href="#反射中常用的类：" class="headerlink" title="反射中常用的类："></a>反射中常用的类：</h2><h3 id="com-lang-reflect-Class"><a href="#com-lang-reflect-Class" class="headerlink" title="com.lang.reflect.Class"></a><code>com.lang.reflect.Class</code></h3><p>先来熟悉一下反射中常用的方法：如获取类的全名，通过反射创建类的对象等等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Object o = <span class="keyword">new</span> Student();</span><br><span class="line">Class&lt;?&gt; clazz = o.getClass();</span><br><span class="line">System.out.println(clazz.getName());</span><br><span class="line">System.out.println(clazz.getSimpleName());</span><br><span class="line">System.out.println(clazz.getCanonicalName());</span><br><span class="line">System.out.println(clazz.getTypeName());</span><br></pre></td></tr></table></figure>
+<p>最终的输出结果为：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">com.qw.reflect.Student</span><br><span class="line">Student</span><br><span class="line">com.qw.reflect.Student</span><br><span class="line">com.qw.reflect.Student</span><br></pre></td></tr></table></figure>
+<p><code>getSimpleName</code>返回了最简单的类名，而其他方法返回的均为包含“包”路径的类名，专业名称为：“完全限定类名”。</p>
+<p>反过来，知道了类的完整类名，我们能否创建类的对象呢？方式如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; clazz1 = Class.forName(<span class="string">"com.qw.reflect.Student"</span>);</span><br><span class="line">System.out.println(clazz1.getName());</span><br><span class="line">System.out.println(clazz1.getSimpleName());</span><br><span class="line">System.out.println(clazz1.getCanonicalName());</span><br><span class="line">System.out.println(clazz1.getTypeName());</span><br></pre></td></tr></table></figure>
+<p>输出效果如下（实际上和上一端完全一样）</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">com.qw.reflect.Student</span><br><span class="line">Student</span><br><span class="line">com.qw.reflect.Student</span><br><span class="line">com.qw.reflect.Student</span><br></pre></td></tr></table></figure>
+<h3 id="java-lang-reflect-Modifier"><a href="#java-lang-reflect-Modifier" class="headerlink" title="java.lang.reflect.Modifier"></a><code>java.lang.reflect.Modifier</code></h3><p>Modifier为修饰符类，可以帮助我们获取类的修饰符，使用样例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; clazz1 = Class.forName(<span class="string">"com.qw.reflect.Student"</span>);</span><br><span class="line">System.out.println(Modifier.isPublic(clazz1.getModifiers())); <span class="comment">// true</span></span><br><span class="line">System.out.println(Modifier.isAbstract(clazz1.getModifiers())); <span class="comment">// false</span></span><br><span class="line">System.out.println(Modifier.isProtected(clazz1.getModifiers()));<span class="comment">// false</span></span><br><span class="line">System.out.println(Modifier.isPrivate(clazz1.getModifiers()));<span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p>借助反射包中的类，我们可以获取对象的包信息，父类信息，所实现的接口信息等等，也能够获取类的构造器Constructor，类中的属性域Field，以及类中的方法Method。</p>
+<p>其中需要注意的一点是，在反射中，获取父类或所实现的接口时，仅限于其直接使用<code>implements</code>实现的接口，即在代码中直接写明的实现接口，而通过父类继承，实现的接口不会在反射中获取。</p>
+<h2 id="通过反射调用类中的方法"><a href="#通过反射调用类中的方法" class="headerlink" title="通过反射调用类中的方法"></a>通过反射调用类中的方法</h2><p>因为我本人更关心添加在方法上的注解，所以我也更关心在反射中对于方法的调用与获取。我们来看看如何通过反射调用类中的方法。</p>
+<p>为此，我们给上面例子中的Student类添加一下方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.qw.reflect;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isYoung</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (age &lt; <span class="number">18</span>) &#123;</span><br><span class="line">            System.out.println(age + <span class="string">"年纪是年轻"</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(age + <span class="string">"早已青春不再"</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>先来尝试获取一下类的方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; clazz1 = Class.forName(<span class="string">"com.qw.reflect.Student"</span>);</span><br><span class="line">Method[] methods = clazz1.getMethods();</span><br><span class="line"><span class="keyword">for</span> (Method method : methods) &#123;</span><br><span class="line">    System.out.println(method.getName());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">isYoung</span><br><span class="line">wait</span><br><span class="line">wait</span><br><span class="line">wait</span><br><span class="line">equals</span><br><span class="line">toString</span><br><span class="line">hashCode</span><br><span class="line">getClass</span><br><span class="line">notify</span><br><span class="line">notifyAll</span><br></pre></td></tr></table></figure>
+<p>我们发现，除了Student本身的方法外，其继承的Object类中的方法也都被打印了出来。为了规避Object类的方法，我们可以使用<code>getDeclaredMethods()</code>方法，如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; clazz1 = Class.forName(<span class="string">"com.qw.reflect.Student"</span>);</span><br><span class="line">        Method[] methods = clazz1.getDeclaredMethods();</span><br><span class="line">        <span class="keyword">for</span> (Method method : methods) &#123;</span><br><span class="line">            System.out.println(method.getName());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出：isYoung</span></span><br></pre></td></tr></table></figure>
+<p>或者直接获取指定方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; clazz1 = Class.forName(<span class="string">"com.qw.reflect.Student"</span>);</span><br><span class="line">Method method = clazz1.getMethod(<span class="string">"isYoung"</span>, <span class="keyword">int</span>.class);</span><br><span class="line">System.out.println(method.getName());</span><br><span class="line"><span class="comment">// 输出：isYoung</span></span><br></pre></td></tr></table></figure>
+<p>其中，getMethod的剩余参数表示获取方法所需要传参的类型。</p>
+<p>接下来，重头戏，如何通过反射执行类中的方法呢：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; clazz1 = Class.forName(<span class="string">"com.qw.reflect.Student"</span>);</span><br><span class="line">Method method = clazz1.getMethod(<span class="string">"isYoung"</span>, <span class="keyword">int</span>.class);</span><br><span class="line">Object o = clazz1.newInstance();</span><br><span class="line">method.invoke(o, <span class="number">15</span>);</span><br><span class="line">method.invoke(o, <span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">15年纪是年轻</span><br><span class="line">20早已青春不再</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，invoke方法的第一个参数是指定类的对象，因为<code>isYoung</code>不是静态方法，必须要用指定的实体对象类执行。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>至此，我们已经大致了解了java中反射的基本概念，知道了如何通过反射调用指定类中的方法了。</p>
+<p>然而设计到注解的另一个问题是，我们并不想在反射处理器中实际执行方法，而仅仅是监视方法的执行，这就涉及到另一个概念：AOP。</p>
 
       
     </div>
@@ -530,8 +561,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -548,7 +588,7 @@ var _hmt = _hmt || [];
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -559,7 +599,7 @@ var _hmt = _hmt || [];
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -570,7 +610,7 @@ var _hmt = _hmt || [];
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -628,6 +668,22 @@ var _hmt = _hmt || [];
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题起源"><span class="nav-number">1.</span> <span class="nav-text">问题起源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK中的反射包"><span class="nav-number">2.</span> <span class="nav-text">JDK中的反射包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射的基本形式"><span class="nav-number">3.</span> <span class="nav-text">反射的基本形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射中常用的类："><span class="nav-number">4.</span> <span class="nav-text">反射中常用的类：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#com-lang-reflect-Class"><span class="nav-number">4.1.</span> <span class="nav-text">com.lang.reflect.Class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java-lang-reflect-Modifier"><span class="nav-number">4.2.</span> <span class="nav-text">java.lang.reflect.Modifier</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过反射调用类中的方法"><span class="nav-number">5.</span> <span class="nav-text">通过反射调用类中的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -641,7 +697,7 @@ var _hmt = _hmt || [];
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
