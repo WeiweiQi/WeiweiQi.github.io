@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?5b83ed66f796333793c0cf3ba26c1a9f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="jfinal项目重构为springboot项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jfinal框架改造为springboot微服务过程">
+<meta property="og:url" content="https://weiwei.github.io/2019/03/18/jfinal框架改造为springboot微服务过程/index.html">
+<meta property="og:site_name" content="Type The World">
+<meta property="og:description" content="jfinal项目重构为springboot项目">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2023-03-09T00:20:10.677Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jfinal框架改造为springboot微服务过程">
+<meta name="twitter:description" content="jfinal项目重构为springboot项目">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://weiwei.github.io/2019/03/18/jfinal框架改造为springboot微服务过程/">
+
+
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7083117783441075" crossorigin="anonymous"></script>
+
+  <title>jfinal框架改造为springboot微服务过程 | Type The World</title>
+  
+
+
+
+
+
+
+
+
+
+  <!-- 
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+   -->
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Type The World</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">The feeling of typing with thought</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://weiwei.github.io/2019/03/18/jfinal框架改造为springboot微服务过程/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kiwi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Type The World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">jfinal框架改造为springboot微服务过程</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-18T08:41:07+08:00">
+                2019-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/18/jfinal框架改造为springboot微服务过程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/18/jfinal框架改造为springboot微服务过程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>jfinal项目重构为springboot项目</p>
+<a id="more"></a>
+<h2 id="eclipse插件安装"><a href="#eclipse插件安装" class="headerlink" title="eclipse插件安装"></a>eclipse插件安装</h2><p>我们选择的插件是 <strong>Spring Tools 4 - for Spring Boot (aka Spring Tool Suite 4) 4.1.2.RELEASE</strong></p>
+<h2 id="maven下载安装与eclipse配置"><a href="#maven下载安装与eclipse配置" class="headerlink" title="maven下载安装与eclipse配置"></a>maven下载安装与eclipse配置</h2><p>我采用的是 maven 3.6</p>
+<h2 id="configConstant-PropKit-gt-application-properties"><a href="#configConstant-PropKit-gt-application-properties" class="headerlink" title="configConstant/PropKit -&gt; application.properties"></a>configConstant/PropKit -&gt; application.properties</h2><p>例如，区分开发环境与正式环境</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">spring.profiles.active=dev</span><br><span class="line">-- spring.profiles.active=pro</span><br><span class="line">-- debug=true</span><br><span class="line"></span><br><span class="line">-- application.properties</span><br><span class="line">-- application-dev.properties</span><br><span class="line">-- application-pro.properties</span><br></pre></td></tr></table></figure>
+<p>常量配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">application.properties</span></span><br><span class="line">spring.redis.host=</span><br><span class="line">spring.redis.name=</span><br><span class="line">spring.redis.password=</span><br><span class="line">spring.redis.database=</span><br><span class="line">spring.redis.port=</span><br></pre></td></tr></table></figure>
+<p>java中取的配置文件的值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value</span>(<span class="string">"$&#123;spring.redis.host&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> String redisHost;</span><br><span class="line"><span class="meta">@Value</span>(<span class="string">"$&#123;spring.redis.name&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> String redisName;</span><br><span class="line"><span class="meta">@Value</span>(<span class="string">"$&#123;spring.redis.password&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> String redisPassword;</span><br><span class="line"><span class="meta">@Value</span>(<span class="string">"$&#123;spring.redis.port&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> String redisPort;</span><br><span class="line"><span class="meta">@Value</span>(<span class="string">"$&#123;spring.redis.database&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> String redisDatabase;</span><br></pre></td></tr></table></figure>
+<h2 id="路由配置-configRoute-gt-requestmapping"><a href="#路由配置-configRoute-gt-requestmapping" class="headerlink" title="路由配置 configRoute -&gt; requestmapping"></a>路由配置 configRoute -&gt; requestmapping</h2><p>jfinal中的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configRoute</span><span class="params">(Routes me)</span> </span>&#123;</span><br><span class="line">    me.add(<span class="string">"/hello"</span>, HelloController.class);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>修改为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">HelloController.class</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"hello"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> <span class="keyword">extends</span> <span class="title">ControllerExt</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"addvote"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">addvote</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="comment">// code</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="插件配置-configPlugin-gt-Configuration"><a href="#插件配置-configPlugin-gt-Configuration" class="headerlink" title="插件配置 configPlugin -&gt;  @Configuration"></a>插件配置 configPlugin -&gt;  @Configuration</h2><p>例如，如何使用jfinal的ActiveRecordPlugin插件操作数据库，原本jfinal的代码：<br>(其中包括Redis插件)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 配置插件</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configPlugin</span><span class="params">(Plugins me)</span> </span>&#123;</span><br><span class="line">		DruidPlugin druidPlugin = createDruidPlugin();</span><br><span class="line">		me.add(druidPlugin);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 配置ActiveRecord插件</span></span><br><span class="line">		ActiveRecordPlugin arp = <span class="keyword">new</span> ActiveRecordPlugin(druidPlugin);</span><br><span class="line">		me.add(arp);</span><br><span class="line">		<span class="comment">// 所有配置在 MappingKit 中搞定</span></span><br><span class="line">		_MappingKit.mapping(arp);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//mall商城数据源</span></span><br><span class="line">		DruidPlugin druidPlugin_database1 = createDruidPlugin_database1();</span><br><span class="line">		wallFilter = <span class="keyword">new</span> WallFilter(); <span class="comment">// 加强数据库安全</span></span><br><span class="line">		wallFilter.setDbType(<span class="string">"mysql"</span>);</span><br><span class="line">		druidPlugin_mall.addFilter(wallFilter);</span><br><span class="line">		druidPlugin_mall.addFilter(<span class="keyword">new</span> StatFilter()); <span class="comment">// 添加 StatFilter 才会有统计数据</span></span><br><span class="line">		me.add(druidPlugin_mall);</span><br><span class="line">		ActiveRecordPlugin arp_database1 = <span class="keyword">new</span> ActiveRecordPlugin(<span class="string">"database1"</span>,druidPlugin_mall);</span><br><span class="line">		me.add(arp_mall);</span><br><span class="line">		<span class="comment">// 注册Redis插件</span></span><br><span class="line">		RedisPlugin RedisPlugin;</span><br><span class="line">		<span class="keyword">if</span> (PropKit.getBoolean(<span class="string">"devMode"</span>, <span class="keyword">true</span>))</span><br><span class="line">			RedisPlugin = <span class="keyword">new</span> RedisPlugin(PropKit.get(<span class="string">"redisname"</span>), PropKit.get(<span class="string">"redisserverip"</span>), Integer.parseInt(PropKit.get(<span class="string">"redisport"</span>)), <span class="number">0</span>,</span><br><span class="line">					PropKit.get(<span class="string">"redispw"</span>), <span class="number">2</span>);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			RedisPlugin = <span class="keyword">new</span> RedisPlugin(PropKit.get(<span class="string">"redisname"</span>), PropKit.get(<span class="string">"redisserverip"</span>), Integer.parseInt(PropKit.get(<span class="string">"redisport"</span>)), <span class="number">0</span>,</span><br><span class="line">					PropKit.get(<span class="string">"redispw"</span>), <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">		me.add(RedisPlugin);</span><br><span class="line"></span><br><span class="line">		QuartzPlugin QuartzPlugin = <span class="keyword">new</span> QuartzPlugin();</span><br><span class="line">		me.add(QuartzPlugin);</span><br><span class="line"></span><br><span class="line">		QuartzDynamicPlugin QuartzDynamicPlugin = <span class="keyword">new</span> QuartzDynamicPlugin();</span><br><span class="line">		me.add(QuartzDynamicPlugin);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>在springboot中修改为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span>    </span><br><span class="line">   <span class="function"><span class="keyword">public</span> ActiveRecordPlugin <span class="title">initActiveRecordPlugin</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       druidPlugin = <span class="keyword">new</span> DruidPlugin(url, username, password);</span><br><span class="line">       <span class="comment">// 加强数据库安全</span></span><br><span class="line">       WallFilter wallFilter = <span class="keyword">new</span> WallFilter();</span><br><span class="line">       wallFilter.setDbType(<span class="string">"mysql"</span>);</span><br><span class="line">       druidPlugin.addFilter(wallFilter);</span><br><span class="line">       <span class="comment">// 添加 StatFilter 才会有统计数据</span></span><br><span class="line">       <span class="comment">// druidPlugin.addFilter(new StatFilter());</span></span><br><span class="line">       <span class="comment">// 必须手动调用start</span></span><br><span class="line">       druidPlugin.start(); <span class="comment">//important</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       arp = <span class="keyword">new</span> ActiveRecordPlugin(druidPlugin);</span><br><span class="line">       arp.setTransactionLevel(Connection.TRANSACTION_READ_COMMITTED);</span><br><span class="line">       _MappingKit.mapping(arp);</span><br><span class="line">       arp.setShowSql(<span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">       arp.getEngine().setSourceFactory(<span class="keyword">new</span> ClassPathSourceFactory());</span><br><span class="line">       <span class="comment">//arp.addSqlTemplate("/sql/all_sqls.sql");</span></span><br><span class="line">       <span class="comment">// 必须手动调用start</span></span><br><span class="line">       arp.start();</span><br><span class="line"></span><br><span class="line">       redisPlugin = <span class="keyword">new</span> RedisPlugin(redisName,</span><br><span class="line">           redisHost,</span><br><span class="line">           Integer.parseInt(redisPort), <span class="number">0</span>,</span><br><span class="line">       redisPassword, Integer.parseInt(redisDatabase));</span><br><span class="line">       redisPlugin.start();</span><br><span class="line"></span><br><span class="line">       qdp = <span class="keyword">new</span> QuartzDynamicPlugin();</span><br><span class="line">       qdp.start();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">return</span> arp;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="全局拦截器-configInterceptor-gt-WebMvcConfigurationSupport"><a href="#全局拦截器-configInterceptor-gt-WebMvcConfigurationSupport" class="headerlink" title="全局拦截器 configInterceptor -&gt; WebMvcConfigurationSupport"></a>全局拦截器 configInterceptor -&gt; WebMvcConfigurationSupport</h2><p>涉及中文乱码问题</p>
+<p>jfinal中的:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 配置全局拦截器</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configInterceptor</span><span class="params">(Interceptors me)</span> </span>&#123;</span><br><span class="line">		me.add(<span class="keyword">new</span> EncodingInterceptor());</span><br><span class="line">		me.add(<span class="keyword">new</span> ExceptionInterceptor());</span><br><span class="line">		me.add(<span class="keyword">new</span> AuthInterceptor());</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Springboot中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InterceptorConfig</span> <span class="keyword">extends</span> <span class="title">WebMvcConfigurationSupport</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> </span>&#123;</span><br><span class="line">		registry.addInterceptor(<span class="keyword">new</span> TestInterceptor())</span><br><span class="line">				.addPathPatterns(<span class="string">"/**"</span>)</span><br><span class="line">				.excludePathPatterns(<span class="string">"/error"</span>);</span><br><span class="line">		registry.addInterceptor(<span class="keyword">new</span> AuthInterceptor())</span><br><span class="line">                .excludePathPatterns(<span class="string">"/error"</span>);</span><br><span class="line">		<span class="keyword">super</span>.addInterceptors(registry);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 中文乱码的解决方案</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> HttpMessageConverter&lt;String&gt; <span class="title">responseBodyConverter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        StringHttpMessageConverter converter = <span class="keyword">new</span> StringHttpMessageConverter(</span><br><span class="line">                Charset.forName(<span class="string">"UTF-8"</span>));</span><br><span class="line">        <span class="keyword">return</span> converter;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 中文乱码问题，json格式转换</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configureMessageConverters</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">            List&lt;HttpMessageConverter&lt;?&gt;&gt; converters)</span> </span>&#123;</span><br><span class="line">        converters.add(responseBodyConverter());</span><br><span class="line"></span><br><span class="line">      <span class="comment">//1.需要定义一个convert转换消息的对象;</span></span><br><span class="line">        FastJsonHttpMessageConverter fastJsonHttpMessageConverter = <span class="keyword">new</span> FastJsonHttpMessageConverter();</span><br><span class="line">        <span class="comment">//2.添加fastJson的配置信息，比如：是否要格式化返回的json数据;</span></span><br><span class="line">        FastJsonConfig fastJsonConfig = <span class="keyword">new</span> FastJsonConfig();</span><br><span class="line">        fastJsonConfig.setSerializerFeatures(SerializerFeature.PrettyFormat);</span><br><span class="line">        <span class="comment">//3处理中文乱码问题</span></span><br><span class="line">        List&lt;MediaType&gt; fastMediaTypes = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        fastMediaTypes.add(MediaType.APPLICATION_JSON_UTF8);</span><br><span class="line">        <span class="comment">//4.在convert中添加配置信息.</span></span><br><span class="line">        fastJsonHttpMessageConverter.setSupportedMediaTypes(fastMediaTypes);</span><br><span class="line">        fastJsonHttpMessageConverter.setFastJsonConfig(fastJsonConfig);</span><br><span class="line">        <span class="comment">//5.将convert添加到converters当中.</span></span><br><span class="line">        converters.add(fastJsonHttpMessageConverter);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">super</span>.configureMessageConverters(converters);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configureContentNegotiation</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">            ContentNegotiationConfigurer configurer)</span> </span>&#123;</span><br><span class="line">        configurer.favorPathExtension(<span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="configHandler-gt-ResponseEntityExceptionHandler-ResponseBodyAdvice"><a href="#configHandler-gt-ResponseEntityExceptionHandler-ResponseBodyAdvice" class="headerlink" title="configHandler -&gt; ResponseEntityExceptionHandler/ResponseBodyAdvice"></a>configHandler -&gt; ResponseEntityExceptionHandler/ResponseBodyAdvice</h2><p>涉及到格式化输出，统一的异常处理。</p>
+<p>jfinal中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 配置处理器</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configHandler</span><span class="params">(Handlers me)</span> </span>&#123;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>springboot中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GlobalResponseHandler</span> <span class="keyword">extends</span> <span class="title">ResponseEntityExceptionHandler</span> <span class="keyword">implements</span> <span class="title">ResponseBodyAdvice</span>&lt;<span class="title">Object</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Value</span>(<span class="string">"$&#123;spring.profiles.active&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> String active;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">supports</span><span class="params">(MethodParameter returnType, Class&lt;? extends HttpMessageConverter&lt;?&gt;&gt; converterType)</span> </span>&#123;</span><br><span class="line">      <span class="comment">//控制所支持的类型</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">beforeBodyWrite</span><span class="params">(Object body, MethodParameter returnType, MediaType selectedContentType,</span></span></span><br><span class="line"><span class="function"><span class="params">			Class&lt;? extends HttpMessageConverter&lt;?&gt;&gt; selectedConverterType, ServerHttpRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">			ServerHttpResponse response)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//一般数据的格式化处理</span></span><br><span class="line">    <span class="keyword">return</span> body;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@ResponseStatus</span>(HttpStatus.OK)</span><br><span class="line">	<span class="meta">@ExceptionHandler</span>(MyException.class)</span><br><span class="line">	<span class="keyword">public</span> &lt;T&gt; <span class="function">GlobalResponse&lt;T&gt; <span class="title">handleException</span><span class="params">(HttpServletRequest request, MyException e)</span> </span>&#123;</span><br><span class="line">		  <span class="comment">//格式化输出自定义异常</span></span><br><span class="line">			<span class="keyword">return</span> GlobalResponse.fail(e.getMessage());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@ResponseStatus</span>(HttpStatus.OK)</span><br><span class="line">	<span class="meta">@ExceptionHandler</span>(Exception.class)</span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="keyword">public</span> &lt;T&gt; <span class="function">GlobalResponse&lt;T&gt; <span class="title">handleException</span><span class="params">(HttpServletRequest request, Exception e)</span> </span>&#123;</span><br><span class="line">      <span class="comment">//格式化输出异常</span></span><br><span class="line">			<span class="keyword">return</span> GlobalResponse.fail(<span class="string">"Error para"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h2><p>例如jfinal中有onStart()、onStop()系统启动完成之后以及系统关闭之前分别回调这两个方法，springboot中支持更好, 并且springboot支持自定义事件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationEventListener</span> <span class="keyword">implements</span> <span class="title">ApplicationListener</span>&lt;<span class="title">ApplicationEvent</span>&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onApplicationEvent</span><span class="params">(ApplicationEvent event)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 在这里可以监听到Spring Boot的生命周期</span></span><br><span class="line">        <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ApplicationEnvironmentPreparedEvent) &#123;</span><br><span class="line">        	<span class="comment">// 初始化环境变量</span></span><br><span class="line">        	System.out.println(<span class="string">"初始化环境变量"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ApplicationPreparedEvent) &#123;</span><br><span class="line">        	<span class="comment">// 初始化完成</span></span><br><span class="line">        	System.out.println(<span class="string">"初始化完成"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ContextRefreshedEvent) &#123;</span><br><span class="line">        	<span class="comment">// 应用刷新</span></span><br><span class="line">        	System.out.println(<span class="string">"应用刷新"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ApplicationReadyEvent) &#123;</span><br><span class="line">        	<span class="comment">// 应用已启动完成</span></span><br><span class="line">        	System.out.println(<span class="string">"应用已启动完成"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ContextStartedEvent) &#123;</span><br><span class="line">        	<span class="comment">// 应用启动，需要在代码动态添加监听器才可捕获</span></span><br><span class="line">        	System.out.println(<span class="string">"应用启动，需要在代码动态添加监听器才可捕获 "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ContextStoppedEvent) &#123;</span><br><span class="line">        	<span class="comment">// 应用停止</span></span><br><span class="line">        	System.out.println(<span class="string">"应用停止"</span>);</span><br><span class="line">        	System.out.println(<span class="string">"关闭数据库与redis连接"</span>);</span><br><span class="line">            ActiveRecordPluginConfig.qdp.stop();</span><br><span class="line">        	ActiveRecordPluginConfig.arp.stop();</span><br><span class="line">        	ActiveRecordPluginConfig.druidPlugin.stop();</span><br><span class="line">        	ActiveRecordPluginConfig.redisPlugin.stop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ContextClosedEvent) &#123;</span><br><span class="line">        	<span class="comment">// 应用关闭</span></span><br><span class="line">        	System.out.println(<span class="string">"应用关闭"</span>);</span><br><span class="line">        	System.out.println(<span class="string">"关闭数据库与redis连接"</span>);</span><br><span class="line">            ActiveRecordPluginConfig.qdp.stop();</span><br><span class="line">        	ActiveRecordPluginConfig.arp.stop();</span><br><span class="line">        	ActiveRecordPluginConfig.druidPlugin.stop();</span><br><span class="line">        	ActiveRecordPluginConfig.redisPlugin.stop();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        	System.out.println(<span class="string">"应用的其他操作"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Controller-变更"><a href="#Controller-变更" class="headerlink" title="Controller 变更"></a>Controller 变更</h2><p>注解@RestController/@Controller表示此类为Controller<br>RequestMapping注解标识访问路径和方法等</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"hello"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> <span class="keyword">extends</span> <span class="title">ControllerExt</span></span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 新增投票活动</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">   <span class="comment">//访问路径: /hello/sayhi?para=...</span></span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"sayhi"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">sayhi</span><span class="params">(String para)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello"</span></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="日志配置"><a href="#日志配置" class="headerlink" title="日志配置"></a>日志配置</h2><p>springboot默认的是logback，若替换为jfinal使用的logkit需要：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- pom.xml --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 去掉springboot自带的log框架 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">		        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">		            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">		            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">		        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">		        <span class="comment">&lt;!-- &lt;exclusion&gt;</span></span><br><span class="line"><span class="comment">		        &lt;groupId&gt;org.slf4j&lt;/groupId&gt;</span></span><br><span class="line"><span class="comment">		        &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;</span></span><br><span class="line"><span class="comment">		      &lt;/exclusion&gt; --&gt;</span></span><br><span class="line">		    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span>   </span><br><span class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">&lt;!-- 添加日志框架 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">       			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           		<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.16<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    	    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    	    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">       			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>slf4j-api<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           		<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.7.21<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    	    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    	    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">       			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>slf4j-nop<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">           		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-nop<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">           		<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.7.21<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">           		<span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    	    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="事务处理-Before-Tx-class"><a href="#事务处理-Before-Tx-class" class="headerlink" title="事务处理 @Before(Tx.class)"></a>事务处理 @Before(Tx.class)</h2><p>//自定义注解</p>
+<p>参考链接 <a href="https://www.jianshu.com/p/090c8b6c1dca" target="_blank" rel="noopener">JFinal ActiveRecordPlugin插件事物交给Spring管理</a></p>
+<h2 id="热部署配置方法"><a href="#热部署配置方法" class="headerlink" title="热部署配置方法"></a>热部署配置方法</h2><p>pom.xml配置热部署</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">	               <span class="tag">&lt;<span class="name">fork</span>&gt;</span>true<span class="tag">&lt;/<span class="name">fork</span>&gt;</span></span><br><span class="line">	            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+<h2 id="Bean"><a href="#Bean" class="headerlink" title="@Bean"></a>@Bean</h2><ul>
+<li>Spring容器管理的Java对象称之为Bean。</li>
+<li>依赖注入其主要的作用，可以说就是维护Spring容器创建的Bean之间的依赖关系，简单来说就是一个bean（假定名为A）持有另一个Bean（假定名为B）的引用作为成员变量b，则由Spring容器自动将B赋值给A的成员变量b</li>
+</ul>
+<h2 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h2><p>根据检索与尝试结果，springboot自带的定时任务功能可以较好的支持固定不变的定时任务，例如固定执行频率，固定执行频率+初次延迟，cron表达式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//springboot自带的几种定时任务注解</span></span><br><span class="line"><span class="meta">@Scheduled</span>(fixedRate = <span class="number">1000</span>)</span><br><span class="line"><span class="meta">@Scheduled</span>(fixedDelay = <span class="number">1000</span>)</span><br><span class="line"><span class="meta">@Scheduled</span>(fixedRate = <span class="number">1000</span>, initialDelay = <span class="number">5000</span>)</span><br><span class="line"><span class="meta">@Scheduled</span>(cron = <span class="string">"[Seconds] [Minutes] [Hours] [Day of month] [Month] [Day of week] [Year]"</span>)</span><br></pre></td></tr></table></figure>
+<p>因此，动态定时任务需要结合Quartz插件。资料：<a href="https://blog.csdn.net/haoxiaoyong1014/article/details/83339169" target="_blank" rel="noopener">csdn博客</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢您的支持，予人玫瑰，手有余香</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Kiwi 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Kiwi 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/01/微服务改造过程感受/" rel="next" title="微服务改造过程感受">
+                <i class="fa fa-chevron-left"></i> 微服务改造过程感受
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/20/诗歌《如果》/" rel="prev" title="诗歌《如果》">
+                诗歌《如果》 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/weiweiqi_child.jpg" alt="Kiwi">
+            
+              <p class="site-author-name" itemprop="name">Kiwi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/WeiweiQi" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/AbelZone" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-cnblog"></i>博客园</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:qiweiweiw@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://118.24.248.78/demo.html" target="_blank" title="婚纱册">
+                      
+                        <i class="fa fa-fw fa-globe"></i>婚纱册</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/users/9259689/kiwi-qi" target="_blank" title="StackOverflow">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#eclipse插件安装"><span class="nav-number">1.</span> <span class="nav-text">eclipse插件安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven下载安装与eclipse配置"><span class="nav-number">2.</span> <span class="nav-text">maven下载安装与eclipse配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#configConstant-PropKit-gt-application-properties"><span class="nav-number">3.</span> <span class="nav-text">configConstant/PropKit -&gt; application.properties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由配置-configRoute-gt-requestmapping"><span class="nav-number">4.</span> <span class="nav-text">路由配置 configRoute -&gt; requestmapping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插件配置-configPlugin-gt-Configuration"><span class="nav-number">5.</span> <span class="nav-text">插件配置 configPlugin -&gt;  @Configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局拦截器-configInterceptor-gt-WebMvcConfigurationSupport"><span class="nav-number">6.</span> <span class="nav-text">全局拦截器 configInterceptor -&gt; WebMvcConfigurationSupport</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#configHandler-gt-ResponseEntityExceptionHandler-ResponseBodyAdvice"><span class="nav-number">7.</span> <span class="nav-text">configHandler -&gt; ResponseEntityExceptionHandler/ResponseBodyAdvice</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件监听"><span class="nav-number">8.</span> <span class="nav-text">事件监听</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Controller-变更"><span class="nav-number">9.</span> <span class="nav-text">Controller 变更</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日志配置"><span class="nav-number">10.</span> <span class="nav-text">日志配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务处理-Before-Tx-class"><span class="nav-number">11.</span> <span class="nav-text">事务处理 @Before(Tx.class)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#热部署配置方法"><span class="nav-number">12.</span> <span class="nav-text">热部署配置方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean"><span class="nav-number">13.</span> <span class="nav-text">@Bean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定时任务"><span class="nav-number">14.</span> <span class="nav-text">定时任务</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WeiweiQi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+<span id="busuanzi_container_site_uv" style="display:none">
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+<br>
+<span><a href="http://www.miibeian.gov.cn">冀ICP备18034425号-1</a></span>
+</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'Lx94yoa9poRdoFE5H0OXgArW-gzGzoHsz',
+        appKey: 'pRKL2WbraNDsJPEnB5qlPmWa',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?5b83ed66f796333793c0cf3ba26c1a9f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="非专业翻译，欢迎指正！ ——————————-原文翻译————————————-  原文链接：http://gee.cs.oswego.edu/dl/html/StreamParallelGuidance.html 辅助翻译工具：DeepL  何时使用并行流？ [草稿，2014年9月1日。目前，最小程度格式规范，刊登位置待定。] java.util.streams框架支持对集合和其他资源进行数据驱">
+<meta property="og:type" content="article">
+<meta property="og:title" content="何时应该使用parrallelStream｜Java 刷题打卡">
+<meta property="og:url" content="https://weiwei.github.io/2021/05/22/何时应该使用parrallelStream｜Java-刷题打卡/index.html">
+<meta property="og:site_name" content="Type The World">
+<meta property="og:description" content="非专业翻译，欢迎指正！ ——————————-原文翻译————————————-  原文链接：http://gee.cs.oswego.edu/dl/html/StreamParallelGuidance.html 辅助翻译工具：DeepL  何时使用并行流？ [草稿，2014年9月1日。目前，最小程度格式规范，刊登位置待定。] java.util.streams框架支持对集合和其他资源进行数据驱">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2023-03-09T00:20:10.734Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="何时应该使用parrallelStream｜Java 刷题打卡">
+<meta name="twitter:description" content="非专业翻译，欢迎指正！ ——————————-原文翻译————————————-  原文链接：http://gee.cs.oswego.edu/dl/html/StreamParallelGuidance.html 辅助翻译工具：DeepL  何时使用并行流？ [草稿，2014年9月1日。目前，最小程度格式规范，刊登位置待定。] java.util.streams框架支持对集合和其他资源进行数据驱">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://weiwei.github.io/2021/05/22/何时应该使用parrallelStream｜Java-刷题打卡/">
+
+
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7083117783441075" crossorigin="anonymous"></script>
+
+  <title>何时应该使用parrallelStream｜Java 刷题打卡 | Type The World</title>
+  
+
+
+
+
+
+
+
+
+
+  <!-- 
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+   -->
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Type The World</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">The feeling of typing with thought</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://weiwei.github.io/2021/05/22/何时应该使用parrallelStream｜Java-刷题打卡/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kiwi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Type The World">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">何时应该使用parrallelStream｜Java 刷题打卡</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-22T08:09:36+08:00">
+                2021-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/05/22/何时应该使用parrallelStream｜Java-刷题打卡/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/05/22/何时应该使用parrallelStream｜Java-刷题打卡/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>非专业翻译，欢迎指正！</p>
+<p>——————————-原文翻译————————————-</p>
+<blockquote>
+<p>原文链接：<a href="http://gee.cs.oswego.edu/dl/html/StreamParallelGuidance.html" target="_blank" rel="noopener">http://gee.cs.oswego.edu/dl/html/StreamParallelGuidance.html</a></p>
+<p>辅助翻译工具：DeepL</p>
+</blockquote>
+<p>何时使用并行流？</p>
+<p>[草稿，2014年9月1日。目前，最小程度格式规范，刊登位置待定。]</p>
+<p>java.util.streams框架支持对集合和其他资源进行数据驱动的操作。大多数流方法对每个数据元素应用相同的操作。当有多个CPU核心可用时，通过使用集合的parallelStream()方法，”数据驱动 “可以变成 “数据并行”。但是，你应该在什么时候这样做呢？</p>
+<p>当操作是独立的，并且计算成本很高，或操作是应用于可有效分割的数据结构的大量元素，或者两者兼而有之时，考虑使用S.parallelStream().operation(F)代替S.stream().operation(F)。更详细地讲：</p>
+<ul>
+<li><strong>F</strong>，每个元素的函数（通常是一个lambda）是独立的：每个元素的计算不依赖或影响任何其他元素的计算。（查看stream包摘要获取关于使用无状态非干扰函数的进一步指导）。</li>
+<li><strong>S</strong>，源集合是可有效分割的。除了Collections，还有一些其他容易并行化的流源，例如java.util.SplittableRandom（对于它，你可以使用stream.parallel()方法来并行化）。但是大多数基于IO的源主要是为顺序使用而设计的。</li>
+<li>执行顺序版本的总时间超过了一个最低阈值。如今，在大多数平台上，这个阈值大约是100微秒（同一数量级内）。不过你不需要精确地测量这个。在实践中，你可以通过用<strong>N</strong>（元素的数量）乘以<strong>Q</strong>（执行<strong>F</strong>的每个元素的开销）来估计这个数字，反过来把<strong>Q</strong>估计为操作或代码行的数量，然后检查<strong>N*Q</strong>至少是10000。（如果不确定，可以再加一两个零）因此，当F是一个很小的函数，如<code>x-&gt;x+1</code>，那么它需要<strong>N</strong>&gt;=10000个元素，并行执行才是值得的。反之，当F是一个大规模的计算，比如在国际象棋游戏中寻找最佳的下一步，<strong>Q</strong>因子是如此之高，以至于只要集合是完全可分割的，<strong>N</strong>就不重要了。</li>
+<li>（个人补充）对于IO操作，数据库操作，则要去估计时间开销了，代码行数已经没有太多的参考价值。</li>
+</ul>
+<p>流框架没有（也不能）强制要求满足这些条件。如果计算不是独立的，那么并行运行将没有任何意义，甚至可能导致严重的错误。其他标准源于三个工程问题和权衡：</p>
+<ul>
+<li>启动<br>随着处理器多年来不断增加内核，大多数处理器也增加了功率控制机制，这会使内核启动缓慢，有时还会有JVM、操作系统和管理程序所带来的额外开销。此启动开销与大量内核处理并行子任务需要的时间相当。一旦启动，并行计算可能比顺序计算更节能（取决于各种处理器和系统细节；例如，见Federova等人的这篇<a href="http://queue.acm.org/detail.cfm?id=1658422" target="_blank" rel="noopener">文章</a>）。</li>
+<li>颗粒度<br>对已经很小的计算进行细分是不值得的。框架通常会将问题分割开来，以便由系统中所有可用的核来处理子问题。如果每个核心在启动后实际上没有什么可做的，那么（大多顺序执行）设置为并行计算的努力就被白费了。考虑到现在内核的实际范围是2到256个，这个阈值也避免了过度任务拆分的影响。</li>
+<li>可分割性<br>最有效的可分割集合包括ArrayLists和{Concurrent}HashMaps，以及简单的数组（即那些形式为T[]，可使用静态java.util.Arrays方法分割）。效率最低的是LinkedLists、BlockingQueues和大多数基于IO的资源。其他资源则介于两者之间。(如果数据结构内部支持随机访问、高效搜索或两者兼而有之，那么它们往往是可有效分割的。) 如果分割数据的时间比处理数据的时间要长，那么这些努力就白费了。所以，如果计算的<strong>Q</strong>因子足够高，即使是LinkedList，你也可能获得并行加速，但这并不常见。此外，有些数据源不能被完全分割成单个元素，所以如何很好地分割任务可能存在限制。</li>
+</ul>
+<p>收集这些影响的详细测量结果可能是困难的（尽管使用诸如JMH这样的工具时稍加细心就可以做到）。但总体效果是很容易看到的。你可以自己做实验来感受一下。例如，在一台32核的测试机器上，在ArrayList上运行max()或sum()这样的小函数，平衡点非常接近10K大小。更大的尺寸可以看到高达20倍的速度提升。小于10K大小的运行时间并不比10K的运行时间少多少，所以往往比顺序执行要慢。最糟糕的减速发生在少于100个元素的情况下–这激活了一堆线程，而这些线程最终却无事可做，因为计算在它们开始之前就已经完成了。另一方面，当每个元素的计算都很耗时的时候，如果使用ArrayList这样的高效且完全可分割的集合，就能立即看到速度提升效果。</p>
+<p>另一种说法是，在没有足够的计算量的情况下，使用parallel()可能会花费你大约100微秒的时间，而在合理的情况下使用它应该至少节省这么多的时间（对于非常大的问题可能是几个小时）。确切的成本和收益随时间和平台的变化而变化，而且在不同的情况下也会有所不同。例如，在一个顺序循环中并行运行一个微小的计算，会很大程度的影响程序运行效果。（这样做的微观基准测试可能无法预测实际的使用情况）。</p>
+<p><strong>一些问题和回答</strong>：</p>
+<ol>
+<li><p>为什么JVM不能自己找出是否使用并行模式？<br>它可以尝试，但它会经常给出错误的答案。在过去的三十年里，对完全无指导的自动多核并行化的追求并没有获得一致的成功，所以流框架采用了更安全的方法，即只要求用户做出是/否的决定。这些决定依赖于不太可能完全消失的工程权衡，而且与顺序编程中一直在做的决定相似。例如，当你在一个只容纳一个元素的集合中寻找最大的元素时，你可能会遇到一百倍的开销（减速），而不是直接使用该元素（不在一个集合内）。有时JVM可以为你优化这种开销。但这在顺序的情况下不常发生，而在并行的情况下从不发生。另一方面，我们确实期待工具的发展能够帮助用户做出更好的决定。</p>
+</li>
+<li><p>如果我对参数（F、N、Q、S）的了解太少，无法做出一个好的决定怎么办？<br>这也类似于常见的顺序编程问题。例如调用Collection方法S.contains(x)，如果S是HashSet，通常会很快，如果是LinkedList，则会很慢，否则就在两者之间。通常，处理这个问题的最好方法是，使用集合的组件的作者不要直接导出它，而是导出基于它的操作。这样用户就不会受到这些决定的影响。这同样适用于并行操作。例如，一个有内部集合 “价格 “的组件可以使用一个大小阈值来定义一个方法，除非每个元素的计算很昂贵。比如说：</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getMaxPrice</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> priceStream().max(); &#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">private</span> Stream <span class="title">priceStream</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> (price.size() &lt; MIN_PAR) ? </span><br><span class="line">      prices.stream() : prices.parallelStream()。</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>​    你可以用各种方式扩展这个想法，以处理关于何时和如何使用并行的各种考虑。</p>
+<ol start="3">
+<li><p>如果我的函数可能会做IO或同步，怎么办？<br>一个极端是那些不能通过独立标准的函数，包括内在的顺序性IO，对锁定的同步资源的访问，以及一个执行IO的并行子任务的失败对其他子任务产生副作用的情况。将这些并行化不会有太大意义。在另一个极端，是执行偶尔的瞬时IO或同步的计算，很少有块（例如大多数形式的日志和大多数并发集合的使用，如ConcurrentHashMap）。这些都是无害的。介于两者之间的情况需要最多判断。如果每个子任务都可能在相当长的时间内被阻塞，等待IO或访问，那么CPU资源可能会被闲置，而程序或JVM没有办法使用它们。每个人都不会乐意见到这种情况。在这种情况下，并行流通常不是一个好的选择，但是有很好的替代方案，例如async-IO和CompletableFuture设计。</p>
+</li>
+<li><p>如果我的源是基于IO的呢？<br>目前，基于JDK IO的流源（例如BufferedReader.lines()）主要用于顺序使用，在元素到达时逐一处理。支持高效地批量处理缓冲IO的机会是存在的，但目前这需要定制开发流源、Spliterators和/或Collectors。一些常见的形式可能会在未来的JDK版本中得到支持。</p>
+</li>
+<li><p>如果我的程序在一台繁忙的计算机上运行，而且所有的内核都被使用了，怎么办？<br>机器一般只有一套固定的内核，当你执行并行操作时，不可能神奇地创造更多的内核。然而，只要明确满足选择并行执行的标准，通常就没有任何理由担心。你的并行任务将与其他任务竞争CPU时间，所以你会看到较少的速度提升。在大多数情况下，这仍然比其他方法更有效。底层机制的设计是这样的：如果没有其他核心可用，那么与顺序性能相比，你只会看到一个小的减速，除非系统已经过载，以至于它把所有的时间都花在上下文切换上而不是做任何真正的工作，或者被调整为假设所有的处理都是顺序的。如果你在这样的系统上，管理员可能已经禁用了多线程/cores的使用，作为JVM配置的一部分。如果你是这样一个系统的管理员，你可以考虑这样做。</p>
+</li>
+<li><p>所有的操作都是在并行模式下并行的吗？<br>是的，至少在某种程度上是这样的，尽管Stream框架在选择如何做到这一点时服从于源和方法的约束。一般来说，较少的约束条件可以实现更多的潜在并行化。另一方面，不能保证框架会提取并应用所有可能的并行化机会。在某些情况下，如果你有时间和专业知识，你可能能够手工制作一个明显更好的并行解决方案。</p>
+</li>
+<li><p>我将得到多少并行速度的提升？<br>如果你遵循这些准则，通常是值得的。可预测性不是现代硬件和系统的强项，所以通常的答案是不可能的。缓存定位、垃圾收集率、JIT编译、内存争用、数据布局、操作系统调度策略以及管理程序的存在，都是可以产生重大影响的因素。这些因素在顺序性能中也起作用，但在并行环境中往往被放大。一个在顺序执行中造成10%差异的问题可能会在并行中造成10倍的差异。</p>
+<p>流框架包括一些设施，可以帮助你提高加速的机会。例如，对IntStream这样的基元使用特殊化，在并行中的效果往往比顺序的大，因为它不仅减少了开销（和足迹），还增强了缓存的定位性。而使用ConcurrentHashMap而不是HashMap作为并行 “收集 “操作的目标，可以减少内部开销。随着人们对该框架的经验积累，会有更多的提示和指导出现。</p>
+</li>
+<li><p>这一切都太可怕了! 我们是不是应该制定一个政策，使用JVM属性来禁用并行？<br>我们不想告诉你该怎么做。为程序员引入新的出错方式可能是很可怕的。编码、设计和判断方面的错误肯定会发生。但有些人几十年来一直在语言，启用应用程序级的并行性会导致重大灾难，但至今这些灾难并没有发生。</p>
+</li>
+</ol>
+<hr>
+<p>由 Doug Lea 书写, 感谢 Brian Goetz, Paul Sandoz, Aleksey Shipilev, Heinz Kabutz, Joe Bowbeer等人的帮助</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢您的支持，予人玫瑰，手有余香</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Kiwi 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Kiwi 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/10/19/浑浑噩噩的2020/" rel="next" title="浑浑噩噩的2020">
+                <i class="fa fa-chevron-left"></i> 浑浑噩噩的2020
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2023/03/09/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/weiweiqi_child.jpg" alt="Kiwi">
+            
+              <p class="site-author-name" itemprop="name">Kiwi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/WeiweiQi" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/AbelZone" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-cnblog"></i>博客园</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:qiweiweiw@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://118.24.248.78/demo.html" target="_blank" title="婚纱册">
+                      
+                        <i class="fa fa-fw fa-globe"></i>婚纱册</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://stackoverflow.com/users/9259689/kiwi-qi" target="_blank" title="StackOverflow">
+                      
+                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WeiweiQi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+<span id="busuanzi_container_site_uv" style="display:none">
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+<br>
+<span><a href="http://www.miibeian.gov.cn">冀ICP备18034425号-1</a></span>
+</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'Lx94yoa9poRdoFE5H0OXgArW-gzGzoHsz',
+        appKey: 'pRKL2WbraNDsJPEnB5qlPmWa',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
