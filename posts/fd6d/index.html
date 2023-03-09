@@ -4,7 +4,7 @@
 
 
 <html class="theme-next gemini" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -86,17 +86,22 @@ var _hmt = _hmt || [];
 
 
 
-<meta name="description" content="关键代码：">
+<meta name="description" content="Python3 多帧图片拼接成GIF在python3如何处理GIF图片中，我们介绍了如何通过python的PIL库，使用Image.open，Image.tell，Image.save，Image.seek四个函数，将一个GIF拆分成多帧图片的实现方式。本文将介绍如何通过PIL库将多帧图片合成一个GIF图片。 预期实现效果输入的多张图  合成的GIF   Pillow库Pillow库中Image.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python-for循环条件中存在多个变量的情况">
+<meta property="og:title" content="python3多张图片拼接成GIF">
 <meta property="og:url" content="http://qisichen.club/posts/fd6d/index.html">
 <meta property="og:site_name" content="Kiwi Blog">
-<meta property="og:description" content="关键代码：">
+<meta property="og:description" content="Python3 多帧图片拼接成GIF在python3如何处理GIF图片中，我们介绍了如何通过python的PIL库，使用Image.open，Image.tell，Image.save，Image.seek四个函数，将一个GIF拆分成多帧图片的实现方式。本文将介绍如何通过PIL库将多帧图片合成一个GIF图片。 预期实现效果输入的多张图  合成的GIF   Pillow库Pillow库中Image.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2023-03-09T00:20:10.683Z">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b12ee964e1634911bea041c4e5ae613b~tplv-k3u1fbpfcp-watermark.image?">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a5ee85021d594bf2bfaab6abf6c26a98~tplv-k3u1fbpfcp-watermark.image?">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5744c81c6119494fad95c6c471962d61~tplv-k3u1fbpfcp-watermark.image?">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7bb95bc52cef46179971e4c5ba1c29e5~tplv-k3u1fbpfcp-watermark.image?">
+<meta property="og:updated_time" content="2023-03-09T07:50:07.319Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python-for循环条件中存在多个变量的情况">
-<meta name="twitter:description" content="关键代码：">
+<meta name="twitter:title" content="python3多张图片拼接成GIF">
+<meta name="twitter:description" content="Python3 多帧图片拼接成GIF在python3如何处理GIF图片中，我们介绍了如何通过python的PIL库，使用Image.open，Image.tell，Image.save，Image.seek四个函数，将一个GIF拆分成多帧图片的实现方式。本文将介绍如何通过PIL库将多帧图片合成一个GIF图片。 预期实现效果输入的多张图  合成的GIF   Pillow库Pillow库中Image.">
+<meta name="twitter:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b12ee964e1634911bea041c4e5ae613b~tplv-k3u1fbpfcp-watermark.image?">
 
 
 
@@ -133,7 +138,7 @@ var _hmt = _hmt || [];
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7083117783441075" crossorigin="anonymous"></script>
 
-  <title>python-for循环条件中存在多个变量的情况 | Kiwi Blog</title>
+  <title>python3多张图片拼接成GIF | Kiwi Blog</title>
   
 
 
@@ -291,7 +296,7 @@ var _hmt = _hmt || [];
 
         
         
-          <h2 class="post-title" itemprop="name headline">python-for循环条件中存在多个变量的情况</h2>
+          <h2 class="post-title" itemprop="name headline">python3多张图片拼接成GIF</h2>
         
 
         <div class="post-meta">
@@ -373,9 +378,27 @@ var _hmt = _hmt || [];
       
 
       
-        <p>关键代码：<br><a id="more"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   for i,j in zip(range(5), range(4)):</span><br><span class="line">       pass</span><br><span class="line"></span><br><span class="line">#另一种简单的形式:</span><br><span class="line">#enumerate将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中</span><br><span class="line">#2.6以上版本可添加start参数：enumerate(sequence, [start=0])</span><br><span class="line">for i, element in enumerate()</span><br><span class="line">	pass</span><br></pre></td></tr></table></figure>
-
+        <h1 id="Python3-多帧图片拼接成GIF"><a href="#Python3-多帧图片拼接成GIF" class="headerlink" title="Python3 多帧图片拼接成GIF"></a>Python3 多帧图片拼接成GIF</h1><p>在<a href="https://juejin.cn/post/7195137959199244345" target="_blank" rel="noopener">python3如何处理GIF图片</a>中，我们介绍了如何通过python的PIL库，使用<code>Image.open</code>，<code>Image.tell</code>，<code>Image.save</code>，<code>Image.seek</code>四个函数，将一个GIF拆分成多帧图片的实现方式。本文将介绍如何通过PIL库将多帧图片合成一个GIF图片。</p>
+<h2 id="预期实现效果"><a href="#预期实现效果" class="headerlink" title="预期实现效果"></a>预期实现效果</h2><p>输入的多张图</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b12ee964e1634911bea041c4e5ae613b~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>合成的GIF</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a5ee85021d594bf2bfaab6abf6c26a98~tplv-k3u1fbpfcp-watermark.image?" alt="c3.gif"></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5744c81c6119494fad95c6c471962d61~tplv-k3u1fbpfcp-watermark.image?" alt="c5.gif"></p>
+<h2 id="Pillow库"><a href="#Pillow库" class="headerlink" title="Pillow库"></a>Pillow库</h2><p><a href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.save" target="_blank" rel="noopener">Pillow库</a>中<code>Image.save</code>函数可以保存多帧图片为gif。</p>
+<p>其具体格式为：</p>
+<p><code>Image.save(fp, format=None, **params)</code></p>
+<p>官方的英文文档就不贴了，翻译过来大概是如下含义</p>
+<blockquote>
+<p>将此图像保存在给定的文件名下。如果没有指定格式，则使用的格式由文件名扩展名决定。</p>
+<p>关键字选项可用于向作者提供额外的说明。如果写入器没有识别到一个选项，它就会被无声地忽略。每个写入器的图像格式文档中都描述了可用的选项。</p>
+<p>您可以使用文件对象而不是文件名。在这种情况下，必须始终指定格式。文件对象必须实现seek、tell和write方法，并以二进制模式打开。</p>
+</blockquote>
+<h2 id="save函数中的-params参数"><a href="#save函数中的-params参数" class="headerlink" title="save函数中的**params参数"></a>save函数中的**params参数</h2><p>该参数根据不同的格式有不同的可选项目，具体需要在<a href="https://pillow.readthedocs.io/en/stable/handbook/image-file-formats.html" target="_blank" rel="noopener">文档</a>中查看，文档中GIF的部分参数如下截图所示。</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7bb95bc52cef46179971e4c5ba1c29e5~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>根据文档，我们需要按照一定的次序读取图片，并通过<code>append_images</code>参数传递给<code>Image.save</code>函数。</p>
+<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pic2gifV2</span><span class="params">(dir_name, out_name, duration)</span>:</span></span><br><span class="line">     <span class="string">'''</span></span><br><span class="line"><span class="string">    dir_name: 存放各个帧的图片目录</span></span><br><span class="line"><span class="string">    out_name: 输出的文件名</span></span><br><span class="line"><span class="string">    duration: gif的播放速度</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    path = os.getcwd()</span><br><span class="line">    os.chdir(dir_name)</span><br><span class="line">    dirs = os.listdir()</span><br><span class="line">    images = []</span><br><span class="line">    <span class="comment"># 获取图片大小</span></span><br><span class="line">    firstImage = Image.open(dirs[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> dirs:</span><br><span class="line">        images.append(Image.open(d))</span><br><span class="line">    img = Image.new(<span class="string">'RGB'</span>, (firstImage.width, firstImage.height), (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</span><br><span class="line">    img.save(path + <span class="string">'/'</span> + out_name + <span class="string">'.gif'</span>, save_all=<span class="keyword">True</span>, append_images=images[<span class="number">1</span>:], duration=duration)</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">pic2gifV2(<span class="string">'caixukun/'</span>, <span class="string">'c5'</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+<p>除了使用Pillow库，也可以使用imageio来实现，主要代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> imageio</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pic2gif</span><span class="params">(dir_name, out_name, duration)</span>:</span></span><br><span class="line">    path = os.getcwd()</span><br><span class="line">    os.chdir(dir_name)</span><br><span class="line">    dirs = os.listdir()</span><br><span class="line">    images = []</span><br><span class="line">    num = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> dirs:</span><br><span class="line">        images.append(imageio.imread(d))</span><br><span class="line">        num += <span class="number">1</span></span><br><span class="line">    os.chdir(path)</span><br><span class="line">    imageio.mimsave(out_name + <span class="string">'.gif'</span>,images,duration = duration)</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -438,8 +461,8 @@ var _hmt = _hmt || [];
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/ab58/" rel="prev" title="扫码登录的简易实现框架">
-                扫码登录的简易实现框架 <i class="fa fa-chevron-right"></i>
+              <a href="/posts/f041/" rel="prev" title="python3彩色图片转字符图">
+                python3彩色图片转字符图 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -522,8 +545,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -540,7 +572,7 @@ var _hmt = _hmt || [];
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -582,27 +614,9 @@ var _hmt = _hmt || [];
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://www.cnblogs.com/AbelZone" target="_blank" title="博客园">
-                      
-                        <i class="fa fa-fw fa-cnblog"></i>博客园</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
                     <a href="mailto:qiweiweiw@gmail.com" target="_blank" title="E-Mail">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://118.24.248.78/demo.html" target="_blank" title="婚纱册">
-                      
-                        <i class="fa fa-fw fa-globe"></i>婚纱册</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="https://stackoverflow.com/users/9259689/kiwi-qi" target="_blank" title="StackOverflow">
-                      
-                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
                   </span>
                 
             </div>
@@ -619,6 +633,22 @@ var _hmt = _hmt || [];
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python3-多帧图片拼接成GIF"><span class="nav-number">1.</span> <span class="nav-text">Python3 多帧图片拼接成GIF</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#预期实现效果"><span class="nav-number">1.1.</span> <span class="nav-text">预期实现效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pillow库"><span class="nav-number">1.2.</span> <span class="nav-text">Pillow库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#save函数中的-params参数"><span class="nav-number">1.3.</span> <span class="nav-text">save函数中的**params参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现思路"><span class="nav-number">1.4.</span> <span class="nav-text">实现思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现代码"><span class="nav-number">1.5.</span> <span class="nav-text">实现代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

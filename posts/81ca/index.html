@@ -4,7 +4,7 @@
 
 
 <html class="theme-next gemini" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -413,7 +413,7 @@ var _hmt = _hmt || [];
 <h2 id="SpringCloud的服务注册与发现——Eureka"><a href="#SpringCloud的服务注册与发现——Eureka" class="headerlink" title="SpringCloud的服务注册与发现——Eureka"></a>SpringCloud的服务注册与发现——Eureka</h2><h3 id="Eureka-Server-与-Eureka-Client-Eureka-Discovery"><a href="#Eureka-Server-与-Eureka-Client-Eureka-Discovery" class="headerlink" title="Eureka Server 与 Eureka Client(Eureka Discovery)"></a>Eureka Server 与 Eureka Client(Eureka Discovery)</h3><h4 id="Eureka-Server"><a href="#Eureka-Server" class="headerlink" title="Eureka Server"></a>Eureka Server</h4><ul>
 <li>创建项目过程中，<strong>选择依赖包</strong> 步骤勾选 <strong>Eureka Server</strong></li>
 <li><p>配置文件编写：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> server name</span></span><br><span class="line">spring.application.name=eureka-server</span><br><span class="line"><span class="meta">#</span><span class="bash"> server port</span></span><br><span class="line">server.port=1001</span><br><span class="line">eureka.instance.hostname=localhost</span><br><span class="line"><span class="meta">#</span><span class="bash"> not register self</span></span><br><span class="line">eureka.client.register-with-eureka=false</span><br><span class="line"><span class="meta">#</span><span class="bash"> not fetch from eureka-server</span></span><br><span class="line">eureka.client.fetch-registry=false</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> server name</span><br><span class="line">spring.application.name=eureka-server</span><br><span class="line"><span class="meta">#</span> server port</span><br><span class="line">server.port=1001</span><br><span class="line">eureka.instance.hostname=localhost</span><br><span class="line"><span class="meta">#</span> not register self</span><br><span class="line">eureka.client.register-with-eureka=false</span><br><span class="line"><span class="meta">#</span> not fetch from eureka-server</span><br><span class="line">eureka.client.fetch-registry=false</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>运行</p>
 </li>
@@ -422,7 +422,7 @@ var _hmt = _hmt || [];
 <h4 id="Eureka-Client-Eureka-Discovery"><a href="#Eureka-Client-Eureka-Discovery" class="headerlink" title="Eureka Client(Eureka Discovery)"></a>Eureka Client(Eureka Discovery)</h4><ul>
 <li>创建项目过程中，<strong>选择依赖包</strong> 步骤勾选 <strong>Eureka Discovery</strong></li>
 <li><p>配置文件编写：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> producer name</span></span><br><span class="line">spring.application.name=eureka-client</span><br><span class="line">server.port=2001</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:1001/eureka/</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> producer name</span><br><span class="line">spring.application.name=eureka-client</span><br><span class="line">server.port=2001</span><br><span class="line">eureka.client.serviceUrl.defaultZone=http://localhost:1001/eureka/</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>编写一个简单的接口</p>
 </li>
@@ -620,7 +620,7 @@ var _hmt = _hmt || [];
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -662,27 +662,9 @@ var _hmt = _hmt || [];
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://www.cnblogs.com/AbelZone" target="_blank" title="博客园">
-                      
-                        <i class="fa fa-fw fa-cnblog"></i>博客园</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
                     <a href="mailto:qiweiweiw@gmail.com" target="_blank" title="E-Mail">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://118.24.248.78/demo.html" target="_blank" title="婚纱册">
-                      
-                        <i class="fa fa-fw fa-globe"></i>婚纱册</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="https://stackoverflow.com/users/9259689/kiwi-qi" target="_blank" title="StackOverflow">
-                      
-                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
                   </span>
                 
             </div>

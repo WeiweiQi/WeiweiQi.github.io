@@ -4,7 +4,7 @@
 
 
 <html class="theme-next gemini" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -271,6 +271,535 @@ var _hmt = _hmt || [];
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/2e59/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kiwi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kiwi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/2e59/" itemprop="url">vue开发踩坑记录</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-03T10:43:08+08:00">
+                2020-04-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/2e59/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/2e59/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1-el-table-嵌套-el-image-导致侧边栏滚动条失效"><a href="#1-el-table-嵌套-el-image-导致侧边栏滚动条失效" class="headerlink" title="1. el-table 嵌套 el-image 导致侧边栏滚动条失效"></a>1. el-table 嵌套 el-image 导致侧边栏滚动条失效</h4><p>网络上有说是因为<a href="https://blog.csdn.net/dg_zing/article/details/87191772" target="_blank" rel="noopener">el-table内容溢出</a>导致的，也可能是<a href="https://juejin.im/post/5e54d18a51882549522abe76#comment" target="_blank" rel="noopener">el-image中的clickHandler覆盖body的overflow属性</a>导致的。</p>
+<p>遇到的实际情况是，el-table中的el-image在不设置width/height的情况下，需要重新刷新页面才会展示el-table的侧边滚动条。遗憾的是在单独element-ui的环境下，并没有成功复现这个bug，所以具体原因还不清楚。</p>
+<p>解决方案是给el-image设置width/height。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-table-column label=&quot;图片&quot; width=&quot;85&quot; fixed=&quot;left&quot; align=&quot;center&quot;&gt;</span><br><span class="line">  &lt;template 2. -scope=&quot;scope&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;my-el-row&quot;&gt;</span><br><span class="line">      &lt;el-image :src=&quot;scope.row.picurl&quot; style=&quot;width: 4vw;height: 4vw;&quot; /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/el-table-column&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="2-axio提交数据后刷新数据不是最新的"><a href="#2-axio提交数据后刷新数据不是最新的" class="headerlink" title="2. axio提交数据后刷新数据不是最新的"></a>2. axio提交数据后刷新数据不是最新的</h4><p>提交数据后想要看到最新的数据，需要将“刷新函数”写在 .then(reponse =&gt; { ‘执行刷新’ })， 若是在外侧，在axio请求成功之前，函数照样执行，不能保证刷新到最新数据</p>
+<h4 id="3-vue-项目传参："><a href="#3-vue-项目传参：" class="headerlink" title="3. vue 项目传参："></a>3. vue 项目传参：</h4><p>（1） 一般直接使用json格式传递即可：{参数名 ： 参数值}</p>
+<p>（2） 复杂参数，例如列表，使用 {参数名： JSON.stringify(参数值)}，然后后台再进行json解析</p>
+<h4 id="4-使用SortableJS对el-table进行排序时容易遗漏row-key"><a href="#4-使用SortableJS对el-table进行排序时容易遗漏row-key" class="headerlink" title="4. 使用SortableJS对el-table进行排序时容易遗漏row-key"></a>4. 使用SortableJS对el-table进行排序时容易遗漏row-key</h4><h4 id="5-textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法"><a href="#5-textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法" class="headerlink" title="5. textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法"></a>5. textarea参数使用GET方法传递给后台会丢失换行符，应该使用POST方法</h4><p>（这一点应该不属于vue）</p>
+<h4 id="6-同router-path的情况下组件复用的问题："><a href="#6-同router-path的情况下组件复用的问题：" class="headerlink" title="6.  同router.path的情况下组件复用的问题："></a>6.  同router.path的情况下组件复用的问题：</h4><p>统一处理方法是，tagview不可复用，每次添加新的tagview时，移除相同path的其他view，避免后续编程人员因为忘记监听query/params变化导致错误</p>
+<h4 id="7-常用组件易错点："><a href="#7-常用组件易错点：" class="headerlink" title="7. 常用组件易错点："></a>7. 常用组件易错点：</h4><ol>
+<li>el-table的Event： select与select-all都需要处理</li>
+</ol>
+<h4 id="8-执行后运行接口问题："><a href="#8-执行后运行接口问题：" class="headerlink" title="8. 执行后运行接口问题："></a>8. 执行后运行接口问题：</h4><p>检查portfinder包的版本</p>
+<p>检查环境变量是佛有port-*之类的变量</p>
+<h4 id="9-Header参数编码问题"><a href="#9-Header参数编码问题" class="headerlink" title="9. Header参数编码问题"></a>9. Header参数编码问题</h4><p>因为系统内部分参数，如username是中文，而采用http-header中存储，而http-header只支持英文字符，因此在需要判断header参数时，应将参数写在body中。例如接口中判断登录人时，应前台body写：{username: this.$store.username}</p>
+<h4 id="10-el-popover手动关闭问题"><a href="#10-el-popover手动关闭问题" class="headerlink" title="10. el-popover手动关闭问题"></a>10. el-popover手动关闭问题</h4><p>el-table-column添加了 fixed=”left” 或 fixed=”right”后，el-popover无法使用id进行关闭</p>
+<h4 id="11-页面缓存"><a href="#11-页面缓存" class="headerlink" title="11. 页面缓存"></a>11. 页面缓存</h4><p>要保证路由中的name与组件的name一致</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    path: <span class="string">'....'</span>,</span><br><span class="line">    component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'@/views/..../...'</span>),</span><br><span class="line">    name: <span class="string">'ThisNameMustBeSame'</span>,</span><br><span class="line">    meta: &#123; <span class="attr">title</span>: <span class="string">'...'</span>, <span class="attr">icon</span>: <span class="string">'tab'</span>, <span class="attr">noCache</span>: <span class="literal">false</span>, <span class="attr">roles</span>: [<span class="string">'...'</span>] &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'ThisNameMustBeSame'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="12-elment-ui走马灯总有滚动条的问题-el-carousel滚动条问题"><a href="#12-elment-ui走马灯总有滚动条的问题-el-carousel滚动条问题" class="headerlink" title="12.  elment-ui走马灯总有滚动条的问题 el-carousel滚动条问题"></a>12.  elment-ui走马灯总有滚动条的问题 el-carousel滚动条问题</h4><pre><code>需要设置height值
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-carousel</span> <span class="attr">height</span>=<span class="string">"100px"</span> &gt;</span></span><br></pre></td></tr></table></figure>
+</code></pre><h4 id="13-el-input的change事件与input事件的区别"><a href="#13-el-input的change事件与input事件的区别" class="headerlink" title="13. el-input的change事件与input事件的区别"></a>13. el-input的change事件与input事件的区别</h4><pre><code>change事件仅“仅在输入框失去焦点或用户按下回车时触发”
+
+input事件是“在 Input 值改变时触发”
+</code></pre><h4 id="14-JS中的计算问题"><a href="#14-JS中的计算问题" class="headerlink" title="14.  JS中的计算问题"></a>14.  JS中的计算问题</h4><pre><code>和java一样，js中涉及到数值计算，要用bigNumber
+</code></pre><h4 id="15-时间格式问题"><a href="#15-时间格式问题" class="headerlink" title="15.  时间格式问题"></a>15.  时间格式问题</h4><p>​    </p>
+<h4 id="16-常用数组操作"><a href="#16-常用数组操作" class="headerlink" title="16.  常用数组操作"></a>16.  常用数组操作</h4><pre><code>注意区分slice与splice
+
+https://www.cnblogs.com/tu-0718/p/10396545.html
+
+　**slice()定义：**从已有的数组中返回你选择的某段数组元素
+
+　**slice()语法：**arrayObject.slice(start,end)
+
+　**①：**start表示从何处开始选取，end表示从何处开始结束选取，表示一个选取的范围
+
+　**②：**start可以为负数，此时它规定从数组尾部开始算起的位置。也就是-1 ，指最后一个元素，-2 指倒数第二个元素，以此类推
+
+　**③：**end如果没有被指定参数，数组会包含从 start 到最后一个数组元素的所有元素
+
+　**④：**slice()方法不会修改数组本身，而是返回所选取范围的数组元素。如果想删除数组中的某一个元素，需要使用splice()
+
+　**splice()**
+
+　**splice()定义：**从数组中添加或删除元素，然后返回被删除的数组元素。
+
+　**splice()语法：**arrayObject.splice(index,howmany,item1,.....,itemX)
+
+　**①：**index表示从什么位置开始添加或删除数组元素
+
+　**②：**howmany表示删除的元素数量，如果为0，则表示不删除数组元素
+
+　**③：i**tem1,.....,itemX表示新增的数组元素
+
+　**④：**splice()方法会改变原始数组
+</code></pre><h4 id="17-element-ui-table合并单元格问题"><a href="#17-element-ui-table合并单元格问题" class="headerlink" title="17.  element-ui table合并单元格问题"></a>17.  element-ui table合并单元格问题</h4><pre><code>函数返回值表达的不同含义
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 舍弃该单元格</span></span><br><span class="line">&#123;</span><br><span class="line">	rowspan: <span class="number">0</span>,</span><br><span class="line">	colspan: <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 保留，不跨单元格</span></span><br><span class="line">&#123;</span><br><span class="line">	rowspan: <span class="number">1</span>,</span><br><span class="line">	colspan: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// a &gt; 1, b &gt; 1时，跨单元格</span></span><br><span class="line">&#123;</span><br><span class="line">	rowspan: a,</span><br><span class="line">	colspan: b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre><p>​    </p>
+<h4 id="18-下载文件乱码问题"><a href="#18-下载文件乱码问题" class="headerlink" title="18. 下载文件乱码问题"></a>18. 下载文件乱码问题</h4><pre><code>iconv-lite可解决axios下载文件名中文乱码问题，关键代码: 
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> iconv = <span class="built_in">require</span>(<span class="string">'iconv-lite'</span>) </span><br><span class="line">fileName = iconv.decode(fileName, <span class="string">'UTF-8'</span>)</span><br></pre></td></tr></table></figure>
+</code></pre><h4 id="19-vue-element-admin中刷新当前tagview"><a href="#19-vue-element-admin中刷新当前tagview" class="headerlink" title="19. vue-element-admin中刷新当前tagview"></a>19. vue-element-admin中刷新当前tagview</h4><pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">'@/store'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">refreshView</span>(<span class="params">thisobj</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// In order to make the cached page re-rendered</span></span><br><span class="line">  store.dispatch(<span class="string">'tagsView/delAllCachedViews'</span>, thisobj.$route)</span><br><span class="line">  <span class="keyword">const</span> &#123; fullPath &#125; = thisobj.$route</span><br><span class="line">  thisobj.$router.replace(&#123;</span><br><span class="line">    path: <span class="string">'/redirect'</span> + fullPath</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用</span></span><br><span class="line">refreshView(<span class="keyword">this</span>)</span><br></pre></td></tr></table></figure>
+</code></pre><p>​    </p>
+<h4 id="20-Promise-prototype-finally-方法"><a href="#20-Promise-prototype-finally-方法" class="headerlink" title="20. Promise.prototype.finally()方法"></a>20. Promise.prototype.finally()方法</h4><pre><code><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">apiMethod(&#123;</span><br><span class="line">    data...</span><br><span class="line">&#125;).then(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 请求成功执行的代码</span></span><br><span class="line">&#125;).finally(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 不管请求失败成功与否, 总是执行</span></span><br><span class="line">    <span class="comment">// 此处可以放置类似loading = false之类的代码</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</code></pre><p>​    </p>
+<h4 id="21-使用VSCODE编辑支持eslint的项目时报错"><a href="#21-使用VSCODE编辑支持eslint的项目时报错" class="headerlink" title="21. 使用VSCODE编辑支持eslint的项目时报错"></a>21. 使用VSCODE编辑支持eslint的项目时报错</h4><p>VScode默认使用jshint，需要配置关闭jshint。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"jshint.enable": "false"</span><br></pre></td></tr></table></figure></p>
+<h4 id="22-TODO"><a href="#22-TODO" class="headerlink" title="22. TODO"></a>22. TODO</h4>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/3a99/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kiwi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kiwi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/3a99/" itemprop="url">《maven实战》阅读笔记</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-10T16:24:44+08:00">
+                2019-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/3a99/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/3a99/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h2 id="第一章-Maven简介"><a href="#第一章-Maven简介" class="headerlink" title="第一章 Maven简介"></a>第一章 Maven简介</h2><h3 id="1-何为Maven"><a href="#1-何为Maven" class="headerlink" title="1 何为Maven"></a>1 何为Maven</h3><ul>
+<li>Maven主要服务于基于Java平台的项目构建、依赖管理和项目信息管理</li>
+<li>构建：build，指的是编译、运行单元测试、生成文档、打包和部署等繁琐且不起眼的工作</li>
+<li>maven用途之一：自动化构建过程，从清理、编译、测试到生成报告，再到打包和部署。</li>
+<li>maven是一个构建工具，自动化构建，抽象构建过程，提供构建任务实现；跨平台，对外提供了一致的操作接口</li>
+<li>maven还是依赖管理工具和项目信息管理工具，它提供中央仓库，帮我们自动下载构件</li>
+<li>maven通过一组坐标能够找到任何一个Java类库</li>
+<li>管理项目信息：项目描述、开发者列表、版本控制系统地址、许可证、缺陷管理系统地址等，我们还能够轻松获得项目文档、测试报告、静态分析报告、源码版本日志报告等非常具有价值的项目信息</li>
+<li>maven：约定优于配置</li>
+</ul>
+<h3 id="2-为什么需要maven"><a href="#2-为什么需要maven" class="headerlink" title="2 为什么需要maven"></a>2 为什么需要maven</h3><ul>
+<li>IDE的天生缺陷：<ul>
+<li>依赖大量的手工操作：编译、测试、代码生成等工作都是相互独立的，很难一键完成所有工作</li>
+<li>很难在项目里统一所有的IDE配置</li>
+</ul>
+</li>
+<li>Make也许是最早的构建工具：<ul>
+<li>Make通过一系列目标和依赖将整个构建过程串联起来，同时利用本地命令完成每个目标的实际行为。Make的强大之处在于它可以利用所有系统的本地命令，但是make将自己和操作系统绑定在一起了，使用make就不能或很难实现跨平台构建</li>
+</ul>
+</li>
+<li>Ant：Another Neat Tool “另一个整洁的工具”<ul>
+<li>java版本的Make，跨平台，使用xml定义构建脚本</li>
+</ul>
+</li>
+<li>不重复发明轮子</li>
+</ul>
+<h3 id="3-Maven与极限编程"><a href="#3-Maven与极限编程" class="headerlink" title="3 Maven与极限编程"></a>3 Maven与极限编程</h3><ul>
+<li>简单，交流与反馈，测试驱动开发，十分钟构建，持续集成，富有信息的工作区</li>
+</ul>
+<h3 id="4-被误解的Maven"><a href="#4-被误解的Maven" class="headerlink" title="4 被误解的Maven"></a>4 被误解的Maven</h3><ul>
+<li>使用maven最高效的方式永远是命令行</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/430c/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kiwi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kiwi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/430c/" itemprop="url">程序员修炼之道-从小工到专家</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-08T18:21:22+08:00">
+                2019-10-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/430c/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/430c/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>提示汇总：</p>
+<ol>
+<li>Care About Your Craft. 关心你的技艺。</li>
+<li>Think! About Your Work. 思考！你的工作。</li>
+<li>提供各种选择，不要找蹩脚的借口。</li>
+<li>不要容忍破窗户。</li>
+<li>做变化的催化剂。Be the Catalyst for Change!</li>
+<li>记住大图景。Remember the Big Picture!</li>
+<li>使质量成为需求问题。</li>
+<li>定期为你的知识资产投资</li>
+<li>批判地分析你读到的和听到的。</li>
+<li>你说什么和你怎么说同样重要！</li>
+<li>DRY - Don’t Repeat Yourself.  不要重复你自己。</li>
+<li>Make It Easy To Reuse。 让复用变得容易。</li>
+<li>消除无关事物之间的影响。</li>
+<li>不存在最终决策。There Are No Final Decisions.</li>
+<li>用曳光弹找到目标。Use Tracer Bullets to Find the Target.</li>
+<li>为了学习而制作原型。Prototype to Learn.</li>
+<li>靠近问题领域编程。Program Close to the Problem domain.</li>
+<li>估算，以避免发生意外。Estimate to Avoid Surprises.</li>
+<li>通过代码对进度表进行迭代。Iterate the Schedule with the Code.</li>
+<li>用纯文本保存知识。Keep Knowledge in Plain Text.</li>
+<li>利用命令Shell的力量。Use the Power of Command Shells.</li>
+<li>用好一种编辑器。Use a Single Editor Well.</li>
+<li>总是使用源码控制。Always Use Source Code Control</li>
+<li>要修正问题，而不是发出指责。 Fix the Problem, not the Blame.</li>
+<li>调试第一准则：不要恐慌。Don’t Panic.</li>
+<li>“Select”没有问题。不要先怀疑是第三方产品的问题</li>
+<li>不要假定，要证明。</li>
+<li>学习一种文本操纵语言，如Python，Tcl， Perl</li>
+<li>编写能编写代码的代码。Write Code That Writes Code。</li>
+<li>你不可能写出完美的软件</li>
+<li>通过合约进行设计。Design with Contracts.</li>
+<li>早崩溃。Crash Early.</li>
+<li>如果它不可能发生，用断言确保它不会发生。If it can’t Happen, Use Assertions to Ensure That It won’t.</li>
+<li>将异常用于异常的问题。Use Exceptions For Exceptional Problems.</li>
+<li>要有始有终。Finish What You Start.</li>
+</ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/posts/430c/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/dc23/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -434,7 +963,7 @@ var _hmt = _hmt || [];
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/1939/" itemprop="url">Javakaifa</a></h2>
+                <a class="post-title-link" href="/posts/1939/" itemprop="url">待解决的数学问题</a></h2>
         
 
         <div class="post-meta">
@@ -1221,483 +1750,6 @@ var _hmt = _hmt || [];
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/1c4e/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kiwi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kiwi Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/1c4e/" itemprop="url">微服务改造过程感受</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-01T18:12:57+08:00">
-                2019-03-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/重构/" itemprop="url" rel="index">
-                    <span itemprop="name">重构</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/1c4e/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/1c4e/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li>代码分层的很重要</li>
-</ol>
-<p>在原本的单体架构中，想要单独拆分一个模块出来单独的部署与运行，但是原本的代码层级混乱，给代码拆分和迁移增加了很多工作量。</p>
-<p>例如，原本的单体架构大致可分为Controller/Service/Module+基本的配置常量。（在sprintboot中Module更多的阐述为entity）<br>理想情况下，将某个模块涉及到的Controller/Service+所有的数据entity拷贝出来，按照新框架的格式对相应的接口/拦截器等等进行修改即可。<br>但是，由于代码层次不明显，entity中存在调用各个service的方法，导致如果导入所有entity,则需要导入很多额外的包。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/97fb/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kiwi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kiwi Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/97fb/" itemprop="url">maven添加本地jar包</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-27T14:59:02+08:00">
-                2019-02-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/maven/" itemprop="url" rel="index">
-                    <span itemprop="name">maven</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/97fb/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/97fb/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li>pom.xml添加一个自定义的本地仓库</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>ProjectRepo<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>ProjectRepo<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">url</span>&gt;</span>file://$&#123;project.basedir&#125;/src/main/webapp/lib<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li><p>修改jar包路径到本地仓库目录<br>${repo-dir}/groupid/artifactid/version/artifactid-version.jar</p>
-</li>
-<li><p>pom.xml中添加依赖</p>
-</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>yourgroupid<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>your-artifactid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>versioncode<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/81ca/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kiwi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kiwi Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/81ca/" itemprop="url">微服务改造过程记录</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-21T09:18:56+08:00">
-                2019-02-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/81ca/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/81ca/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>jfinal项目改造为微服务过程记录,主要包括：</p>
-<ul>
-<li><p>Eclipse SpringBoot项目创建流程</p>
-</li>
-<li><p>SpringBoot</p>
-<ul>
-<li>热部署配置方法</li>
-<li>如何使用ActiveRecordPlugin连接数据库(Db.find…)</li>
-<li>请求参数获取与Json数据返回</li>
-<li>正式/测试环境区分</li>
-<li>maven导入本地包</li>
-<li>拦截器</li>
-<li>接口中文到前端乱码的问题</li>
-<li>事件监听器</li>
-<li>如何格式化输出，包括统一的异常处理</li>
-<li>安全处理</li>
-</ul>
-</li>
-<li>微服务：<ul>
-<li>服务注册与发现:Eureka Server/Eureka Discovery</li>
-<li>自动化部署:maven/jekins //TODO</li>
-<li>文档生成：Swagger //TODO</li>
-<li>日志与链路追踪 sleuth + zipkin</li>
-</ul>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/posts/81ca/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1750,7 +1802,7 @@ var _hmt = _hmt || [];
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1792,27 +1844,9 @@ var _hmt = _hmt || [];
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://www.cnblogs.com/AbelZone" target="_blank" title="博客园">
-                      
-                        <i class="fa fa-fw fa-cnblog"></i>博客园</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
                     <a href="mailto:qiweiweiw@gmail.com" target="_blank" title="E-Mail">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://118.24.248.78/demo.html" target="_blank" title="婚纱册">
-                      
-                        <i class="fa fa-fw fa-globe"></i>婚纱册</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="https://stackoverflow.com/users/9259689/kiwi-qi" target="_blank" title="StackOverflow">
-                      
-                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
                   </span>
                 
             </div>

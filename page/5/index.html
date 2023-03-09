@@ -4,7 +4,7 @@
 
 
 <html class="theme-next gemini" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -257,6 +257,790 @@ var _hmt = _hmt || [];
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/f041/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kiwi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kiwi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/f041/" itemprop="url">python3彩色图片转字符图</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T20:52:12+08:00">
+                2019-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/f041/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/f041/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Python3-彩色图片转字符图"><a href="#Python3-彩色图片转字符图" class="headerlink" title="Python3 彩色图片转字符图"></a>Python3 彩色图片转字符图</h1><h2 id="实现的最终效果"><a href="#实现的最终效果" class="headerlink" title="实现的最终效果"></a>实现的最终效果</h2><p>我们想要实现的一种如下所示的效果：</p>
+<p>输入的原图</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bd988506aa0a4c359f3a6c4474c5ac78~tplv-k3u1fbpfcp-watermark.image?" alt="happy.jpg"></p>
+<p>输出的效果图（由字符构成的图）</p>
+<p><img src="https://gitee.com/wieweicoding/kevinqimgs/raw/master/img/7c353b77331c46b9855ca9c626cc50a1~tplv-k3u1fbpfcp-watermark.image" alt="微信截图_20230201184917.png"></p>
+<p>我们来看看如何通过Python的PIL库来实现。</p>
+<h2 id="具体实现代码"><a href="#具体实现代码" class="headerlink" title="具体实现代码"></a>具体实现代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw, ImageFont</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将图片处理成字符画</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">img2ascii</span><span class="params">(img, outName, ascii_chars, isgray, font, scale)</span>:</span></span><br><span class="line">    <span class="comment"># 将图片转换为 RGB 模式</span></span><br><span class="line">    im = Image.open(img).convert(<span class="string">'RGB'</span>)</span><br><span class="line">    <span class="comment"># 设定处理后的字符画大小</span></span><br><span class="line">    print(im.width)</span><br><span class="line">    print(im.height)</span><br><span class="line">    raw_width = int(im.width * scale)</span><br><span class="line">    raw_height = int(im.height * scale)</span><br><span class="line">    <span class="comment"># 获取设定的字体的尺寸</span></span><br><span class="line">    font_x, font_y = font.getsize(<span class="string">' '</span>)</span><br><span class="line">    <span class="comment"># 确定单元的大小</span></span><br><span class="line">    block_x = int(font_x * scale)</span><br><span class="line">    block_y = int(font_y * scale)</span><br><span class="line">    <span class="comment"># 确定长宽各有几个单元</span></span><br><span class="line">    w = int(raw_width/block_x)</span><br><span class="line">    h = int(raw_height/block_y)</span><br><span class="line">    <span class="comment"># 将每个单元缩小为一个像素</span></span><br><span class="line">    im = im.resize((w, h), Image.NEAREST)</span><br><span class="line">    <span class="comment"># txts 和 colors 分别存储对应块的 ASCII 字符和 RGB 值</span></span><br><span class="line">    txts = []</span><br><span class="line">    colors = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(h):</span><br><span class="line">        line = <span class="string">''</span></span><br><span class="line">        lineColor = []</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(w):</span><br><span class="line">            <span class="comment"># 获取RGB的值，pixel格式[R, G, B]</span></span><br><span class="line">            pixel = im.getpixel((j, i))</span><br><span class="line">            lineColor.append((pixel[<span class="number">0</span>], pixel[<span class="number">1</span>], pixel[<span class="number">2</span>]))</span><br><span class="line">            <span class="comment"># 根据该点的RGB值，将其转换成对应的字符</span></span><br><span class="line">            line += get_char(ascii_chars, pixel[<span class="number">0</span>], pixel[<span class="number">1</span>], pixel[<span class="number">2</span>])</span><br><span class="line">        txts.append(line)</span><br><span class="line">        colors.append(lineColor)</span><br><span class="line">    <span class="comment"># 创建新画布</span></span><br><span class="line">    img_txt = Image.new(<span class="string">'RGB'</span>, (raw_width, raw_height), (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</span><br><span class="line">    <span class="comment"># 创建 ImageDraw 对象以写入 ASCII</span></span><br><span class="line">    draw = ImageDraw.Draw(img_txt)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(len(txts)):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(txts[<span class="number">0</span>])):</span><br><span class="line">            <span class="keyword">if</span> isgray:</span><br><span class="line">                <span class="comment"># 可以去https://www.sioe.cn/yingyong/yanse-rgb-16/ 查一下(119,136,153)是什么颜色的</span></span><br><span class="line">                draw.text((i * block_x, j * block_y), txts[j][i], (<span class="number">119</span>,<span class="number">136</span>,<span class="number">153</span>))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                draw.text((i * block_x, j * block_y), txts[j][i], colors[j][i])</span><br><span class="line">    img_txt.save(outName)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将不同的灰度值映射为 ASCII 字符</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_char</span><span class="params">(ascii_chars, r, g, b)</span>:</span></span><br><span class="line">    length = len(ascii_chars)</span><br><span class="line">    <span class="comment"># 对于 sRGB 色彩空间，一种颜色的相对亮度定义为：</span></span><br><span class="line">    <span class="comment"># L = 0.2126 * R + 0.7152 * G + 0.0722 * B</span></span><br><span class="line">    gray = int(<span class="number">0.2126</span> * r + <span class="number">0.7152</span> * g + <span class="number">0.0722</span> * b)</span><br><span class="line">    <span class="comment"># gray在0-255之间，因此gray/256 * length 肯定是介于 [0, length - 1]之间</span></span><br><span class="line">    <span class="keyword">return</span> ascii_chars[int(gray/(<span class="number">256</span>/length))]</span><br><span class="line"></span><br><span class="line">img2ascii(<span class="string">'happy.jpg'</span>, <span class="string">'after_happy.jpg'</span>, <span class="string">'MNHQ$OC67+&gt;!:-. '</span>, <span class="keyword">True</span>, ImageFont.load_default(), <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="相关库"><a href="#相关库" class="headerlink" title="相关库"></a>相关库</h2><p>Python的Image库：<a href="https://pillow.readthedocs.io/en/stable/reference/Image.html" target="_blank" rel="noopener">Pillow</a></p>
+<p>可以<a href="https://pillow.readthedocs.io/en/stable/reference/Image.html" target="_blank" rel="noopener">链接</a>查看其各个模块的详细使用文档，该程序使用的主要是以下几个方法<code>Image.open</code>，<code>Image.convert</code>，<code>Image.resize</code>，<code>Image.new</code>，<code>ImageDraw.Draw</code>，<code>image.save</code>。</p>
+<h2 id="代码解读"><a href="#代码解读" class="headerlink" title="代码解读"></a>代码解读</h2><p>首先通过<code>Image.open</code>读原图，并通过<code>Image.convert</code>将其转换为RGB模式。convert函数支持的具体模式列表可参考<a href="https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-modes" target="_blank" rel="noopener">官方文档</a>。</p>
+<p>官方文档中对于L模式(8-bit pixels, black and white)与RGB模式的转换公式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">L = R * 299/1000 + G * 587/1000 + B * 114/1000</span><br></pre></td></tr></table></figure>
+<p>所以，如果我们不采用sRGB也可以尝试一下通过这种方式来将RGB转换为亮度，即上文代码中的<code>get_char</code>函数中的<code>gray</code>的计算方式。</p>
+<p>获取图片后，紧接着获取图片的宽高，并根据<code>scale</code>值计算处理后图的宽高，并原图按照处理后的宽高进行缩放，即<code>resize</code>，第二个参数为缩放过程的取样方式，<code>Image.NEAREST</code>即取距离最近的像素而忽略其他的输入像素，其他可取的值还有<code>Image.BOX</code>等等，具体可以参考<a href="https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-filters" target="_blank" rel="noopener">文档</a>。</p>
+<p>然后通过<code>txts</code>存储像素转换之后的字符，<code>colors</code>存储像素转换后的颜色。</p>
+<p>最终，通过ImageDraw逐个字符的写入并保存。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/fd6d/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kiwi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kiwi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/fd6d/" itemprop="url">python3多张图片拼接成GIF</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T20:52:12+08:00">
+                2019-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/fd6d/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/fd6d/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Python3-多帧图片拼接成GIF"><a href="#Python3-多帧图片拼接成GIF" class="headerlink" title="Python3 多帧图片拼接成GIF"></a>Python3 多帧图片拼接成GIF</h1><p>在<a href="https://juejin.cn/post/7195137959199244345" target="_blank" rel="noopener">python3如何处理GIF图片</a>中，我们介绍了如何通过python的PIL库，使用<code>Image.open</code>，<code>Image.tell</code>，<code>Image.save</code>，<code>Image.seek</code>四个函数，将一个GIF拆分成多帧图片的实现方式。本文将介绍如何通过PIL库将多帧图片合成一个GIF图片。</p>
+<h2 id="预期实现效果"><a href="#预期实现效果" class="headerlink" title="预期实现效果"></a>预期实现效果</h2><p>输入的多张图</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b12ee964e1634911bea041c4e5ae613b~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<p>合成的GIF</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a5ee85021d594bf2bfaab6abf6c26a98~tplv-k3u1fbpfcp-watermark.image?" alt="c3.gif"></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5744c81c6119494fad95c6c471962d61~tplv-k3u1fbpfcp-watermark.image?" alt="c5.gif"></p>
+<h2 id="Pillow库"><a href="#Pillow库" class="headerlink" title="Pillow库"></a>Pillow库</h2><p><a href="https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.save" target="_blank" rel="noopener">Pillow库</a>中<code>Image.save</code>函数可以保存多帧图片为gif。</p>
+<p>其具体格式为：</p>
+<p><code>Image.save(fp, format=None, **params)</code></p>
+<p>官方的英文文档就不贴了，翻译过来大概是如下含义</p>
+<blockquote>
+<p>将此图像保存在给定的文件名下。如果没有指定格式，则使用的格式由文件名扩展名决定。</p>
+<p>关键字选项可用于向作者提供额外的说明。如果写入器没有识别到一个选项，它就会被无声地忽略。每个写入器的图像格式文档中都描述了可用的选项。</p>
+<p>您可以使用文件对象而不是文件名。在这种情况下，必须始终指定格式。文件对象必须实现seek、tell和write方法，并以二进制模式打开。</p>
+</blockquote>
+<h2 id="save函数中的-params参数"><a href="#save函数中的-params参数" class="headerlink" title="save函数中的**params参数"></a>save函数中的**params参数</h2><p>该参数根据不同的格式有不同的可选项目，具体需要在<a href="https://pillow.readthedocs.io/en/stable/handbook/image-file-formats.html" target="_blank" rel="noopener">文档</a>中查看，文档中GIF的部分参数如下截图所示。</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7bb95bc52cef46179971e4c5ba1c29e5~tplv-k3u1fbpfcp-watermark.image?" alt="image.png"></p>
+<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>根据文档，我们需要按照一定的次序读取图片，并通过<code>append_images</code>参数传递给<code>Image.save</code>函数。</p>
+<h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pic2gifV2</span><span class="params">(dir_name, out_name, duration)</span>:</span></span><br><span class="line">     <span class="string">'''</span></span><br><span class="line"><span class="string">    dir_name: 存放各个帧的图片目录</span></span><br><span class="line"><span class="string">    out_name: 输出的文件名</span></span><br><span class="line"><span class="string">    duration: gif的播放速度</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line">    path = os.getcwd()</span><br><span class="line">    os.chdir(dir_name)</span><br><span class="line">    dirs = os.listdir()</span><br><span class="line">    images = []</span><br><span class="line">    <span class="comment"># 获取图片大小</span></span><br><span class="line">    firstImage = Image.open(dirs[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> dirs:</span><br><span class="line">        images.append(Image.open(d))</span><br><span class="line">    img = Image.new(<span class="string">'RGB'</span>, (firstImage.width, firstImage.height), (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</span><br><span class="line">    img.save(path + <span class="string">'/'</span> + out_name + <span class="string">'.gif'</span>, save_all=<span class="keyword">True</span>, append_images=images[<span class="number">1</span>:], duration=duration)</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">pic2gifV2(<span class="string">'caixukun/'</span>, <span class="string">'c5'</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+<p>除了使用Pillow库，也可以使用imageio来实现，主要代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> imageio</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pic2gif</span><span class="params">(dir_name, out_name, duration)</span>:</span></span><br><span class="line">    path = os.getcwd()</span><br><span class="line">    os.chdir(dir_name)</span><br><span class="line">    dirs = os.listdir()</span><br><span class="line">    images = []</span><br><span class="line">    num = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> dirs:</span><br><span class="line">        images.append(imageio.imread(d))</span><br><span class="line">        num += <span class="number">1</span></span><br><span class="line">    os.chdir(path)</span><br><span class="line">    imageio.mimsave(out_name + <span class="string">'.gif'</span>,images,duration = duration)</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/56a4/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kiwi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kiwi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/56a4/" itemprop="url">JAVA字符串拼接速度对比</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T20:49:26+08:00">
+                2019-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/56a4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/56a4/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>String + 与 StringBuilder 速度<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/posts/56a4/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/7804/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kiwi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kiwi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/7804/" itemprop="url">Java-log4j自定义日志文件-带import包</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T20:47:28+08:00">
+                2019-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/7804/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/7804/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在网上找了一些关于log4j自定义包的方法，然而因为说明都没有带import说明，导致找到正确的包费了不少功夫。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/posts/7804/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/4415/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kiwi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kiwi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/4415/" itemprop="url">JAVA中Map的4种遍历方法对比</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T20:44:52+08:00">
+                2019-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/4415/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/4415/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>javaMap的4种遍历方式<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/posts/4415/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1081,766 +1865,6 @@ var _hmt = _hmt || [];
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/8cb7/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kiwi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kiwi Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/8cb7/" itemprop="url">阿里巴巴java开发手册 阅读</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T20:27:48+08:00">
-                2019-01-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/8cb7/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/8cb7/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>入参保护</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/posts/8cb7/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/30fd/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kiwi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kiwi Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/30fd/" itemprop="url">HTML5触摸界面设计与开发 读书笔记</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T14:37:51+08:00">
-                2019-01-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/html/" itemprop="url" rel="index">
-                    <span itemprop="name">html</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/30fd/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/30fd/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>2018年10月读的H5的书籍，还没有读完</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/posts/30fd/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/4c88/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kiwi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kiwi Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/4c88/" itemprop="url">sql_safe_update:一次UPDATE忘加限制条件引发</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T17:49:50+08:00">
-                2019-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/4c88/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/4c88/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/81eb/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kiwi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kiwi Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/81eb/" itemprop="url">程序员职业规划之道笔记</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T14:42:29+08:00">
-                2019-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/81eb/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/81eb/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>程序员职业规划之道阅读笔记</p>
-<p>2018年2月份读的，现整理出来。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/posts/81eb/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/c069/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kiwi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kiwi Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/c069/" itemprop="url">穷查理宝典阅读</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T10:53:27+08:00">
-                2019-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/c069/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/c069/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>别人恐惧我贪婪，别人贪婪我恐惧<br>Others greed, I fear, others fear I greed</p>
-</blockquote>
-<h2 id="一、芒格的生活、学习和决策方法"><a href="#一、芒格的生活、学习和决策方法" class="headerlink" title="一、芒格的生活、学习和决策方法"></a>一、芒格的生活、学习和决策方法</h2><ul>
-<li>凡事往简单处想，往认真处行。——查理·芒格</li>
-<li>如果我们试图理解一样看似独立存在的东西，我们将会发现它和宇宙间的其他一切都有联系。——约翰·缪尔</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/posts/c069/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1893,7 +1917,7 @@ var _hmt = _hmt || [];
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1935,27 +1959,9 @@ var _hmt = _hmt || [];
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://www.cnblogs.com/AbelZone" target="_blank" title="博客园">
-                      
-                        <i class="fa fa-fw fa-cnblog"></i>博客园</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
                     <a href="mailto:qiweiweiw@gmail.com" target="_blank" title="E-Mail">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://118.24.248.78/demo.html" target="_blank" title="婚纱册">
-                      
-                        <i class="fa fa-fw fa-globe"></i>婚纱册</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="https://stackoverflow.com/users/9259689/kiwi-qi" target="_blank" title="StackOverflow">
-                      
-                        <i class="fa fa-fw fa-stack-overflow"></i>StackOverflow</a>
                   </span>
                 
             </div>
