@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?5b83ed66f796333793c0cf3ba26c1a9f";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="游戏," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="目录  cocos与unity对比 技术储备与掌握程度 个人理解的关键技能   游戏类型或适用场景 其他Cocos的相关内容 开源地址 Cocos Creator开发流程 界面介绍 学习教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="游戏框架调研记录">
+<meta property="og:url" content="http://qisichen.club/posts/20a5/index.html">
+<meta property="og:site_name" content="Kiwi Blog">
+<meta property="og:description" content="目录  cocos与unity对比 技术储备与掌握程度 个人理解的关键技能   游戏类型或适用场景 其他Cocos的相关内容 开源地址 Cocos Creator开发流程 界面介绍 学习教程">
+<meta property="og:image" content="https://raw.githubusercontent.com/WeiweiQi/images/master/image-20230313102412204.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/WeiweiQi/images/master/image-20230313105121782.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/WeiweiQi/images/master/image-20230313105136181.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/WeiweiQi/images/master/image-20230313105057813.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/WeiweiQi/images/master/image-20230313104946888.png">
+<meta property="article:published_time" content="2023-03-13T01:22:43.000Z">
+<meta property="article:modified_time" content="2023-03-13T09:17:36.772Z">
+<meta property="article:author" content="Kiwi">
+<meta property="article:tag" content="游戏">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/WeiweiQi/images/master/image-20230313102412204.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://qisichen.club/posts/20a5/"/>
+
+
+
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7083117783441075"
+     crossorigin="anonymous"></script>
+
+  <title>游戏框架调研记录 | Kiwi Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <!-- 
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+   -->
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Kiwi Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">做一个优秀的普通人</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/20a5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kiwi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/weiweiqi_child.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kiwi Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">游戏框架调研记录</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-03-13T09:22:43+08:00">
+                2023-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%B8%E6%88%8F/" itemprop="url" rel="index">
+                    <span itemprop="name">游戏</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/20a5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/20a5/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<p><strong>目录</strong></p>
+<ul>
+<li><a href="#cocos%E4%B8%8Eunity%E5%AF%B9%E6%AF%94">cocos与unity对比</a></li>
+<li><a href="#%E6%8A%80%E6%9C%AF%E5%82%A8%E5%A4%87%E4%B8%8E%E6%8E%8C%E6%8F%A1%E7%A8%8B%E5%BA%A6">技术储备与掌握程度</a><ul>
+<li><a href="#%E4%B8%AA%E4%BA%BA%E7%90%86%E8%A7%A3%E7%9A%84%E5%85%B3%E9%94%AE%E6%8A%80%E8%83%BD">个人理解的关键技能</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B8%B8%E6%88%8F%E7%B1%BB%E5%9E%8B%E6%88%96%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF">游戏类型或适用场景</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96cocos%E7%9A%84%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9">其他Cocos的相关内容</a></li>
+<li><a href="#%E5%BC%80%E6%BA%90%E5%9C%B0%E5%9D%80">开源地址</a></li>
+<li><a href="#cocos-creator%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B">Cocos Creator开发流程</a></li>
+<li><a href="#%E7%95%8C%E9%9D%A2%E4%BB%8B%E7%BB%8D">界面介绍</a></li>
+<li><a href="#%E5%AD%A6%E4%B9%A0%E6%95%99%E7%A8%8B">学习教程</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<a id="more"></a>
+<h2 id="cocos与unity对比"><a href="#cocos与unity对比" class="headerlink" title="cocos与unity对比"></a>cocos与unity对比</h2><table>
+<thead>
+<tr>
+<th></th>
+<th>Cocos</th>
+<th>Unity3D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>收费</td>
+<td>目前免费</td>
+<td>免费：过去 12 个月整体财务规模未超过 10 万美元的个人用户，且部分功能阉割；企业：￥13872/席/年</td>
+</tr>
+<tr>
+<td>开源</td>
+<td>开源</td>
+<td>部分开源</td>
+</tr>
+<tr>
+<td>所属公司</td>
+<td>北京触控科技有限公司</td>
+<td>美国</td>
+</tr>
+<tr>
+<td>著名游戏</td>
+<td>《梦幻西游》，《捕鱼达人》，《开心消消乐》、《欢乐斗地主》、《热血传奇》、《传奇霸业》、《问道》、《剑与远征》、《列王的纷争》、《动物餐厅》</td>
+<td>王者荣耀，炉石传说，纪念碑谷，神庙逃亡等</td>
+</tr>
+<tr>
+<td>2D/3D</td>
+<td>均支持，2D起家</td>
+<td>均支持，3D起家</td>
+</tr>
+<tr>
+<td>平台支持</td>
+<td>跨平台，对小游戏支持度高</td>
+<td>跨平台，对PC端或3D游戏支持度高</td>
+</tr>
+<tr>
+<td>市场占有率</td>
+<td>Cocos国内手游占有率为40%，小游戏市场占有率为60%，全球手游市场占有率为20%</td>
+<td>超50％的手机游戏、PC游戏和主机游戏基于Unity引擎制作而成；2019年全球收入前一百的工作室中，有93％的开发者在使用Unity的产品。资料显示，在Apple应用商店和Google Play上排名最靠前的1000款游戏中，53%都是用Unity创作的</td>
+</tr>
+<tr>
+<td>脚本语言</td>
+<td>JavaScript/TypeScript</td>
+<td>C#</td>
+</tr>
+<tr>
+<td>优点</td>
+<td>源码开源；内置H5引擎，能做各个平台的小游戏</td>
+<td>易入门，操作简单，unity生态也比较好，插件也比较多，都有现成的解决方案</td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>3D技术相对较弱，重度游戏的渲染效果不如Unity</td>
+<td>发布到H5平台不成熟，底层代码不开源，对程序员不友好，难精通，有时候遇到底层的问题只能等官方解决</td>
+</tr>
+</tbody>
+</table>
+<p>Cocos支持国内的多个小游戏平台。</p>
+<p><img src="https://raw.githubusercontent.com/WeiweiQi/images/master/image-20230313102412204.png" alt="image-20230313102412204"></p>
+<h2 id="技术储备与掌握程度"><a href="#技术储备与掌握程度" class="headerlink" title="技术储备与掌握程度"></a>技术储备与掌握程度</h2><ul>
+<li>编程语言：cocos creator 支持 JavaScript，TypeScript</li>
+<li>游戏引擎：cocos creator 是一个基于 cocos2d-x 的可视化编辑器和开发工具集合。你需要熟悉其使用方法和原理，包括场景编辑器，资源管理器，属性检查器，动画编辑器，预览调试等功能。你还需要了解 cocos creator 的项目结构和配置文件，并能使用命令行发布项目。</li>
+<li>游戏设计：除了技术层面的知识外，你还需要有一定的游戏设计能力和创意。你需要了解游戏类型的特点和规则，并能设计出有趣和合理的游戏玩法和系统。你还需要考虑用户体验和交互设计，并能制作出美观和易用的界面。</li>
+<li>其他技能：根据不同类型和规模的游戏项目，你可能还需要掌握一些其他技能或工具。比如数学基础，图形渲染，音频系统，物理系统，粒子系统，动画系统，UI 系统，网络编程等等。</li>
+</ul>
+<p>使用 cocos creator 开发游戏可以达到以下几方面的掌握程度：</p>
+<ul>
+<li>能够使用 cocos creator 的各种功能快速搭建并测试游戏原型</li>
+<li>能够使用 cocos creator 的各种组件实现常见的游戏逻辑和效果</li>
+<li>能够使用 cocos creator 的资源管理系统高效地管理并加载游戏资源</li>
+<li>能够使用 cocos creator 的动画系统制作并播放各种动画效果</li>
+<li>能够使用 cocos creator 的 UI 系统制作并布局各种界面元素</li>
+<li>能够使用 cocos creator 的事件系统处理用户输入和组件间通信</li>
+<li>能够使用 cocos creator 的脚本接口自定义组件行为和扩展编辑器功能</li>
+<li>能够使用 cocos creator 的构建发布功能将游戏打包成不同平台的可执行文件</li>
+</ul>
+<h3 id="个人理解的关键技能"><a href="#个人理解的关键技能" class="headerlink" title="个人理解的关键技能"></a>个人理解的关键技能</h3><p><strong>TypeScript（JavaScript）</strong></p>
+<p><strong>模型/贴图/音效等资源的制作</strong></p>
+<h2 id="游戏类型或适用场景"><a href="#游戏类型或适用场景" class="headerlink" title="游戏类型或适用场景"></a>游戏类型或适用场景</h2><p>参考已上市游戏：《梦幻西游》，《捕鱼达人》，《开心消消乐》、《欢乐斗地主》、《热血传奇》、《传奇霸业》、《问道》、《剑与远征》、《列王的纷争》、《动物餐厅》</p>
+<ul>
+<li>2D 游戏：cocos creator 提供了丰富的 2D 渲染组件和中间件支持（如 Spine, DragonBones, TiledMap 等），可以轻松地制作各种 2D 游戏（如休闲类、卡牌类、策略类、塔防类等）。</li>
+<li>3D 游戏：cocos creator 从 3.0 版本开始支持了完整的 3D 功能，并提供了基于物理的光照模型、光照贴图、反射探针、阴影、粒子、天空盒等特性。可以制作一些简单到中等复杂度的 3D 游戏（如射击类、赛车类、角色扮演类等）。</li>
+<li>小游戏：cocos creator 支持将游戏发布到多个小游戏平台（如微信小游戏、字节跳动小游戏、百度小游戏等），并提供了相关平台的接入指南和示例。可以制作一些轻量级且易于传播小游戏。</li>
+</ul>
+<h2 id="其他Cocos的相关内容"><a href="#其他Cocos的相关内容" class="headerlink" title="其他Cocos的相关内容"></a>其他Cocos的相关内容</h2><p><a href="https://www.bilibili.com/read/cv13643797" target="_blank" rel="noopener">Cocos2d、Cocos2dx、Cocos Creator、Cocos Studio的区别</a></p>
+<p><img src="https://raw.githubusercontent.com/WeiweiQi/images/master/image-20230313105121782.png" alt="image-20230313105121782"></p>
+<p><img src="https://raw.githubusercontent.com/WeiweiQi/images/master/image-20230313105136181.png" alt="image-20230313105136181"></p>
+<p><img src="https://raw.githubusercontent.com/WeiweiQi/images/master/image-20230313105057813.png" alt="image-20230313105057813"></p>
+<h2 id="开源地址"><a href="#开源地址" class="headerlink" title="开源地址"></a>开源地址</h2><p>Cocos Creator</p>
+<p><a href="https://github.com/cocos/cocos-engine" target="_blank" rel="noopener">https://github.com/cocos/cocos-engine</a></p>
+<p>Cocos2d-x</p>
+<p><a href="https://github.com/cocos2d/cocos2d-x" target="_blank" rel="noopener">https://github.com/cocos2d/cocos2d-x</a></p>
+<h2 id="Cocos-Creator开发流程"><a href="#Cocos-Creator开发流程" class="headerlink" title="Cocos Creator开发流程"></a>Cocos Creator开发流程</h2><h2 id="界面介绍"><a href="#界面介绍" class="headerlink" title="界面介绍"></a>界面介绍</h2><p><img src="https://raw.githubusercontent.com/WeiweiQi/images/master/image-20230313104946888.png" alt="image-20230313104946888"></p>
+<h2 id="学习教程"><a href="#学习教程" class="headerlink" title="学习教程"></a>学习教程</h2><p><a href="https://www.cocos.com/" target="_blank" rel="noopener">官网</a></p>
+<p><a href="https://docs.cocos.com/creator/manual/zh/" target="_blank" rel="noopener">官方文档</a></p>
+<p>B站 <a href="https://space.bilibili.com/491120849?spm_id_from=333.337.0.0" target="_blank" rel="noopener">Cocos引擎官方</a></p>
+<p>B站 <a href="https://www.bilibili.com/video/BV1HY411H7V5/?spm_id_from=333.999.top_right_bar_window_custom_collection.content.click&amp;vd_source=37c70d06bcf1737a27368aa0fae12d60" target="_blank" rel="noopener">Cocos25节开发教程：鹰击长空</a></p>
+<p>B站 <a href="https://www.bilibili.com/video/BV18R4y1Z7hd/?spm_id_from=333.788" target="_blank" rel="noopener">Cocos17节开发教程：3D跑酷游戏</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>感谢您的支持，予人玫瑰，手有余香</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Kiwi 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Kiwi 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag"># 游戏</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/581c/" rel="next" title="杂闻周刊（第1期）">
+                <i class="fa fa-chevron-left"></i> 杂闻周刊（第1期）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/666c/" rel="prev" title="python制作动态字符图">
+                python制作动态字符图 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/weiweiqi_child.jpg"
+                alt="Kiwi" />
+            
+              <p class="site-author-name" itemprop="name">Kiwi</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">79</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/WeiweiQi" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:qiweiweiw@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#cocos与unity对比"><span class="nav-number">1.</span> <span class="nav-text">cocos与unity对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术储备与掌握程度"><span class="nav-number">2.</span> <span class="nav-text">技术储备与掌握程度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#个人理解的关键技能"><span class="nav-number">2.1.</span> <span class="nav-text">个人理解的关键技能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#游戏类型或适用场景"><span class="nav-number">3.</span> <span class="nav-text">游戏类型或适用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他Cocos的相关内容"><span class="nav-number">4.</span> <span class="nav-text">其他Cocos的相关内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开源地址"><span class="nav-number">5.</span> <span class="nav-text">开源地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cocos-Creator开发流程"><span class="nav-number">6.</span> <span class="nav-text">Cocos Creator开发流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#界面介绍"><span class="nav-number">7.</span> <span class="nav-text">界面介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习教程"><span class="nav-number">8.</span> <span class="nav-text">学习教程</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kiwi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+<br>
+<span><a href="http://www.miibeian.gov.cn" target="_blank" rel="noopener">冀ICP备18034425号-1</a></span>
+</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'Lx94yoa9poRdoFE5H0OXgArW-gzGzoHsz',
+        appKey: 'pRKL2WbraNDsJPEnB5qlPmWa',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

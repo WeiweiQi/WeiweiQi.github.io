@@ -4,10 +4,10 @@
 
 
 <html class="theme-next gemini" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -29,8 +29,8 @@ var _hmt = _hmt || [];
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -49,7 +49,7 @@ var _hmt = _hmt || [];
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -57,9 +57,9 @@ var _hmt = _hmt || [];
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -86,14 +86,16 @@ var _hmt = _hmt || [];
 
 
 
+<meta name="description" content="## 最终的实现效果先来看看我们要实现什么效果：原图：  处理后： 非灰度的   灰度的     实现思路理解这一思路需要稍有些图像处理基础。gif实际上是多帧图片按照一定的播放速度逐帧播放，又由于视觉停留的生理现象，所以才“动”起来。 基于GIF这一思路，因此若想要实现上述效果，大致思路为：拆帧-处理-合帧。具体描述为：  获取GIF的各个帧的图片 逐个处理各个帧的图片，如把各个帧的图片处理成灰">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python3如何处理GIF图片">
 <meta property="og:url" content="http://qisichen.club/posts/1b62/index.html">
 <meta property="og:site_name" content="Kiwi Blog">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2023-03-09T07:54:16.065Z">
+<meta property="og:description" content="## 最终的实现效果先来看看我们要实现什么效果：原图：  处理后： 非灰度的   灰度的     实现思路理解这一思路需要稍有些图像处理基础。gif实际上是多帧图片按照一定的播放速度逐帧播放，又由于视觉停留的生理现象，所以才“动”起来。 基于GIF这一思路，因此若想要实现上述效果，大致思路为：拆帧-处理-合帧。具体描述为：  获取GIF的各个帧的图片 逐个处理各个帧的图片，如把各个帧的图片处理成灰">
+<meta property="article:published_time" content="2023-03-09T13:52:12.000Z">
+<meta property="article:modified_time" content="2023-03-27T09:47:15.007Z">
+<meta property="article:author" content="Kiwi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python3如何处理GIF图片">
 
 
 
@@ -123,12 +125,12 @@ var _hmt = _hmt || [];
 
 
 
-  <link rel="canonical" href="http://qisichen.club/posts/1b62/">
+  <link rel="canonical" href="http://qisichen.club/posts/1b62/"/>
 
 
 
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7083117783441075" crossorigin="anonymous"></script>
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7083117783441075"
+     crossorigin="anonymous"></script>
 
   <title>python3如何处理GIF图片 | Kiwi Blog</title>
   
@@ -144,9 +146,9 @@ var _hmt = _hmt || [];
   <!-- 
   <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
    -->
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -156,13 +158,13 @@ var _hmt = _hmt || [];
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Kiwi Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -190,9 +192,9 @@ var _hmt = _hmt || [];
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -200,9 +202,9 @@ var _hmt = _hmt || [];
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/about/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -210,9 +212,9 @@ var _hmt = _hmt || [];
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -220,9 +222,9 @@ var _hmt = _hmt || [];
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
+          <a href="/categories/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -230,9 +232,9 @@ var _hmt = _hmt || [];
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -266,20 +268,20 @@ var _hmt = _hmt || [];
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/1b62/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kiwi">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/weiweiqi_child.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Kiwi Blog">
     </span>
 
@@ -300,7 +302,7 @@ var _hmt = _hmt || [];
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-03-09T15:29:56+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-03-09T21:52:12+08:00">
                 2023-03-09
               </time>
             
@@ -310,6 +312,28 @@ var _hmt = _hmt || [];
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -348,14 +372,14 @@ var _hmt = _hmt || [];
       
 
       
-        <div align="center"><image src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cecbdbd045274549976916f2c32dacda~tplv-k3u1fbpfcp-watermark.image?"></image></div><br><a id="more"></a><br><br><br><br>## 最终的实现效果<br><br>先来看看我们要实现什么效果：<br><br>原图：<br><br><div align="center"><image src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1f01fc76ebed4207a3c7d802378a9f6a~tplv-k3u1fbpfcp-watermark.image?"></image></div>
+        <div align='center'><image src='https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cecbdbd045274549976916f2c32dacda~tplv-k3u1fbpfcp-watermark.image?'></div><br>## 最终的实现效果<br><br>先来看看我们要实现什么效果：<br><br>原图：<br><br><div align='center'><image src='https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1f01fc76ebed4207a3c7d802378a9f6a~tplv-k3u1fbpfcp-watermark.image?'></div>
 
 <p>处理后：</p>
 <p>非灰度的</p>
-<div align="center"><image src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b109e0c998564466a50133eb34fed66b~tplv-k3u1fbpfcp-watermark.image?"></image></div>
+<div align='center'><image src='https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b109e0c998564466a50133eb34fed66b~tplv-k3u1fbpfcp-watermark.image?'></div>
 
 <p>灰度的</p>
-<div align="center"><image src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cecbdbd045274549976916f2c32dacda~tplv-k3u1fbpfcp-watermark.image?"></image></div>
+<div align='center'><image src='https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cecbdbd045274549976916f2c32dacda~tplv-k3u1fbpfcp-watermark.image?'></div>
 
 
 
@@ -397,14 +421,14 @@ var _hmt = _hmt || [];
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Kiwi 微信支付">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Kiwi 微信支付"/>
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipay.jpg" alt="Kiwi 支付宝">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Kiwi 支付宝"/>
         <p>支付宝</p>
       </div>
     
@@ -430,8 +454,8 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/bd71/" rel="next" title="陈皓-我做系统架构的一些原则-笔记">
-                <i class="fa fa-chevron-left"></i> 陈皓-我做系统架构的一些原则-笔记
+              <a href="/posts/fd6d/" rel="next" title="python3多张图片拼接成GIF">
+                <i class="fa fa-chevron-left"></i> python3多张图片拼接成GIF
               </a>
             
           </div>
@@ -440,8 +464,8 @@ var _hmt = _hmt || [];
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/e286/" rel="prev" title="python实现文件选择功能">
-                python实现文件选择功能 <i class="fa fa-chevron-right"></i>
+              <a href="/posts/581c/" rel="prev" title="杂闻周刊（第1期）">
+                杂闻周刊（第1期） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -536,9 +560,11 @@ var _hmt = _hmt || [];
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/weiweiqi_child.jpg" alt="Kiwi">
+              <img class="site-author-image" itemprop="image"
+                src="/images/weiweiqi_child.jpg"
+                alt="Kiwi" />
             
               <p class="site-author-name" itemprop="name">Kiwi</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -549,9 +575,9 @@ var _hmt = _hmt || [];
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">78</span>
+                  <span class="site-state-item-count">79</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -562,7 +588,7 @@ var _hmt = _hmt || [];
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -622,7 +648,7 @@ var _hmt = _hmt || [];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现思路"><span class="nav-number">1.</span> <span class="nav-text">实现思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#涉及的主要库"><span class="nav-number">2.</span> <span class="nav-text">涉及的主要库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要代码"><span class="nav-number">3.</span> <span class="nav-text">主要代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取各个帧"><span class="nav-number">3.1.</span> <span class="nav-text">获取各个帧</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数解读"><span class="nav-number">4.</span> <span class="nav-text">函数解读</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Image-open-fp-mode-’r’-formats-None"><span class="nav-number">4.1.</span> <span class="nav-text">Image.open(fp, mode=’r’, formats=None)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Image-tell"><span class="nav-number">4.2.</span> <span class="nav-text">Image.tell()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Image-seek-frame"><span class="nav-number">4.3.</span> <span class="nav-text">Image.seek(frame)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现思路"><span class="nav-number">1.</span> <span class="nav-text">实现思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#涉及的主要库"><span class="nav-number">2.</span> <span class="nav-text">涉及的主要库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主要代码"><span class="nav-number">3.</span> <span class="nav-text">主要代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取各个帧"><span class="nav-number">3.1.</span> <span class="nav-text">获取各个帧</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数解读"><span class="nav-number">4.</span> <span class="nav-text">函数解读</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Image-open-fp-mode-’r’-formats-None"><span class="nav-number">4.1.</span> <span class="nav-text">Image.open(fp, mode&#x3D;’r’, formats&#x3D;None)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Image-tell"><span class="nav-number">4.2.</span> <span class="nav-text">Image.tell()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Image-seek-frame"><span class="nav-number">4.3.</span> <span class="nav-text">Image.seek(frame)</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -666,11 +692,11 @@ var _hmt = _hmt || [];
 <div>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-<span id="busuanzi_container_site_uv" style="display:none">
+<span id="busuanzi_container_site_uv" style='display:none'>
     有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
 </span>
 <br>
-<span><a href="http://www.miibeian.gov.cn">冀ICP备18034425号-1</a></span>
+<span><a href="http://www.miibeian.gov.cn" target="_blank" rel="noopener">冀ICP备18034425号-1</a></span>
 </div>
 
 

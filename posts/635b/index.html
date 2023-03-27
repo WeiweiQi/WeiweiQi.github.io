@@ -4,10 +4,10 @@
 
 
 <html class="theme-next gemini" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -29,8 +29,8 @@ var _hmt = _hmt || [];
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -49,7 +49,7 @@ var _hmt = _hmt || [];
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -57,9 +57,9 @@ var _hmt = _hmt || [];
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -92,11 +92,10 @@ var _hmt = _hmt || [];
 <meta property="og:url" content="http://qisichen.club/posts/635b/index.html">
 <meta property="og:site_name" content="Kiwi Blog">
 <meta property="og:description" content="jfinal项目重构为springboot项目">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2023-03-09T00:20:10.677Z">
+<meta property="article:published_time" content="2019-03-18T00:41:07.000Z">
+<meta property="article:modified_time" content="2023-03-09T00:20:10.677Z">
+<meta property="article:author" content="Kiwi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="jfinal框架改造为springboot微服务过程">
-<meta name="twitter:description" content="jfinal项目重构为springboot项目">
 
 
 
@@ -126,12 +125,12 @@ var _hmt = _hmt || [];
 
 
 
-  <link rel="canonical" href="http://qisichen.club/posts/635b/">
+  <link rel="canonical" href="http://qisichen.club/posts/635b/"/>
 
 
 
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7083117783441075" crossorigin="anonymous"></script>
+     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7083117783441075"
+     crossorigin="anonymous"></script>
 
   <title>jfinal框架改造为springboot微服务过程 | Kiwi Blog</title>
   
@@ -147,9 +146,9 @@ var _hmt = _hmt || [];
   <!-- 
   <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
    -->
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -159,13 +158,13 @@ var _hmt = _hmt || [];
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Kiwi Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -193,9 +192,9 @@ var _hmt = _hmt || [];
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -203,9 +202,9 @@ var _hmt = _hmt || [];
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+          <a href="/about/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -213,9 +212,9 @@ var _hmt = _hmt || [];
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
+          <a href="/tags/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -223,9 +222,9 @@ var _hmt = _hmt || [];
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
+          <a href="/categories/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -233,9 +232,9 @@ var _hmt = _hmt || [];
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+          <a href="/archives/%20" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -269,20 +268,20 @@ var _hmt = _hmt || [];
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://qisichen.club/posts/635b/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kiwi">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/weiweiqi_child.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Kiwi Blog">
     </span>
 
@@ -361,8 +360,7 @@ var _hmt = _hmt || [];
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">application.properties</span></span><br><span class="line">spring.redis.host=</span><br><span class="line">spring.redis.name=</span><br><span class="line">spring.redis.password=</span><br><span class="line">spring.redis.database=</span><br><span class="line">spring.redis.port=</span><br></pre></td></tr></table></figure>
 <p>java中取的配置文件的值</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value</span>(<span class="string">"$&#123;spring.redis.host&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> String redisHost;</span><br><span class="line"><span class="meta">@Value</span>(<span class="string">"$&#123;spring.redis.name&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> String redisName;</span><br><span class="line"><span class="meta">@Value</span>(<span class="string">"$&#123;spring.redis.password&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> String redisPassword;</span><br><span class="line"><span class="meta">@Value</span>(<span class="string">"$&#123;spring.redis.port&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> String redisPort;</span><br><span class="line"><span class="meta">@Value</span>(<span class="string">"$&#123;spring.redis.database&#125;"</span>)</span><br><span class="line"><span class="keyword">private</span> String redisDatabase;</span><br></pre></td></tr></table></figure>
-<h2 id="路由配置-configRoute-gt-requestmapping"><a href="#路由配置-configRoute-gt-requestmapping" class="headerlink" title="路由配置 configRoute -&gt; requestmapping"></a>路由配置 configRoute -&gt; requestmapping</h2><p>jfinal中的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configRoute</span><span class="params">(Routes me)</span> </span>&#123;</span><br><span class="line">    me.add(<span class="string">"/hello"</span>, HelloController.class);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>修改为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">HelloController.class</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"hello"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> <span class="keyword">extends</span> <span class="title">ControllerExt</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"addvote"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">addvote</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="comment">// code</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="路由配置-configRoute-gt-requestmapping"><a href="#路由配置-configRoute-gt-requestmapping" class="headerlink" title="路由配置 configRoute -&gt; requestmapping"></a>路由配置 configRoute -&gt; requestmapping</h2><p>jfinal中的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configRoute</span><span class="params">(Routes me)</span> </span>&#123;</span><br><span class="line">    me.add(<span class="string">"/hello"</span>, HelloController<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>修改为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">HelloController.class</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"hello"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> <span class="keyword">extends</span> <span class="title">ControllerExt</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@RequestMapping</span>(<span class="string">"addvote"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">addvote</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="comment">// code</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="插件配置-configPlugin-gt-Configuration"><a href="#插件配置-configPlugin-gt-Configuration" class="headerlink" title="插件配置 configPlugin -&gt;  @Configuration"></a>插件配置 configPlugin -&gt;  @Configuration</h2><p>例如，如何使用jfinal的ActiveRecordPlugin插件操作数据库，原本jfinal的代码：<br>(其中包括Redis插件)</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 配置插件</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configPlugin</span><span class="params">(Plugins me)</span> </span>&#123;</span><br><span class="line">		DruidPlugin druidPlugin = createDruidPlugin();</span><br><span class="line">		me.add(druidPlugin);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 配置ActiveRecord插件</span></span><br><span class="line">		ActiveRecordPlugin arp = <span class="keyword">new</span> ActiveRecordPlugin(druidPlugin);</span><br><span class="line">		me.add(arp);</span><br><span class="line">		<span class="comment">// 所有配置在 MappingKit 中搞定</span></span><br><span class="line">		_MappingKit.mapping(arp);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//mall商城数据源</span></span><br><span class="line">		DruidPlugin druidPlugin_database1 = createDruidPlugin_database1();</span><br><span class="line">		wallFilter = <span class="keyword">new</span> WallFilter(); <span class="comment">// 加强数据库安全</span></span><br><span class="line">		wallFilter.setDbType(<span class="string">"mysql"</span>);</span><br><span class="line">		druidPlugin_mall.addFilter(wallFilter);</span><br><span class="line">		druidPlugin_mall.addFilter(<span class="keyword">new</span> StatFilter()); <span class="comment">// 添加 StatFilter 才会有统计数据</span></span><br><span class="line">		me.add(druidPlugin_mall);</span><br><span class="line">		ActiveRecordPlugin arp_database1 = <span class="keyword">new</span> ActiveRecordPlugin(<span class="string">"database1"</span>,druidPlugin_mall);</span><br><span class="line">		me.add(arp_mall);</span><br><span class="line">		<span class="comment">// 注册Redis插件</span></span><br><span class="line">		RedisPlugin RedisPlugin;</span><br><span class="line">		<span class="keyword">if</span> (PropKit.getBoolean(<span class="string">"devMode"</span>, <span class="keyword">true</span>))</span><br><span class="line">			RedisPlugin = <span class="keyword">new</span> RedisPlugin(PropKit.get(<span class="string">"redisname"</span>), PropKit.get(<span class="string">"redisserverip"</span>), Integer.parseInt(PropKit.get(<span class="string">"redisport"</span>)), <span class="number">0</span>,</span><br><span class="line">					PropKit.get(<span class="string">"redispw"</span>), <span class="number">2</span>);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			RedisPlugin = <span class="keyword">new</span> RedisPlugin(PropKit.get(<span class="string">"redisname"</span>), PropKit.get(<span class="string">"redisserverip"</span>), Integer.parseInt(PropKit.get(<span class="string">"redisport"</span>)), <span class="number">0</span>,</span><br><span class="line">					PropKit.get(<span class="string">"redispw"</span>), <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">		me.add(RedisPlugin);</span><br><span class="line"></span><br><span class="line">		QuartzPlugin QuartzPlugin = <span class="keyword">new</span> QuartzPlugin();</span><br><span class="line">		me.add(QuartzPlugin);</span><br><span class="line"></span><br><span class="line">		QuartzDynamicPlugin QuartzDynamicPlugin = <span class="keyword">new</span> QuartzDynamicPlugin();</span><br><span class="line">		me.add(QuartzDynamicPlugin);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 <p>在springboot中修改为：</p>
@@ -375,7 +373,7 @@ var _hmt = _hmt || [];
 <p>jfinal中：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 配置处理器</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configHandler</span><span class="params">(Handlers me)</span> </span>&#123;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 <p>springboot中：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GlobalResponseHandler</span> <span class="keyword">extends</span> <span class="title">ResponseEntityExceptionHandler</span> <span class="keyword">implements</span> <span class="title">ResponseBodyAdvice</span>&lt;<span class="title">Object</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Value</span>(<span class="string">"$&#123;spring.profiles.active&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> String active;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">supports</span><span class="params">(MethodParameter returnType, Class&lt;? extends HttpMessageConverter&lt;?&gt;&gt; converterType)</span> </span>&#123;</span><br><span class="line">      <span class="comment">//控制所支持的类型</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">beforeBodyWrite</span><span class="params">(Object body, MethodParameter returnType, MediaType selectedContentType,</span></span></span><br><span class="line"><span class="function"><span class="params">			Class&lt;? extends HttpMessageConverter&lt;?&gt;&gt; selectedConverterType, ServerHttpRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">			ServerHttpResponse response)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//一般数据的格式化处理</span></span><br><span class="line">    <span class="keyword">return</span> body;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@ResponseStatus</span>(HttpStatus.OK)</span><br><span class="line">	<span class="meta">@ExceptionHandler</span>(MyException.class)</span><br><span class="line">	<span class="keyword">public</span> &lt;T&gt; <span class="function">GlobalResponse&lt;T&gt; <span class="title">handleException</span><span class="params">(HttpServletRequest request, MyException e)</span> </span>&#123;</span><br><span class="line">		  <span class="comment">//格式化输出自定义异常</span></span><br><span class="line">			<span class="keyword">return</span> GlobalResponse.fail(e.getMessage());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@ResponseStatus</span>(HttpStatus.OK)</span><br><span class="line">	<span class="meta">@ExceptionHandler</span>(Exception.class)</span><br><span class="line">	<span class="meta">@ResponseBody</span></span><br><span class="line">	<span class="keyword">public</span> &lt;T&gt; <span class="function">GlobalResponse&lt;T&gt; <span class="title">handleException</span><span class="params">(HttpServletRequest request, Exception e)</span> </span>&#123;</span><br><span class="line">      <span class="comment">//格式化输出异常</span></span><br><span class="line">			<span class="keyword">return</span> GlobalResponse.fail(<span class="string">"Error para"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GlobalResponseHandler</span> <span class="keyword">extends</span> <span class="title">ResponseEntityExceptionHandler</span> <span class="keyword">implements</span> <span class="title">ResponseBodyAdvice</span>&lt;<span class="title">Object</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Value</span>(<span class="string">"$&#123;spring.profiles.active&#125;"</span>)</span><br><span class="line">	<span class="keyword">private</span> String active;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">supports</span><span class="params">(MethodParameter returnType, Class&lt;? extends HttpMessageConverter&lt;?&gt;&gt; converterType)</span> </span>&#123;</span><br><span class="line">      <span class="comment">//控制所支持的类型</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">beforeBodyWrite</span><span class="params">(Object body, MethodParameter returnType, MediaType selectedContentType,</span></span></span><br><span class="line"><span class="function"><span class="params">			Class&lt;? extends HttpMessageConverter&lt;?&gt;&gt; selectedConverterType, ServerHttpRequest request,</span></span></span><br><span class="line"><span class="function"><span class="params">			ServerHttpResponse response)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//一般数据的格式化处理</span></span><br><span class="line">    <span class="keyword">return</span> body;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@ResponseStatus</span>(HttpStatus.OK)</span><br><span class="line">	<span class="meta">@ExceptionHandler</span>(MyException<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">	<span class="title">public</span> &lt;<span class="title">T</span>&gt; <span class="title">GlobalResponse</span>&lt;<span class="title">T</span>&gt; <span class="title">handleException</span>(<span class="title">HttpServletRequest</span> <span class="title">request</span>, <span class="title">MyException</span> <span class="title">e</span>) </span>&#123;</span><br><span class="line">		  <span class="comment">//格式化输出自定义异常</span></span><br><span class="line">			<span class="keyword">return</span> GlobalResponse.fail(e.getMessage());</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@ResponseStatus</span>(HttpStatus.OK)</span><br><span class="line">	<span class="meta">@ExceptionHandler</span>(Exception<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">	@<span class="title">ResponseBody</span></span></span><br><span class="line"><span class="class">	<span class="title">public</span> &lt;<span class="title">T</span>&gt; <span class="title">GlobalResponse</span>&lt;<span class="title">T</span>&gt; <span class="title">handleException</span>(<span class="title">HttpServletRequest</span> <span class="title">request</span>, <span class="title">Exception</span> <span class="title">e</span>) </span>&#123;</span><br><span class="line">      <span class="comment">//格式化输出异常</span></span><br><span class="line">			<span class="keyword">return</span> GlobalResponse.fail(<span class="string">"Error para"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h2><p>例如jfinal中有onStart()、onStop()系统启动完成之后以及系统关闭之前分别回调这两个方法，springboot中支持更好, 并且springboot支持自定义事件</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationEventListener</span> <span class="keyword">implements</span> <span class="title">ApplicationListener</span>&lt;<span class="title">ApplicationEvent</span>&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onApplicationEvent</span><span class="params">(ApplicationEvent event)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// 在这里可以监听到Spring Boot的生命周期</span></span><br><span class="line">        <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ApplicationEnvironmentPreparedEvent) &#123;</span><br><span class="line">        	<span class="comment">// 初始化环境变量</span></span><br><span class="line">        	System.out.println(<span class="string">"初始化环境变量"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ApplicationPreparedEvent) &#123;</span><br><span class="line">        	<span class="comment">// 初始化完成</span></span><br><span class="line">        	System.out.println(<span class="string">"初始化完成"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ContextRefreshedEvent) &#123;</span><br><span class="line">        	<span class="comment">// 应用刷新</span></span><br><span class="line">        	System.out.println(<span class="string">"应用刷新"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ApplicationReadyEvent) &#123;</span><br><span class="line">        	<span class="comment">// 应用已启动完成</span></span><br><span class="line">        	System.out.println(<span class="string">"应用已启动完成"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ContextStartedEvent) &#123;</span><br><span class="line">        	<span class="comment">// 应用启动，需要在代码动态添加监听器才可捕获</span></span><br><span class="line">        	System.out.println(<span class="string">"应用启动，需要在代码动态添加监听器才可捕获 "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ContextStoppedEvent) &#123;</span><br><span class="line">        	<span class="comment">// 应用停止</span></span><br><span class="line">        	System.out.println(<span class="string">"应用停止"</span>);</span><br><span class="line">        	System.out.println(<span class="string">"关闭数据库与redis连接"</span>);</span><br><span class="line">            ActiveRecordPluginConfig.qdp.stop();</span><br><span class="line">        	ActiveRecordPluginConfig.arp.stop();</span><br><span class="line">        	ActiveRecordPluginConfig.druidPlugin.stop();</span><br><span class="line">        	ActiveRecordPluginConfig.redisPlugin.stop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ContextClosedEvent) &#123;</span><br><span class="line">        	<span class="comment">// 应用关闭</span></span><br><span class="line">        	System.out.println(<span class="string">"应用关闭"</span>);</span><br><span class="line">        	System.out.println(<span class="string">"关闭数据库与redis连接"</span>);</span><br><span class="line">            ActiveRecordPluginConfig.qdp.stop();</span><br><span class="line">        	ActiveRecordPluginConfig.arp.stop();</span><br><span class="line">        	ActiveRecordPluginConfig.druidPlugin.stop();</span><br><span class="line">        	ActiveRecordPluginConfig.redisPlugin.stop();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        	System.out.println(<span class="string">"应用的其他操作"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Controller-变更"><a href="#Controller-变更" class="headerlink" title="Controller 变更"></a>Controller 变更</h2><p>注解@RestController/@Controller表示此类为Controller<br>RequestMapping注解标识访问路径和方法等</p>
@@ -413,14 +411,14 @@ var _hmt = _hmt || [];
 
     
       <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Kiwi 微信支付">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Kiwi 微信支付"/>
         <p>微信支付</p>
       </div>
     
 
     
       <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipay.jpg" alt="Kiwi 支付宝">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Kiwi 支付宝"/>
         <p>支付宝</p>
       </div>
     
@@ -552,9 +550,11 @@ var _hmt = _hmt || [];
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/weiweiqi_child.jpg" alt="Kiwi">
+              <img class="site-author-image" itemprop="image"
+                src="/images/weiweiqi_child.jpg"
+                alt="Kiwi" />
             
               <p class="site-author-name" itemprop="name">Kiwi</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -565,9 +565,9 @@ var _hmt = _hmt || [];
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">78</span>
+                  <span class="site-state-item-count">79</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -578,7 +578,7 @@ var _hmt = _hmt || [];
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -638,7 +638,7 @@ var _hmt = _hmt || [];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#eclipse插件安装"><span class="nav-number">1.</span> <span class="nav-text">eclipse插件安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven下载安装与eclipse配置"><span class="nav-number">2.</span> <span class="nav-text">maven下载安装与eclipse配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#configConstant-PropKit-gt-application-properties"><span class="nav-number">3.</span> <span class="nav-text">configConstant/PropKit -&gt; application.properties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由配置-configRoute-gt-requestmapping"><span class="nav-number">4.</span> <span class="nav-text">路由配置 configRoute -&gt; requestmapping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插件配置-configPlugin-gt-Configuration"><span class="nav-number">5.</span> <span class="nav-text">插件配置 configPlugin -&gt;  @Configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局拦截器-configInterceptor-gt-WebMvcConfigurationSupport"><span class="nav-number">6.</span> <span class="nav-text">全局拦截器 configInterceptor -&gt; WebMvcConfigurationSupport</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#configHandler-gt-ResponseEntityExceptionHandler-ResponseBodyAdvice"><span class="nav-number">7.</span> <span class="nav-text">configHandler -&gt; ResponseEntityExceptionHandler/ResponseBodyAdvice</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件监听"><span class="nav-number">8.</span> <span class="nav-text">事件监听</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Controller-变更"><span class="nav-number">9.</span> <span class="nav-text">Controller 变更</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日志配置"><span class="nav-number">10.</span> <span class="nav-text">日志配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务处理-Before-Tx-class"><span class="nav-number">11.</span> <span class="nav-text">事务处理 @Before(Tx.class)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#热部署配置方法"><span class="nav-number">12.</span> <span class="nav-text">热部署配置方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean"><span class="nav-number">13.</span> <span class="nav-text">@Bean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定时任务"><span class="nav-number">14.</span> <span class="nav-text">定时任务</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#eclipse插件安装"><span class="nav-number">1.</span> <span class="nav-text">eclipse插件安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#maven下载安装与eclipse配置"><span class="nav-number">2.</span> <span class="nav-text">maven下载安装与eclipse配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#configConstant-PropKit-gt-application-properties"><span class="nav-number">3.</span> <span class="nav-text">configConstant&#x2F;PropKit -&gt; application.properties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由配置-configRoute-gt-requestmapping"><span class="nav-number">4.</span> <span class="nav-text">路由配置 configRoute -&gt; requestmapping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插件配置-configPlugin-gt-Configuration"><span class="nav-number">5.</span> <span class="nav-text">插件配置 configPlugin -&gt;  @Configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局拦截器-configInterceptor-gt-WebMvcConfigurationSupport"><span class="nav-number">6.</span> <span class="nav-text">全局拦截器 configInterceptor -&gt; WebMvcConfigurationSupport</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#configHandler-gt-ResponseEntityExceptionHandler-ResponseBodyAdvice"><span class="nav-number">7.</span> <span class="nav-text">configHandler -&gt; ResponseEntityExceptionHandler&#x2F;ResponseBodyAdvice</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件监听"><span class="nav-number">8.</span> <span class="nav-text">事件监听</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Controller-变更"><span class="nav-number">9.</span> <span class="nav-text">Controller 变更</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日志配置"><span class="nav-number">10.</span> <span class="nav-text">日志配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务处理-Before-Tx-class"><span class="nav-number">11.</span> <span class="nav-text">事务处理 @Before(Tx.class)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#热部署配置方法"><span class="nav-number">12.</span> <span class="nav-text">热部署配置方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean"><span class="nav-number">13.</span> <span class="nav-text">@Bean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定时任务"><span class="nav-number">14.</span> <span class="nav-text">定时任务</span></a></li></ol></div>
             
 
           </div>
@@ -682,11 +682,11 @@ var _hmt = _hmt || [];
 <div>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-<span id="busuanzi_container_site_uv" style="display:none">
+<span id="busuanzi_container_site_uv" style='display:none'>
     有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
 </span>
 <br>
-<span><a href="http://www.miibeian.gov.cn">冀ICP备18034425号-1</a></span>
+<span><a href="http://www.miibeian.gov.cn" target="_blank" rel="noopener">冀ICP备18034425号-1</a></span>
 </div>
 
 
